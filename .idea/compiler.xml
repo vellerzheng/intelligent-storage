@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="db-provider" />
+        <module name="eureka-server" />
+        <module name="file-localbk" />
+        <module name="file-server" />
+        <module name="intellig-storage" />
+        <module name="mqtt-provider" />
+        <module name="mqtt-server" />
+        <module name="storage-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="db-provider" target="1.8" />
+      <module name="eureka-server" target="1.8" />
+      <module name="file-localbk" target="1.8" />
+      <module name="file-server" target="1.8" />
+      <module name="intellig-storage" target="1.8" />
+      <module name="mqtt-provider" target="1.8" />
+      <module name="mqtt-server" target="1.8" />
+      <module name="storage-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
