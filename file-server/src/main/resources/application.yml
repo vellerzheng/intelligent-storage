@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://**.**.**.**:8762/eureka/
+
+
+
+#spring configuration
+spring:
+  application:
+    name: file-server
+  rabbitmq:
+    addresses: **.**.**.**
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: /
+
+server:
+  port: 8764
+

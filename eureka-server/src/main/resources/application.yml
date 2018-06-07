@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: eureka-server-peer1
+  profiles:
+    active: localhost
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://**.**.**.**:8762/eureka/
+
+
+
+#spring:
+#  application:
+#    name: eureka-server-peer2
+#  profiles:
+#    active: localhost
+#server:
+#  port: 8662
+#
+#eureka:
+#  instance:
+#    hostname: eureka-server-center
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#   serviceUrl:
+#      defaultZone: http://**.**.**.**:8861/eureka/

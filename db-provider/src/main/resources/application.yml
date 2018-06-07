@@ -1,0 +1,52 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://**.**.**.**:8762/eureka/
+server:
+  port: 8763
+#spring configuration
+spring:
+  application:
+    name: db-provider
+  redis:
+    host: 120.24.237.131
+    port: 6379
+    password: 123456
+    database: 0
+    timeout: 3000
+    jedis:
+      pool:
+        max-idle: 8
+        max-active: 8
+        min-idle: 0
+        max-wait: -1
+  session:
+    store-type: redis
+  datasource:
+    url: jdbc:mysql://**.**.**.**:3306/cloud_secureStorage?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+  data:
+    mongodb:
+      host: **.**.**.**
+      port: 27017
+      #username: dev_xxx
+      #password: dev_xxx
+      database: test
+  rabbitmq:
+    addresses: **.**.**.**
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: /
+
+mybatis:
+   type-aliases-package: com.mcloud.dbprovider.repository.entity
+   mapper-locations: classpath*:/mapping/*.xml
+pagehelper:
+   helperDialect: mysql
+   reasonable: true
+   supportMethodsArguments: true
+   params: count=countSql

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/db-provider/db-provider.iml" filepath="$PROJECT_DIR$/db-provider/db-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/file-localbk/file-localbk.iml" filepath="$PROJECT_DIR$/file-localbk/file-localbk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/file-server/file-server.iml" filepath="$PROJECT_DIR$/file-server/file-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/intellig-storage.iml" filepath="$PROJECT_DIR$/intellig-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/storage-web/storage-web.iml" filepath="$PROJECT_DIR$/storage-web/storage-web.iml" />
+    </modules>
+  </component>
+</project>

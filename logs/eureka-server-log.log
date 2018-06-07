@@ -1,0 +1,543 @@
+2018-06-06 11:47:06,813:INFO main (AbstractApplicationContext.java:590) - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f67a4d3: startup date [Wed Jun 06 11:47:06 CST 2018]; root of context hierarchy
+2018-06-06 11:47:06,911:INFO main (AutowiredAnnotationBeanPostProcessor.java:154) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-06-06 11:47:06,928:INFO main (PostProcessorRegistrationDelegate.java:328) - Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$81634a86] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-06 11:47:08,087:INFO main (SpringApplication.java:663) - The following profiles are active: localhost
+2018-06-06 11:47:08,094:INFO main (AbstractApplicationContext.java:590) - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5b07730f: startup date [Wed Jun 06 11:47:08 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@2f67a4d3
+2018-06-06 11:47:08,572:INFO main (GenericScope.java:293) - BeanFactory id=94d1c5ec-af51-3b39-9b42-a73ebd606248
+2018-06-06 11:47:08,583:INFO main (AutowiredAnnotationBeanPostProcessor.java:154) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-06-06 11:47:08,633:INFO main (PostProcessorRegistrationDelegate.java:328) - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$81634a86] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-06 11:47:08,785:INFO main (TomcatWebServer.java:91) - Tomcat initialized with port(s): 8761 (http)
+2018-06-06 11:47:08,792:INFO main (DirectJDKLog.java:180) - Initializing ProtocolHandler ["http-nio-8761"]
+2018-06-06 11:47:08,797:INFO main (DirectJDKLog.java:180) - Starting service [Tomcat]
+2018-06-06 11:47:08,798:INFO main (DirectJDKLog.java:180) - Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-06 11:47:08,801:INFO localhost-startStop-1 (DirectJDKLog.java:180) - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\libnvvp;;C:\Program Files\VanDyke Software\SecureFX\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Users\vellerzheng\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk1.8.0_121/bin;C:\Program Files\Java\jdk1.8.0_121/jre/bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\ProgramLaunchFile\Anaconda3;C:\ProgramLaunchFile\Anaconda3\Scripts;C:\ProgramLaunchFile\Anaconda3\Library\bin;C:\Users\vellerzheng\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\vellerzheng\AppData\Local\Programs\Python\Python36-32\;C:\Users\vellerzheng\AppData\Local\Microsoft\WindowsApps;;.]
+2018-06-06 11:47:08,918:INFO localhost-startStop-1 (DirectJDKLog.java:180) - Initializing Spring embedded WebApplicationContext
+2018-06-06 11:47:08,918:INFO localhost-startStop-1 (ServletWebServerApplicationContext.java:285) - Root WebApplicationContext: initialization completed in 824 ms
+2018-06-06 11:47:10,377:INFO localhost-startStop-1 (InetUtils.java:170) - Cannot determine local hostname
+2018-06-06 11:47:11,455:INFO localhost-startStop-1 (InetUtils.java:170) - Cannot determine local hostname
+2018-06-06 11:47:11,665:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-06 11:47:11,665:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-06 11:47:11,665:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-06 11:47:11,665:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-06 11:47:11,666:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'httpTraceFilter' to: [/*]
+2018-06-06 11:47:11,666:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-06-06 11:47:11,666:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:258) - Mapping filter: 'servletContainer' to urls: [/eureka/*]
+2018-06-06 11:47:11,666:INFO localhost-startStop-1 (ServletRegistrationBean.java:186) - Servlet dispatcherServlet mapped to [/]
+2018-06-06 11:47:11,702:INFO localhost-startStop-1 (WebApplicationImpl.java:815) - Initiating Jersey application, version 'Jersey: 1.19.1 03/11/2016 02:08 PM'
+2018-06-06 11:47:11,739:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:70) - Using JSON encoding codec LegacyJacksonJson
+2018-06-06 11:47:11,739:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:71) - Using JSON decoding codec LegacyJacksonJson
+2018-06-06 11:47:11,800:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:80) - Using XML encoding codec XStreamXml
+2018-06-06 11:47:11,800:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:81) - Using XML decoding codec XStreamXml
+2018-06-06 11:47:11,977:WARN main (URLConfigurationSource.java:121) - No URLs will be polled as dynamic configuration sources.
+2018-06-06 11:47:11,977:INFO main (URLConfigurationSource.java:122) - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-06-06 11:47:11,980:WARN main (URLConfigurationSource.java:121) - No URLs will be polled as dynamic configuration sources.
+2018-06-06 11:47:11,980:INFO main (URLConfigurationSource.java:122) - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-06-06 11:47:12,028:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:47:12,145:INFO main (RequestMappingHandlerAdapter.java:574) - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5b07730f: startup date [Wed Jun 06 11:47:08 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@2f67a4d3
+2018-06-06 11:47:12,180:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-06 11:47:12,180:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-06 11:47:12,185:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.status(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2018-06-06 11:47:12,185:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/lastn],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.lastn(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2018-06-06 11:47:12,201:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:47:12,201:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:47:12,445:INFO main (SpringTemplateLoader.java:62) - SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5b07730f: startup date [Wed Jun 06 11:47:08 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@2f67a4d3] and template loader path [classpath:/templates/]
+2018-06-06 11:47:12,445:INFO main (FreeMarkerConfigurer.java:131) - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2018-06-06 11:47:12,547:INFO main (InstanceInfoFactory.java:71) - Setting initial instance status as: STARTING
+2018-06-06 11:47:12,566:INFO main (DiscoveryClient.java:349) - Initializing Eureka in region us-east-1
+2018-06-06 11:47:12,566:INFO main (DiscoveryClient.java:352) - Client configured to neither register nor query for data.
+2018-06-06 11:47:12,570:INFO main (DiscoveryClient.java:365) - Discovery Client initialized at timestamp 1528256832569 with initial instances count: 0
+2018-06-06 11:47:12,596:INFO main (DefaultEurekaServerContext.java:63) - Initializing ...
+2018-06-06 11:47:12,597:INFO main (PeerEurekaNodes.java:188) - Adding new peer nodes [http://118.31.60.54:8762/eureka/]
+2018-06-06 11:47:12,713:INFO main (DiscoveryJerseyProvider.java:70) - Using JSON encoding codec LegacyJacksonJson
+2018-06-06 11:47:12,714:INFO main (DiscoveryJerseyProvider.java:71) - Using JSON decoding codec LegacyJacksonJson
+2018-06-06 11:47:12,714:INFO main (DiscoveryJerseyProvider.java:80) - Using XML encoding codec XStreamXml
+2018-06-06 11:47:12,714:INFO main (DiscoveryJerseyProvider.java:81) - Using XML decoding codec XStreamXml
+2018-06-06 11:47:12,772:INFO main (PeerEurekaNodes.java:110) - Replica node URL:  http://118.31.60.54:8762/eureka/
+2018-06-06 11:47:12,777:INFO main (AbstractInstanceRegistry.java:151) - Finished initializing remote region registries. All known remote regions: []
+2018-06-06 11:47:12,778:INFO main (DefaultEurekaServerContext.java:70) - Initialized
+2018-06-06 11:47:12,788:INFO main (EndpointLinksResolver.java:59) - Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-06-06 11:47:12,796:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:47:12,796:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health/{component}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:47:12,796:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health/{component}/{instance}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:47:12,797:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:47:12,797:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-06 11:47:12,826:INFO main (MBeanExporter.java:433) - Registering beans for JMX exposure on startup
+2018-06-06 11:47:12,831:INFO main (MBeanExporter.java:895) - Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-06-06 11:47:12,833:INFO main (MBeanExporter.java:895) - Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-06-06 11:47:12,833:INFO main (MBeanExporter.java:895) - Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-06-06 11:47:12,835:INFO main (MBeanExporter.java:675) - Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-06-06 11:47:12,840:INFO main (MBeanExporter.java:675) - Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-06-06 11:47:12,845:INFO main (MBeanExporter.java:675) - Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=5b07730f,type=ConfigurationPropertiesRebinder]
+2018-06-06 11:47:12,850:INFO main (DefaultLifecycleProcessor.java:351) - Starting beans in phase 0
+2018-06-06 11:47:12,851:INFO main (EurekaServiceRegistry.java:42) - Registering application eureka-server-peer1 with eureka with status UP
+2018-06-06 11:47:12,853:INFO Thread-29 (EurekaServerBootstrap.java:109) - Setting the eureka configuration..
+2018-06-06 11:47:12,853:INFO Thread-29 (EurekaServerBootstrap.java:114) - Eureka data center value eureka.datacenter is not set, defaulting to default
+2018-06-06 11:47:12,853:INFO Thread-29 (EurekaServerBootstrap.java:128) - Eureka environment value eureka.environment is not set, defaulting to test
+2018-06-06 11:47:12,859:INFO Thread-29 (EurekaServerBootstrap.java:184) - isAws returned false
+2018-06-06 11:47:12,859:INFO Thread-29 (EurekaServerBootstrap.java:152) - Initialized server context
+2018-06-06 11:47:12,860:INFO Thread-29 (PeerAwareInstanceRegistryImpl.java:242) - Got 1 instances from neighboring DS node
+2018-06-06 11:47:12,860:INFO Thread-29 (PeerAwareInstanceRegistryImpl.java:243) - Renew threshold is: 1
+2018-06-06 11:47:12,860:INFO Thread-29 (PeerAwareInstanceRegistryImpl.java:254) - Changing status to UP
+2018-06-06 11:47:12,860:INFO main (DirectJDKLog.java:180) - Starting ProtocolHandler ["http-nio-8761"]
+2018-06-06 11:47:12,865:INFO Thread-29 (EurekaServerInitializerConfiguration.java:72) - Started Eureka Server
+2018-06-06 11:47:12,869:INFO main (DirectJDKLog.java:180) - Using a shared selector for servlet write/read
+2018-06-06 11:47:12,879:INFO main (TomcatWebServer.java:206) - Tomcat started on port(s): 8761 (http) with context path ''
+2018-06-06 11:47:12,880:INFO main (EurekaAutoServiceRegistration.java:124) - Updating port to 8761
+2018-06-06 11:47:12,881:INFO main (StartupInfoLogger.java:59) - Started EurekaServerApplication in 7.399 seconds (JVM running for 8.341)
+2018-06-06 11:47:13,503:INFO RMI TCP Connection(10)-127.0.0.1 (DirectJDKLog.java:180) - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-06 11:47:13,503:INFO RMI TCP Connection(10)-127.0.0.1 (FrameworkServlet.java:494) - FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-06 11:47:13,512:INFO RMI TCP Connection(10)-127.0.0.1 (FrameworkServlet.java:509) - FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms
+2018-06-06 11:48:12,861:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 11:48:27,019:INFO main (AbstractApplicationContext.java:590) - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@45efd90f: startup date [Wed Jun 06 11:48:27 CST 2018]; root of context hierarchy
+2018-06-06 11:48:27,115:INFO main (AutowiredAnnotationBeanPostProcessor.java:154) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-06-06 11:48:27,131:INFO main (PostProcessorRegistrationDelegate.java:328) - Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$671ad0ce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-06 11:48:28,280:INFO main (SpringApplication.java:663) - The following profiles are active: localhost
+2018-06-06 11:48:28,287:INFO main (AbstractApplicationContext.java:590) - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3918c187: startup date [Wed Jun 06 11:48:28 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@45efd90f
+2018-06-06 11:48:28,765:INFO main (GenericScope.java:293) - BeanFactory id=94d1c5ec-af51-3b39-9b42-a73ebd606248
+2018-06-06 11:48:28,775:INFO main (AutowiredAnnotationBeanPostProcessor.java:154) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-06-06 11:48:28,826:INFO main (PostProcessorRegistrationDelegate.java:328) - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$671ad0ce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-06 11:48:28,966:INFO main (TomcatWebServer.java:91) - Tomcat initialized with port(s): 8761 (http)
+2018-06-06 11:48:28,975:INFO main (DirectJDKLog.java:180) - Initializing ProtocolHandler ["http-nio-8761"]
+2018-06-06 11:48:28,980:INFO main (DirectJDKLog.java:180) - Starting service [Tomcat]
+2018-06-06 11:48:28,981:INFO main (DirectJDKLog.java:180) - Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-06 11:48:28,983:INFO localhost-startStop-1 (DirectJDKLog.java:180) - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\libnvvp;;C:\Program Files\VanDyke Software\SecureFX\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Users\vellerzheng\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk1.8.0_121/bin;C:\Program Files\Java\jdk1.8.0_121/jre/bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\ProgramLaunchFile\Anaconda3;C:\ProgramLaunchFile\Anaconda3\Scripts;C:\ProgramLaunchFile\Anaconda3\Library\bin;C:\Users\vellerzheng\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\vellerzheng\AppData\Local\Programs\Python\Python36-32\;C:\Users\vellerzheng\AppData\Local\Microsoft\WindowsApps;;.]
+2018-06-06 11:48:29,118:INFO localhost-startStop-1 (DirectJDKLog.java:180) - Initializing Spring embedded WebApplicationContext
+2018-06-06 11:48:29,118:INFO localhost-startStop-1 (ServletWebServerApplicationContext.java:285) - Root WebApplicationContext: initialization completed in 831 ms
+2018-06-06 11:48:30,551:INFO localhost-startStop-1 (InetUtils.java:170) - Cannot determine local hostname
+2018-06-06 11:48:31,626:INFO localhost-startStop-1 (InetUtils.java:170) - Cannot determine local hostname
+2018-06-06 11:48:31,856:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-06 11:48:31,857:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-06 11:48:31,857:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-06 11:48:31,857:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-06 11:48:31,857:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'httpTraceFilter' to: [/*]
+2018-06-06 11:48:31,857:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-06-06 11:48:31,857:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:258) - Mapping filter: 'servletContainer' to urls: [/eureka/*]
+2018-06-06 11:48:31,857:INFO localhost-startStop-1 (ServletRegistrationBean.java:186) - Servlet dispatcherServlet mapped to [/]
+2018-06-06 11:48:31,897:INFO localhost-startStop-1 (WebApplicationImpl.java:815) - Initiating Jersey application, version 'Jersey: 1.19.1 03/11/2016 02:08 PM'
+2018-06-06 11:48:31,937:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:70) - Using JSON encoding codec LegacyJacksonJson
+2018-06-06 11:48:31,937:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:71) - Using JSON decoding codec LegacyJacksonJson
+2018-06-06 11:48:32,010:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:80) - Using XML encoding codec XStreamXml
+2018-06-06 11:48:32,010:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:81) - Using XML decoding codec XStreamXml
+2018-06-06 11:48:32,186:WARN main (URLConfigurationSource.java:121) - No URLs will be polled as dynamic configuration sources.
+2018-06-06 11:48:32,187:INFO main (URLConfigurationSource.java:122) - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-06-06 11:48:32,189:WARN main (URLConfigurationSource.java:121) - No URLs will be polled as dynamic configuration sources.
+2018-06-06 11:48:32,189:INFO main (URLConfigurationSource.java:122) - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-06-06 11:48:32,237:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:48:32,340:INFO main (RequestMappingHandlerAdapter.java:574) - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3918c187: startup date [Wed Jun 06 11:48:28 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@45efd90f
+2018-06-06 11:48:32,371:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-06 11:48:32,372:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-06 11:48:32,376:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.status(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2018-06-06 11:48:32,376:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/lastn],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.lastn(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2018-06-06 11:48:32,390:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:48:32,390:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:48:32,606:INFO main (SpringTemplateLoader.java:62) - SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3918c187: startup date [Wed Jun 06 11:48:28 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@45efd90f] and template loader path [classpath:/templates/]
+2018-06-06 11:48:32,607:INFO main (FreeMarkerConfigurer.java:131) - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2018-06-06 11:48:32,708:INFO main (InstanceInfoFactory.java:71) - Setting initial instance status as: STARTING
+2018-06-06 11:48:32,726:INFO main (DiscoveryClient.java:349) - Initializing Eureka in region us-east-1
+2018-06-06 11:48:32,726:INFO main (DiscoveryClient.java:352) - Client configured to neither register nor query for data.
+2018-06-06 11:48:32,730:INFO main (DiscoveryClient.java:365) - Discovery Client initialized at timestamp 1528256912729 with initial instances count: 0
+2018-06-06 11:48:32,757:INFO main (DefaultEurekaServerContext.java:63) - Initializing ...
+2018-06-06 11:48:32,758:INFO main (PeerEurekaNodes.java:188) - Adding new peer nodes [http://118.31.60.54:8762/eureka/]
+2018-06-06 11:48:32,885:INFO main (DiscoveryJerseyProvider.java:70) - Using JSON encoding codec LegacyJacksonJson
+2018-06-06 11:48:32,885:INFO main (DiscoveryJerseyProvider.java:71) - Using JSON decoding codec LegacyJacksonJson
+2018-06-06 11:48:32,885:INFO main (DiscoveryJerseyProvider.java:80) - Using XML encoding codec XStreamXml
+2018-06-06 11:48:32,885:INFO main (DiscoveryJerseyProvider.java:81) - Using XML decoding codec XStreamXml
+2018-06-06 11:48:32,950:INFO main (PeerEurekaNodes.java:110) - Replica node URL:  http://118.31.60.54:8762/eureka/
+2018-06-06 11:48:32,955:INFO main (AbstractInstanceRegistry.java:151) - Finished initializing remote region registries. All known remote regions: []
+2018-06-06 11:48:32,955:INFO main (DefaultEurekaServerContext.java:70) - Initialized
+2018-06-06 11:48:32,966:INFO main (EndpointLinksResolver.java:59) - Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-06-06 11:48:32,989:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:48:32,989:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health/{component}/{instance}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:48:32,990:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health/{component}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:48:32,990:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:48:32,990:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-06 11:48:33,019:INFO main (MBeanExporter.java:433) - Registering beans for JMX exposure on startup
+2018-06-06 11:48:33,025:INFO main (MBeanExporter.java:895) - Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-06-06 11:48:33,026:INFO main (MBeanExporter.java:895) - Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-06-06 11:48:33,026:INFO main (MBeanExporter.java:895) - Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-06-06 11:48:33,028:INFO main (MBeanExporter.java:675) - Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-06-06 11:48:33,033:INFO main (MBeanExporter.java:675) - Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-06-06 11:48:33,039:INFO main (MBeanExporter.java:675) - Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=3918c187,type=ConfigurationPropertiesRebinder]
+2018-06-06 11:48:33,046:INFO main (DefaultLifecycleProcessor.java:351) - Starting beans in phase 0
+2018-06-06 11:48:33,046:INFO main (EurekaServiceRegistry.java:42) - Registering application eureka-server-peer1 with eureka with status UP
+2018-06-06 11:48:33,048:INFO Thread-28 (EurekaServerBootstrap.java:109) - Setting the eureka configuration..
+2018-06-06 11:48:33,048:INFO Thread-28 (EurekaServerBootstrap.java:114) - Eureka data center value eureka.datacenter is not set, defaulting to default
+2018-06-06 11:48:33,048:INFO Thread-28 (EurekaServerBootstrap.java:128) - Eureka environment value eureka.environment is not set, defaulting to test
+2018-06-06 11:48:33,055:INFO Thread-28 (EurekaServerBootstrap.java:184) - isAws returned false
+2018-06-06 11:48:33,056:INFO Thread-28 (EurekaServerBootstrap.java:152) - Initialized server context
+2018-06-06 11:48:33,056:INFO main (DirectJDKLog.java:180) - Starting ProtocolHandler ["http-nio-8761"]
+2018-06-06 11:48:33,056:INFO Thread-28 (PeerAwareInstanceRegistryImpl.java:242) - Got 1 instances from neighboring DS node
+2018-06-06 11:48:33,056:INFO Thread-28 (PeerAwareInstanceRegistryImpl.java:243) - Renew threshold is: 1
+2018-06-06 11:48:33,056:INFO Thread-28 (PeerAwareInstanceRegistryImpl.java:254) - Changing status to UP
+2018-06-06 11:48:33,063:INFO Thread-28 (EurekaServerInitializerConfiguration.java:72) - Started Eureka Server
+2018-06-06 11:48:33,065:INFO main (DirectJDKLog.java:180) - Using a shared selector for servlet write/read
+2018-06-06 11:48:33,076:INFO main (TomcatWebServer.java:206) - Tomcat started on port(s): 8761 (http) with context path ''
+2018-06-06 11:48:33,076:INFO main (EurekaAutoServiceRegistration.java:124) - Updating port to 8761
+2018-06-06 11:48:33,078:INFO main (StartupInfoLogger.java:59) - Started EurekaServerApplication in 7.393 seconds (JVM running for 8.212)
+2018-06-06 11:48:33,267:INFO RMI TCP Connection(7)-127.0.0.1 (DirectJDKLog.java:180) - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-06 11:48:33,268:INFO RMI TCP Connection(7)-127.0.0.1 (FrameworkServlet.java:494) - FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-06 11:48:33,276:INFO RMI TCP Connection(7)-127.0.0.1 (FrameworkServlet.java:509) - FrameworkServlet 'dispatcherServlet': initialization completed in 8 ms
+2018-06-06 11:49:33,057:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 11:53:51,423:INFO main (AbstractApplicationContext.java:590) - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3cfdd820: startup date [Wed Jun 06 11:53:51 CST 2018]; root of context hierarchy
+2018-06-06 11:53:51,519:INFO main (AutowiredAnnotationBeanPostProcessor.java:154) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-06-06 11:53:51,535:INFO main (PostProcessorRegistrationDelegate.java:328) - Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$6e5183b2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-06 11:53:52,687:INFO main (SpringApplication.java:663) - The following profiles are active: localhost
+2018-06-06 11:53:52,694:INFO main (AbstractApplicationContext.java:590) - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@269f4bad: startup date [Wed Jun 06 11:53:52 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3cfdd820
+2018-06-06 11:53:53,184:INFO main (GenericScope.java:293) - BeanFactory id=94d1c5ec-af51-3b39-9b42-a73ebd606248
+2018-06-06 11:53:53,194:INFO main (AutowiredAnnotationBeanPostProcessor.java:154) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-06-06 11:53:53,246:INFO main (PostProcessorRegistrationDelegate.java:328) - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$6e5183b2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-06 11:53:53,386:INFO main (TomcatWebServer.java:91) - Tomcat initialized with port(s): 8761 (http)
+2018-06-06 11:53:53,395:INFO main (DirectJDKLog.java:180) - Initializing ProtocolHandler ["http-nio-8761"]
+2018-06-06 11:53:53,401:INFO main (DirectJDKLog.java:180) - Starting service [Tomcat]
+2018-06-06 11:53:53,402:INFO main (DirectJDKLog.java:180) - Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-06 11:53:53,404:INFO localhost-startStop-1 (DirectJDKLog.java:180) - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\libnvvp;;C:\Program Files\VanDyke Software\SecureFX\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Users\vellerzheng\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk1.8.0_121/bin;C:\Program Files\Java\jdk1.8.0_121/jre/bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\ProgramLaunchFile\Anaconda3;C:\ProgramLaunchFile\Anaconda3\Scripts;C:\ProgramLaunchFile\Anaconda3\Library\bin;C:\Users\vellerzheng\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\vellerzheng\AppData\Local\Programs\Python\Python36-32\;C:\Users\vellerzheng\AppData\Local\Microsoft\WindowsApps;;.]
+2018-06-06 11:53:53,537:INFO localhost-startStop-1 (DirectJDKLog.java:180) - Initializing Spring embedded WebApplicationContext
+2018-06-06 11:53:53,537:INFO localhost-startStop-1 (ServletWebServerApplicationContext.java:285) - Root WebApplicationContext: initialization completed in 843 ms
+2018-06-06 11:53:54,971:INFO localhost-startStop-1 (InetUtils.java:170) - Cannot determine local hostname
+2018-06-06 11:53:56,043:INFO localhost-startStop-1 (InetUtils.java:170) - Cannot determine local hostname
+2018-06-06 11:53:56,255:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-06 11:53:56,256:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-06 11:53:56,256:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-06 11:53:56,256:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-06 11:53:56,256:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'httpTraceFilter' to: [/*]
+2018-06-06 11:53:56,256:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-06-06 11:53:56,256:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:258) - Mapping filter: 'servletContainer' to urls: [/eureka/*]
+2018-06-06 11:53:56,256:INFO localhost-startStop-1 (ServletRegistrationBean.java:186) - Servlet dispatcherServlet mapped to [/]
+2018-06-06 11:53:56,296:INFO localhost-startStop-1 (WebApplicationImpl.java:815) - Initiating Jersey application, version 'Jersey: 1.19.1 03/11/2016 02:08 PM'
+2018-06-06 11:53:56,336:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:70) - Using JSON encoding codec LegacyJacksonJson
+2018-06-06 11:53:56,336:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:71) - Using JSON decoding codec LegacyJacksonJson
+2018-06-06 11:53:56,411:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:80) - Using XML encoding codec XStreamXml
+2018-06-06 11:53:56,411:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:81) - Using XML decoding codec XStreamXml
+2018-06-06 11:53:56,585:WARN main (URLConfigurationSource.java:121) - No URLs will be polled as dynamic configuration sources.
+2018-06-06 11:53:56,585:INFO main (URLConfigurationSource.java:122) - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-06-06 11:53:56,588:WARN main (URLConfigurationSource.java:121) - No URLs will be polled as dynamic configuration sources.
+2018-06-06 11:53:56,588:INFO main (URLConfigurationSource.java:122) - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-06-06 11:53:56,634:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:53:56,737:INFO main (RequestMappingHandlerAdapter.java:574) - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@269f4bad: startup date [Wed Jun 06 11:53:52 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3cfdd820
+2018-06-06 11:53:56,769:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-06 11:53:56,770:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-06 11:53:56,774:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.status(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2018-06-06 11:53:56,774:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/lastn],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.lastn(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2018-06-06 11:53:56,790:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:53:56,791:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-06 11:53:57,004:INFO main (SpringTemplateLoader.java:62) - SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@269f4bad: startup date [Wed Jun 06 11:53:52 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3cfdd820] and template loader path [classpath:/templates/]
+2018-06-06 11:53:57,005:INFO main (FreeMarkerConfigurer.java:131) - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2018-06-06 11:53:57,105:INFO main (InstanceInfoFactory.java:71) - Setting initial instance status as: STARTING
+2018-06-06 11:53:57,123:INFO main (DiscoveryClient.java:349) - Initializing Eureka in region us-east-1
+2018-06-06 11:53:57,123:INFO main (DiscoveryClient.java:352) - Client configured to neither register nor query for data.
+2018-06-06 11:53:57,127:INFO main (DiscoveryClient.java:365) - Discovery Client initialized at timestamp 1528257237127 with initial instances count: 0
+2018-06-06 11:53:57,153:INFO main (DefaultEurekaServerContext.java:63) - Initializing ...
+2018-06-06 11:53:57,155:INFO main (PeerEurekaNodes.java:188) - Adding new peer nodes [http://118.31.60.54:8762/eureka/]
+2018-06-06 11:53:57,275:INFO main (DiscoveryJerseyProvider.java:70) - Using JSON encoding codec LegacyJacksonJson
+2018-06-06 11:53:57,275:INFO main (DiscoveryJerseyProvider.java:71) - Using JSON decoding codec LegacyJacksonJson
+2018-06-06 11:53:57,275:INFO main (DiscoveryJerseyProvider.java:80) - Using XML encoding codec XStreamXml
+2018-06-06 11:53:57,275:INFO main (DiscoveryJerseyProvider.java:81) - Using XML decoding codec XStreamXml
+2018-06-06 11:53:57,355:INFO main (PeerEurekaNodes.java:110) - Replica node URL:  http://118.31.60.54:8762/eureka/
+2018-06-06 11:53:57,360:INFO main (AbstractInstanceRegistry.java:151) - Finished initializing remote region registries. All known remote regions: []
+2018-06-06 11:53:57,360:INFO main (DefaultEurekaServerContext.java:70) - Initialized
+2018-06-06 11:53:57,370:INFO main (EndpointLinksResolver.java:59) - Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-06-06 11:53:57,377:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:53:57,378:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health/{component}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:53:57,378:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health/{component}/{instance}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:53:57,378:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-06 11:53:57,379:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-06 11:53:57,408:INFO main (MBeanExporter.java:433) - Registering beans for JMX exposure on startup
+2018-06-06 11:53:57,413:INFO main (MBeanExporter.java:895) - Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-06-06 11:53:57,414:INFO main (MBeanExporter.java:895) - Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-06-06 11:53:57,414:INFO main (MBeanExporter.java:895) - Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-06-06 11:53:57,416:INFO main (MBeanExporter.java:675) - Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-06-06 11:53:57,421:INFO main (MBeanExporter.java:675) - Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-06-06 11:53:57,426:INFO main (MBeanExporter.java:675) - Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=269f4bad,type=ConfigurationPropertiesRebinder]
+2018-06-06 11:53:57,432:INFO main (DefaultLifecycleProcessor.java:351) - Starting beans in phase 0
+2018-06-06 11:53:57,432:INFO main (EurekaServiceRegistry.java:42) - Registering application eureka-server-peer1 with eureka with status UP
+2018-06-06 11:53:57,434:INFO Thread-29 (EurekaServerBootstrap.java:109) - Setting the eureka configuration..
+2018-06-06 11:53:57,434:INFO Thread-29 (EurekaServerBootstrap.java:114) - Eureka data center value eureka.datacenter is not set, defaulting to default
+2018-06-06 11:53:57,435:INFO Thread-29 (EurekaServerBootstrap.java:128) - Eureka environment value eureka.environment is not set, defaulting to test
+2018-06-06 11:53:57,440:INFO Thread-29 (EurekaServerBootstrap.java:184) - isAws returned false
+2018-06-06 11:53:57,441:INFO Thread-29 (EurekaServerBootstrap.java:152) - Initialized server context
+2018-06-06 11:53:57,441:INFO Thread-29 (PeerAwareInstanceRegistryImpl.java:242) - Got 1 instances from neighboring DS node
+2018-06-06 11:53:57,441:INFO Thread-29 (PeerAwareInstanceRegistryImpl.java:243) - Renew threshold is: 1
+2018-06-06 11:53:57,441:INFO Thread-29 (PeerAwareInstanceRegistryImpl.java:254) - Changing status to UP
+2018-06-06 11:53:57,442:INFO main (DirectJDKLog.java:180) - Starting ProtocolHandler ["http-nio-8761"]
+2018-06-06 11:53:57,446:INFO Thread-29 (EurekaServerInitializerConfiguration.java:72) - Started Eureka Server
+2018-06-06 11:53:57,450:INFO main (DirectJDKLog.java:180) - Using a shared selector for servlet write/read
+2018-06-06 11:53:57,460:INFO main (TomcatWebServer.java:206) - Tomcat started on port(s): 8761 (http) with context path ''
+2018-06-06 11:53:57,460:INFO main (EurekaAutoServiceRegistration.java:124) - Updating port to 8761
+2018-06-06 11:53:57,461:INFO main (StartupInfoLogger.java:59) - Started EurekaServerApplication in 7.458 seconds (JVM running for 8.298)
+2018-06-06 11:53:57,988:INFO RMI TCP Connection(9)-127.0.0.1 (DirectJDKLog.java:180) - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-06 11:53:57,989:INFO RMI TCP Connection(9)-127.0.0.1 (FrameworkServlet.java:494) - FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-06 11:53:57,997:INFO RMI TCP Connection(9)-127.0.0.1 (FrameworkServlet.java:509) - FrameworkServlet 'dispatcherServlet': initialization completed in 8 ms
+2018-06-06 11:54:57,443:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 11:55:57,443:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 11:56:57,444:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 11:57:57,444:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 11:58:57,445:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 11:59:57,446:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:00:57,446:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:01:57,447:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:02:57,447:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:03:57,448:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:04:57,448:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:05:57,449:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:06:57,449:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:07:57,450:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:08:57,360:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-06 12:08:57,450:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:09:57,451:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:10:57,451:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:11:57,452:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:12:57,453:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:13:57,453:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:14:57,454:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:15:57,454:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:16:57,455:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:17:57,455:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:18:57,456:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:19:57,456:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:20:57,457:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:21:57,457:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:22:57,458:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:23:57,360:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-06 12:23:57,459:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:24:57,459:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:25:57,460:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:26:57,460:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:27:57,461:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:28:57,461:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:29:57,462:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:30:57,462:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:31:57,463:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:32:57,463:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:33:57,464:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:34:57,465:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:35:57,465:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:36:57,466:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:37:57,466:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:38:57,360:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-06 12:38:57,467:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:39:57,467:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:40:57,468:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:41:57,468:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:42:57,469:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:43:57,469:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:44:57,470:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:45:57,471:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:46:57,471:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:47:57,472:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:48:57,472:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:49:57,473:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:50:57,473:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:51:57,474:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:52:57,474:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:53:57,361:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-06 12:53:57,475:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:54:57,475:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:55:57,476:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-06 12:56:57,477:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 11:44:51,859:INFO main (AbstractApplicationContext.java:590) - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@465232e9: startup date [Thu Jun 07 11:44:51 CST 2018]; root of context hierarchy
+2018-06-07 11:44:52,015:INFO main (AutowiredAnnotationBeanPostProcessor.java:154) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-06-07 11:44:52,046:INFO main (PostProcessorRegistrationDelegate.java:328) - Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$d0d35aae] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-07 11:44:53,330:INFO main (SpringApplication.java:663) - The following profiles are active: localhost
+2018-06-07 11:44:53,333:INFO main (AbstractApplicationContext.java:590) - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7b324585: startup date [Thu Jun 07 11:44:53 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@465232e9
+2018-06-07 11:44:54,018:INFO main (GenericScope.java:293) - BeanFactory id=94d1c5ec-af51-3b39-9b42-a73ebd606248
+2018-06-07 11:44:54,034:INFO main (AutowiredAnnotationBeanPostProcessor.java:154) - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-06-07 11:44:54,150:INFO main (PostProcessorRegistrationDelegate.java:328) - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$d0d35aae] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-07 11:44:54,431:INFO main (TomcatWebServer.java:91) - Tomcat initialized with port(s): 8761 (http)
+2018-06-07 11:44:54,446:INFO main (DirectJDKLog.java:180) - Initializing ProtocolHandler ["http-nio-8761"]
+2018-06-07 11:44:54,462:INFO main (DirectJDKLog.java:180) - Starting service [Tomcat]
+2018-06-07 11:44:54,462:INFO main (DirectJDKLog.java:180) - Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-06-07 11:44:54,462:INFO localhost-startStop-1 (DirectJDKLog.java:180) - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\libnvvp;;C:\Program Files\VanDyke Software\SecureFX\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Users\vellerzheng\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk1.8.0_121/bin;C:\Program Files\Java\jdk1.8.0_121/jre/bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramLaunchFile\Anaconda3;C:\ProgramLaunchFile\Anaconda3\Scripts;C:\ProgramLaunchFile\Anaconda3\Library\bin;C:\Users\vellerzheng\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\vellerzheng\AppData\Local\Programs\Python\Python36-32\;C:\Users\vellerzheng\AppData\Local\Microsoft\WindowsApps;;.]
+2018-06-07 11:44:54,665:INFO localhost-startStop-1 (DirectJDKLog.java:180) - Initializing Spring embedded WebApplicationContext
+2018-06-07 11:44:54,665:INFO localhost-startStop-1 (ServletWebServerApplicationContext.java:285) - Root WebApplicationContext: initialization completed in 1332 ms
+2018-06-07 11:44:56,657:INFO localhost-startStop-1 (InetUtils.java:170) - Cannot determine local hostname
+2018-06-07 11:44:57,752:INFO localhost-startStop-1 (InetUtils.java:170) - Cannot determine local hostname
+2018-06-07 11:44:58,147:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-07 11:44:58,147:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-07 11:44:58,148:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-07 11:44:58,148:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-07 11:44:58,148:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'httpTraceFilter' to: [/*]
+2018-06-07 11:44:58,148:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:245) - Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-06-07 11:44:58,148:INFO localhost-startStop-1 (AbstractFilterRegistrationBean.java:258) - Mapping filter: 'servletContainer' to urls: [/eureka/*]
+2018-06-07 11:44:58,148:INFO localhost-startStop-1 (ServletRegistrationBean.java:186) - Servlet dispatcherServlet mapped to [/]
+2018-06-07 11:44:58,203:INFO localhost-startStop-1 (WebApplicationImpl.java:815) - Initiating Jersey application, version 'Jersey: 1.19.1 03/11/2016 02:08 PM'
+2018-06-07 11:44:58,265:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:70) - Using JSON encoding codec LegacyJacksonJson
+2018-06-07 11:44:58,265:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:71) - Using JSON decoding codec LegacyJacksonJson
+2018-06-07 11:44:58,426:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:80) - Using XML encoding codec XStreamXml
+2018-06-07 11:44:58,426:INFO localhost-startStop-1 (DiscoveryJerseyProvider.java:81) - Using XML decoding codec XStreamXml
+2018-06-07 11:44:58,956:WARN main (URLConfigurationSource.java:121) - No URLs will be polled as dynamic configuration sources.
+2018-06-07 11:44:58,956:INFO main (URLConfigurationSource.java:122) - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-06-07 11:44:58,956:WARN main (URLConfigurationSource.java:121) - No URLs will be polled as dynamic configuration sources.
+2018-06-07 11:44:58,956:INFO main (URLConfigurationSource.java:122) - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-06-07 11:44:59,113:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-07 11:44:59,362:INFO main (RequestMappingHandlerAdapter.java:574) - Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7b324585: startup date [Thu Jun 07 11:44:53 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@465232e9
+2018-06-07 11:44:59,425:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-07 11:44:59,425:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-07 11:44:59,425:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.status(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2018-06-07 11:44:59,425:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/lastn],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.lastn(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2018-06-07 11:44:59,456:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-07 11:44:59,456:INFO main (AbstractUrlHandlerMapping.java:373) - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-07 11:44:59,815:INFO main (SpringTemplateLoader.java:62) - SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7b324585: startup date [Thu Jun 07 11:44:53 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@465232e9] and template loader path [classpath:/templates/]
+2018-06-07 11:44:59,815:INFO main (FreeMarkerConfigurer.java:131) - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2018-06-07 11:44:59,991:INFO main (InstanceInfoFactory.java:71) - Setting initial instance status as: STARTING
+2018-06-07 11:45:00,049:INFO main (DiscoveryClient.java:349) - Initializing Eureka in region us-east-1
+2018-06-07 11:45:00,049:INFO main (DiscoveryClient.java:352) - Client configured to neither register nor query for data.
+2018-06-07 11:45:00,056:INFO main (DiscoveryClient.java:365) - Discovery Client initialized at timestamp 1528343100055 with initial instances count: 0
+2018-06-07 11:45:00,097:INFO main (DefaultEurekaServerContext.java:63) - Initializing ...
+2018-06-07 11:45:00,099:INFO main (PeerEurekaNodes.java:188) - Adding new peer nodes [http://118.31.60.54:8762/eureka/]
+2018-06-07 11:45:00,640:INFO main (DiscoveryJerseyProvider.java:70) - Using JSON encoding codec LegacyJacksonJson
+2018-06-07 11:45:00,640:INFO main (DiscoveryJerseyProvider.java:71) - Using JSON decoding codec LegacyJacksonJson
+2018-06-07 11:45:00,640:INFO main (DiscoveryJerseyProvider.java:80) - Using XML encoding codec XStreamXml
+2018-06-07 11:45:00,640:INFO main (DiscoveryJerseyProvider.java:81) - Using XML decoding codec XStreamXml
+2018-06-07 11:45:00,755:INFO main (PeerEurekaNodes.java:110) - Replica node URL:  http://118.31.60.54:8762/eureka/
+2018-06-07 11:45:00,779:INFO main (AbstractInstanceRegistry.java:151) - Finished initializing remote region registries. All known remote regions: []
+2018-06-07 11:45:00,779:INFO main (DefaultEurekaServerContext.java:70) - Initialized
+2018-06-07 11:45:00,795:INFO main (EndpointLinksResolver.java:59) - Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-06-07 11:45:00,795:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-07 11:45:00,795:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health/{component}/{instance}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-07 11:45:00,811:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/health/{component}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-07 11:45:00,811:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-07 11:45:00,811:INFO main (AbstractHandlerMethodMapping.java:547) - Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-07 11:45:00,873:INFO main (MBeanExporter.java:433) - Registering beans for JMX exposure on startup
+2018-06-07 11:45:00,873:INFO main (MBeanExporter.java:895) - Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-06-07 11:45:00,873:INFO main (MBeanExporter.java:895) - Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-06-07 11:45:00,873:INFO main (MBeanExporter.java:895) - Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-06-07 11:45:00,889:INFO main (MBeanExporter.java:675) - Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-06-07 11:45:00,889:INFO main (MBeanExporter.java:675) - Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-06-07 11:45:00,904:INFO main (MBeanExporter.java:675) - Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=7b324585,type=ConfigurationPropertiesRebinder]
+2018-06-07 11:45:00,920:INFO main (DefaultLifecycleProcessor.java:351) - Starting beans in phase 0
+2018-06-07 11:45:00,920:INFO main (EurekaServiceRegistry.java:42) - Registering application eureka-server-peer1 with eureka with status UP
+2018-06-07 11:45:00,936:INFO main (DirectJDKLog.java:180) - Starting ProtocolHandler ["http-nio-8761"]
+2018-06-07 11:45:00,936:INFO Thread-33 (EurekaServerBootstrap.java:109) - Setting the eureka configuration..
+2018-06-07 11:45:01,810:INFO Thread-33 (EurekaServerBootstrap.java:114) - Eureka data center value eureka.datacenter is not set, defaulting to default
+2018-06-07 11:45:01,810:INFO Thread-33 (EurekaServerBootstrap.java:128) - Eureka environment value eureka.environment is not set, defaulting to test
+2018-06-07 11:45:01,810:INFO main (DirectJDKLog.java:180) - Using a shared selector for servlet write/read
+2018-06-07 11:45:01,889:INFO main (TomcatWebServer.java:206) - Tomcat started on port(s): 8761 (http) with context path ''
+2018-06-07 11:45:01,889:INFO main (EurekaAutoServiceRegistration.java:124) - Updating port to 8761
+2018-06-07 11:45:01,904:INFO main (StartupInfoLogger.java:59) - Started EurekaServerApplication in 11.39 seconds (JVM running for 14.995)
+2018-06-07 11:45:01,904:INFO Thread-33 (EurekaServerBootstrap.java:184) - isAws returned false
+2018-06-07 11:45:01,904:INFO Thread-33 (EurekaServerBootstrap.java:152) - Initialized server context
+2018-06-07 11:45:01,904:INFO Thread-33 (PeerAwareInstanceRegistryImpl.java:242) - Got 1 instances from neighboring DS node
+2018-06-07 11:45:01,904:INFO Thread-33 (PeerAwareInstanceRegistryImpl.java:243) - Renew threshold is: 1
+2018-06-07 11:45:01,904:INFO Thread-33 (PeerAwareInstanceRegistryImpl.java:254) - Changing status to UP
+2018-06-07 11:45:01,920:INFO Thread-33 (EurekaServerInitializerConfiguration.java:72) - Started Eureka Server
+2018-06-07 11:45:02,966:INFO RMI TCP Connection(13)-127.0.0.1 (DirectJDKLog.java:180) - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-07 11:45:02,966:INFO RMI TCP Connection(13)-127.0.0.1 (FrameworkServlet.java:494) - FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-07 11:45:02,982:INFO RMI TCP Connection(13)-127.0.0.1 (FrameworkServlet.java:509) - FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2018-06-07 11:46:01,904:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 11:47:01,905:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 11:48:01,910:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 4ms
+2018-06-07 11:49:01,910:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 11:50:01,910:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 11:51:01,922:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 12ms
+2018-06-07 11:52:01,924:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 1ms
+2018-06-07 11:53:01,939:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 15ms
+2018-06-07 11:54:01,940:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 11:55:01,951:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 11ms
+2018-06-07 11:56:01,964:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 13ms
+2018-06-07 11:57:01,965:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 11:58:01,970:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 5ms
+2018-06-07 11:59:01,971:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:00:00,780:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-07 12:00:01,971:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:01:01,972:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:02:01,973:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:03:01,986:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 13ms
+2018-06-07 12:04:01,987:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 1ms
+2018-06-07 12:05:01,988:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:06:01,992:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 4ms
+2018-06-07 12:07:01,992:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:08:02,001:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 8ms
+2018-06-07 12:09:02,007:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 6ms
+2018-06-07 12:10:02,013:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 5ms
+2018-06-07 12:11:02,016:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 3ms
+2018-06-07 12:12:02,022:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 5ms
+2018-06-07 12:13:02,022:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:14:02,031:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 9ms
+2018-06-07 12:15:00,793:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-07 12:15:02,047:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 15ms
+2018-06-07 12:16:02,047:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:17:02,047:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:18:02,047:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:19:02,047:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:20:02,048:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:21:02,062:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 14ms
+2018-06-07 12:22:02,062:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:23:02,063:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:24:02,063:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:25:02,063:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:26:02,068:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 4ms
+2018-06-07 12:27:02,069:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:28:02,070:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 1ms
+2018-06-07 12:29:02,071:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:30:00,808:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-07 12:30:02,072:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:31:02,072:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:32:02,072:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:33:02,073:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:34:02,074:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:35:02,078:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 3ms
+2018-06-07 12:36:02,078:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:37:02,078:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:38:02,079:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:39:02,080:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:40:02,080:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:41:02,081:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:42:02,081:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:43:02,081:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:44:02,082:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:45:00,812:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-07 12:45:02,082:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:46:02,082:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:47:02,083:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:48:02,084:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:49:02,084:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:50:02,084:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:51:02,085:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:52:02,085:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:53:02,086:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:54:02,086:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:55:02,087:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:56:02,087:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:57:02,088:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:58:02,088:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 12:59:02,089:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:00:00,813:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-07 13:00:02,089:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:01:02,090:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:02:02,091:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:03:02,092:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 1ms
+2018-06-07 13:04:02,092:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:05:02,106:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 14ms
+2018-06-07 13:06:02,106:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:07:02,106:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:08:02,107:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:09:02,107:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:10:02,108:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:11:02,108:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:12:02,109:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:13:02,109:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:14:02,110:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:15:00,826:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-07 13:15:02,110:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:16:02,111:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:17:02,111:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:18:02,112:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:19:02,112:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:20:02,112:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:21:02,112:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:22:02,113:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:23:02,114:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:24:02,128:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 14ms
+2018-06-07 13:25:02,129:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:26:02,143:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 14ms
+2018-06-07 13:27:02,143:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:28:02,146:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 4ms
+2018-06-07 13:29:02,147:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 0ms
+2018-06-07 13:30:00,826:INFO ReplicaAwareInstanceRegistry - RenewalThresholdUpdater (PeerAwareInstanceRegistryImpl.java:541) - Current renewal threshold is : 1
+2018-06-07 13:30:02,148:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 1ms
+2018-06-07 13:31:02,158:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 10ms
+2018-06-07 13:32:02,162:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 3ms
+2018-06-07 13:33:02,174:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 12ms
+2018-06-07 13:34:02,183:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 9ms
+2018-06-07 13:35:02,191:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 8ms
+2018-06-07 13:36:02,201:INFO Eureka-EvictionTimer (AbstractInstanceRegistry.java:1247) - Running the evict task with compensationTime 9ms
