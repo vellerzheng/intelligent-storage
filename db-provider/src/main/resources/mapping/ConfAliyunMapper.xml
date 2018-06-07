@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mcloud.dbprovider.repository.mapper.ConfAliyunMapper" >
+  <resultMap id="BaseResultMap" type="com.mcloud.dbprovider.repository.entity.ConfAliyun" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="endPoint" property="endpoint" jdbcType="VARCHAR" />
+    <result column="accessKey" property="accesskey" jdbcType="VARCHAR" />
+    <result column="accessKeySecret" property="accesskeysecret" jdbcType="VARCHAR" />
+    <result column="BucketName" property="bucketname" jdbcType="VARCHAR" />
+    <result column="accessUrl" property="accessurl" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="user_Id" property="userId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, endPoint, accessKey, accessKeySecret, BucketName, accessUrl, status, version, 
+    user_Id, creator, createtime, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from conf_aliyun
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserIdAndStatus" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from conf_aliyun
+    where user_Id = #{userId,jdbcType=INTEGER} AND status = 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from conf_aliyun
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mcloud.dbprovider.repository.entity.ConfAliyun" >
+    insert into conf_aliyun (id, endPoint, accessKey, 
+      accessKeySecret, BucketName, accessUrl, 
+      status, version, user_Id, 
+      creator, createtime, updatetime
+      )
+    values (#{id,jdbcType=INTEGER}, #{endpoint,jdbcType=VARCHAR}, #{accesskey,jdbcType=VARCHAR}, 
+      #{accesskeysecret,jdbcType=VARCHAR}, #{bucketname,jdbcType=VARCHAR}, #{accessurl,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{creator,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mcloud.dbprovider.repository.entity.ConfAliyun" >
+    insert into conf_aliyun
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="endpoint != null" >
+        endPoint,
+      </if>
+      <if test="accesskey != null" >
+        accessKey,
+      </if>
+      <if test="accesskeysecret != null" >
+        accessKeySecret,
+      </if>
+      <if test="bucketname != null" >
+        BucketName,
+      </if>
+      <if test="accessurl != null" >
+        accessUrl,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="userId != null" >
+        user_Id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="endpoint != null" >
+        #{endpoint,jdbcType=VARCHAR},
+      </if>
+      <if test="accesskey != null" >
+        #{accesskey,jdbcType=VARCHAR},
+      </if>
+      <if test="accesskeysecret != null" >
+        #{accesskeysecret,jdbcType=VARCHAR},
+      </if>
+      <if test="bucketname != null" >
+        #{bucketname,jdbcType=VARCHAR},
+      </if>
+      <if test="accessurl != null" >
+        #{accessurl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mcloud.dbprovider.repository.entity.ConfAliyun" >
+    update conf_aliyun
+    <set >
+      <if test="endpoint != null" >
+        endPoint = #{endpoint,jdbcType=VARCHAR},
+      </if>
+      <if test="accesskey != null" >
+        accessKey = #{accesskey,jdbcType=VARCHAR},
+      </if>
+      <if test="accesskeysecret != null" >
+        accessKeySecret = #{accesskeysecret,jdbcType=VARCHAR},
+      </if>
+      <if test="bucketname != null" >
+        BucketName = #{bucketname,jdbcType=VARCHAR},
+      </if>
+      <if test="accessurl != null" >
+        accessUrl = #{accessurl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_Id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mcloud.dbprovider.repository.entity.ConfAliyun" >
+    update conf_aliyun
+    set endPoint = #{endpoint,jdbcType=VARCHAR},
+      accessKey = #{accesskey,jdbcType=VARCHAR},
+      accessKeySecret = #{accesskeysecret,jdbcType=VARCHAR},
+      BucketName = #{bucketname,jdbcType=VARCHAR},
+      accessUrl = #{accessurl,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER},
+      user_Id = #{userId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
