@@ -13,7 +13,7 @@
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://10.**.**.**:3306/cloud_secureStorage?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true"
+                        connectionURL="jdbc:mysql://**.**.**.**:3306/cloud_secureStorage?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true"
                         userId="root"
                         password="123456">
         </jdbcConnection>
