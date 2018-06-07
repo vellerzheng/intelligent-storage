@@ -1,0 +1,30 @@
+package com.mcloud.storageweb.service.User.impl;
+
+
+
+import com.mcloud.storageweb.repository.entity.User;
+import com.mcloud.storageweb.repository.mapper.UserMapper;
+import com.mcloud.storageweb.service.User.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService {
+    @Autowired
+    UserMapper userMapper;
+
+    @Override
+    public User selectByPrimaryKey(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(User record) {
+        return 0;
+    }
+
+    @Override
+    public int updateByPrimaryKey(User record) {
+        return 0;
+    }
+}

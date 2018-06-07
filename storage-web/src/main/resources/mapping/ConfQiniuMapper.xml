@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mcloud.storageweb.repository.mapper.ConfQiniuMapper" >
+  <resultMap id="BaseResultMap" type="com.mcloud.storageweb.repository.entity.ConfQiniu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="domainOfBucket" property="domainofbucket" jdbcType="VARCHAR" />
+    <result column="accessKey" property="accesskey" jdbcType="VARCHAR" />
+    <result column="secretKey" property="secretkey" jdbcType="VARCHAR" />
+    <result column="bucket" property="bucket" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="user_Id" property="userId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, domainOfBucket, accessKey, secretKey, bucket, status, version, user_Id, creator, 
+    createtime, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from conf_qiniu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserIdAndStatus" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from conf_qiniu
+    where user_Id = #{userId,jdbcType=INTEGER} AND status = 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from conf_qiniu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mcloud.storageweb.repository.entity.ConfQiniu" >
+    insert into conf_qiniu (id, domainOfBucket, accessKey, 
+      secretKey, bucket, status, 
+      version, user_Id, creator, 
+      createtime, updatetime)
+    values (#{id,jdbcType=INTEGER}, #{domainofbucket,jdbcType=VARCHAR}, #{accesskey,jdbcType=VARCHAR}, 
+      #{secretkey,jdbcType=VARCHAR}, #{bucket,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{version,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mcloud.storageweb.repository.entity.ConfQiniu" >
+    insert into conf_qiniu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="domainofbucket != null" >
+        domainOfBucket,
+      </if>
+      <if test="accesskey != null" >
+        accessKey,
+      </if>
+      <if test="secretkey != null" >
+        secretKey,
+      </if>
+      <if test="bucket != null" >
+        bucket,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="userId != null" >
+        user_Id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="domainofbucket != null" >
+        #{domainofbucket,jdbcType=VARCHAR},
+      </if>
+      <if test="accesskey != null" >
+        #{accesskey,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null" >
+        #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="bucket != null" >
+        #{bucket,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mcloud.storageweb.repository.entity.ConfQiniu" >
+    update conf_qiniu
+    <set >
+      <if test="domainofbucket != null" >
+        domainOfBucket = #{domainofbucket,jdbcType=VARCHAR},
+      </if>
+      <if test="accesskey != null" >
+        accessKey = #{accesskey,jdbcType=VARCHAR},
+      </if>
+      <if test="secretkey != null" >
+        secretKey = #{secretkey,jdbcType=VARCHAR},
+      </if>
+      <if test="bucket != null" >
+        bucket = #{bucket,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_Id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mcloud.storageweb.repository.entity.ConfQiniu" >
+    update conf_qiniu
+    set domainOfBucket = #{domainofbucket,jdbcType=VARCHAR},
+      accessKey = #{accesskey,jdbcType=VARCHAR},
+      secretKey = #{secretkey,jdbcType=VARCHAR},
+      bucket = #{bucket,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER},
+      user_Id = #{userId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
