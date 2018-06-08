@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CloudInfoServiceImpl implements CloudInfoService {
     @Override
-    public String provideCloudPath(JSONObject jsonObject) {
+    public String provideCloudPath(Object jsonObject) {
         return "断路器断路了";
     }
 }

@@ -47,7 +47,6 @@ public class MulThreadEncryAndUpload {
 
         for(Future<Pair<String, String>> res : futures){
             try {
-                System.out.println("----云上传结果返回："+ res.get().getKey()+ "," + res.get().getValue());
                 jsonObject.put(res.get().getKey(), res.get().getValue());
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
@@ -55,11 +54,7 @@ public class MulThreadEncryAndUpload {
         }
 
         es.shutdown();
-        System.out.println("**********JSONobject***** " + jsonObject.toString());
-        jsonObject.put("aliyun","abcdefg");
-
-        System.out.println("end!");
-
+        //System.out.println("**********JSONobject***** " + jsonObject.toString());
 
         return jsonObject;
 

@@ -12,6 +12,7 @@ import com.mcloud.fileserver.util.FileManage;
 import com.mcloud.fileserver.util.PartitionFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 
 import java.io.File;
@@ -78,8 +79,13 @@ public class UploadServiceImpl implements UploadService {
             map = matchFilePathToCloudService(fileNames, cloudServices);
             // 多线程加密上传
             mulThEncUp = new MulThreadEncryAndUpload(map,usrName+id);
-           JSONObject jsonObject =  mulThEncUp.EncryAndUpload();
-           cloudInfoService.provideCloudPath(jsonObject);
+          //  mulThEncUp.EncryAndUpload();
+            JSONObject json =  mulThEncUp.EncryAndUpload();
+            RestTemplate template = new RestTemplate();
+            String url = "http://localhost:8765/cloudPath";
+            String result = template.postForObject(url,json,String.class);
+            System.out.println(result);
+      //     cloudInfoService.provideCloudPath(jsonObject);
         }
 
 

@@ -15,5 +15,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(value="storage-web",fallback = CloudInfoServiceImpl.class)
 public interface CloudInfoService {
     @RequestMapping(value = "/cloudPath")
-    String provideCloudPath(JSONObject jsonObject);
+    String provideCloudPath(Object Object);
 }

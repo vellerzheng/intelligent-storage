@@ -39,8 +39,11 @@ public class FileController {
     }
 
     @RequestMapping(value = "/cloudPath")
-    public String providerCloudPath(JSONObject jsonObject){
-        cloudInfoService.provideCloudPath(jsonObject);
-        return "ok";
+    public String providerCloudPath(Object object){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("aliyun","ldjfaksdf");
+        jsonObject.put("netesase","==================");
+        return cloudInfoService.provideCloudPath(jsonObject);
+
     }
 }
