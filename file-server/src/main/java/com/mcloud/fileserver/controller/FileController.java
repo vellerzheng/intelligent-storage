@@ -1,7 +1,9 @@
 package com.mcloud.fileserver.controller;
 
-import com.mcloud.fileserver.service.cloud.AliyunService;
-import com.mcloud.fileserver.service.cloud.impl.AliyunServiceImpl;
+import com.alibaba.fastjson.JSONObject;
+
+import com.mcloud.fileserver.service.provider.CloudInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +20,8 @@ import java.util.Map;
 @RestController
 public class FileController {
 
+    @Autowired
+    CloudInfoService cloudInfoService;
     /**
      *
      * @param userId  用户id
@@ -32,5 +36,11 @@ public class FileController {
         Map<String,String> result = new HashMap<>();
         return result;
 
+    }
+
+    @RequestMapping(value = "/cloudPath")
+    public String providerCloudPath(JSONObject jsonObject){
+        cloudInfoService.provideCloudPath(jsonObject);
+        return "ok";
     }
 }

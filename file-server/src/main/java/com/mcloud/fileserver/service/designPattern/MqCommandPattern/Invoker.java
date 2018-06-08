@@ -1,6 +1,4 @@
-package com.mcloud.fileserver.service.designPattern.CommandPattern;
-
-import org.springframework.stereotype.Component;
+package com.mcloud.fileserver.service.designPattern.MqCommandPattern;
 
 /**
  * @Author: vellerzheng

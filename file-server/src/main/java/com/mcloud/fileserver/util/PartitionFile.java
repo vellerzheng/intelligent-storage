@@ -1,6 +1,7 @@
 package com.mcloud.fileserver.util;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,20 +12,25 @@ public class PartitionFile {
      * cut file
      * @param srcFile   source file
      * @param fileSize  the size after devision , MB
-     * @param dest patch of target file
+     *
      */
-    public  boolean split(File srcFile,int fileSize,String dest){
-        if("".equals(srcFile)|| srcFile==null ||fileSize==0 || "".equals(dest)||dest==null){
+    public static List<String> split(File srcFile,int fileSize){
+        if("".equals(srcFile)|| srcFile==null ||fileSize==0 ){
             System.out.println("分割失败！");
         }
-   //     File srcFile =new File(src);
+        List<String> res = new ArrayList<>();
         long srcSize=srcFile.length();  //source file size
         long destSize=1024*1024*fileSize;  // target file size
 
         int number=(int)(srcSize/destSize);
         number = srcSize%destSize==0? number:number+1; // the file number finished devision
 
-        String fileName = srcFile.getName().substring((srcFile.getName().lastIndexOf(File.separator)));  // the name of source file
+        String dest = srcFile.getParent()+ "/" +"split";
+        File destFile = new File(dest);
+        if(!destFile.exists())
+            destFile.mkdirs();
+
+        String fileName = FileManage.getMD5ByFile(srcFile);  // the name of source file
         InputStream in = null;
         BufferedInputStream bis =null; // input cache stream
         byte[] bytes = new byte[1024*1024];
@@ -34,6 +40,7 @@ public class PartitionFile {
             bis = new BufferedInputStream(in);
             for(int i=0;i<number;i++){
                 String destName = dest+File.separator+fileName+"-"+i+".dat";
+                res.add(destName);
                 OutputStream out = new FileOutputStream(destName);
                 BufferedOutputStream bos = new BufferedOutputStream(out);
                 int count =0;
@@ -59,7 +66,7 @@ public class PartitionFile {
                 e.printStackTrace();
             }
         }
-        return true;
+        return res;
     }
 
     /**
@@ -67,7 +74,7 @@ public class PartitionFile {
      *  @param destPath  target file path
      *  @param srcPaths   source file Path
      */
-    public String merge(List<String> srcPaths,String destPath){
+    public static String merge(List<String> srcPaths,String destPath){
         if(destPath==null|| "".equals(destPath)||srcPaths==null){
             System.out.println("merge file fail!");
         }
@@ -79,11 +86,11 @@ public class PartitionFile {
         }
 
         //the file name after merged
-        String name = srcPaths.get(0).substring((srcPaths.get(0).lastIndexOf(File.separator)));
-        String destName = name.substring(0,name.lastIndexOf("-"));
-        String realDestPath = destPath+File.separator+destName.replace(File.separator,""); //  the file path after merged
+    //    String name = srcPaths.get(0).substring((srcPaths.get(0).lastIndexOf(File.separator)));
+    //    String destName = name.substring(0,name.lastIndexOf("-"));
+    //    String realDestPath = destPath+File.separator+destName.replace(File.separator,""); //  the file path after merged
 
-        File destFile = new File(realDestPath); // the file after merged
+        File destFile = new File(destPath); // the file after merged
         OutputStream out =null;
         BufferedOutputStream bos = null;
         try {
@@ -111,7 +118,7 @@ public class PartitionFile {
                 e.printStackTrace();
             }
         }
-        return realDestPath;
+        return destPath;
     }
 
     public static void main(String[] args){
@@ -119,37 +126,37 @@ public class PartitionFile {
          * test cut file
          */
 
+
         long startTime1=System.currentTimeMillis();   //获取开始时间
-        String src = "D:\\Test\\split\\cloudStorageService.pdf";
+        String src = "D:\\Test\\split\\分布式网络架构.pdf";
         File file= new File(src);
-        int fileSize = (int)file.length()/1024/1024/4;     //  unit  MB  , each file after splited
-        String dest = "D:\\Test\\split";
+        String fileName = file.getName();
+        int fileSize = (int)file.length()/1024/1024/3;     //  unit  MB  , each file after splited
         System.out.println("Split file start...");
         PartitionFile partitionFile= new PartitionFile();
-        partitionFile.split(file,fileSize,dest);
+        List<String> result = partitionFile.split(file,fileSize);
+        for(String str :result){
+            System.out.println("文件名路径： "+ str);
+        }
         System.out.println("Split file finished!");
         long endTime1=System.currentTimeMillis(); //获取结束时间
         System.out.println("程序split()运行时间： "+(endTime1-startTime1)+"ms");
 
 
+
         /**
          * merge file test
          */
-/*
+
         long startTime=System.currentTimeMillis();   //获取开始时间
-        String destPath ="D:\\Test\\merge";
+        String destPath ="D:\\Test\\split\\merge" +"/" + fileName;
         // the file path should be merged
-        String[] srcPaths={
-               "D:\\Test\\split\\[阳光电影www.ygdy8.com].星际穿越.BD.720p.中英双字幕.rmvb-0.dat",
-                "D:\\Test\\split\\[阳光电影www.ygdy8.com].星际穿越.BD.720p.中英双字幕.rmvb-1.dat",
-                "D:\\Test\\split\\[阳光电影www.ygdy8.com].星际穿越.BD.720p.中英双字幕.rmvb-2.dat",
-                "D:\\Test\\split\\[阳光电影www.ygdy8.com].星际穿越.BD.720p.中英双字幕.rmvb-3.dat",
-        };
+
         System.out.println("Start merging file...");
-        partitionFile.merge(srcPaths,destPath);
+        partitionFile.merge(result,destPath);
         System.out.println("merge file finished!");
         long endTime=System.currentTimeMillis(); //获取结束时间
         System.out.println("程序运行时间： "+(endTime-startTime)+"ms");
- */
+
     }
 }

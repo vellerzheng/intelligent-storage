@@ -1,16 +1,18 @@
 package com.mcloud.fileserver.service.cloud.impl;
 
 
-import com.mcloud.fileserver.repository.entity.ConfAliyun;
+
 import com.mcloud.fileserver.repository.entity.ConfNetease;
-import com.mcloud.fileserver.service.cloud.NeteaseService;
+import com.mcloud.fileserver.service.cloud.CloudService;
 import com.netease.cloud.ClientConfiguration;
 import com.netease.cloud.Protocol;
 import com.netease.cloud.auth.BasicCredentials;
 import com.netease.cloud.auth.Credentials;
 import com.netease.cloud.services.nos.NosClient;
 import com.netease.cloud.services.nos.model.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import javafx.util.Pair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -27,27 +29,35 @@ import java.util.List;
  * Created by vellerzheng on 2017/9/21.
  */
 @Service
-public class NeteaseServiceImpl implements NeteaseService {
+public class NeteaseServiceImpl implements CloudService {
 
 
     private ConfNetease confNetease;
 
     private NosClient nosClient;
 
+    final  static Logger logger = LoggerFactory.getLogger(NeteaseServiceImpl.class);
+
+    NeteaseServiceImpl(){
+
+    }
+
+    public NeteaseServiceImpl(ConfNetease confNetease){
+        this.confNetease = confNetease;
+    }
     /**
      *
      * @Title: getNosClient
      * @Description: 生成客户端对象
      * @return
      */
-    public  void initNosClient(ConfNetease confNetease) {
+    public  void initNosClient() {
 
         // 初始化秘钥信息
 
   /*      String secretId = "657c5001cf0c46ee92df876415d04033";
         String secretKey = "e660f8c5185d4317a3a3cff8447fcc4f";
         String endPoint = "nos-eastchina1.126.net";*/
-        this.confNetease =confNetease;
 
        if(nosClient == null) {
            // 初始化秘钥信息
@@ -75,8 +85,8 @@ public class NeteaseServiceImpl implements NeteaseService {
      * @Title: uploadFile
      * @Description:上传文件
      */
-    public  boolean uploadMultiPartFile(ConfNetease confNetease, String localFilePath) {
-        initNosClient(confNetease);
+    public   String uploadMultiPartFile(String localFilePath) {
+        initNosClient();
         String fileName = localFilePath.substring((localFilePath.lastIndexOf(File.separator)));
         String yunfileName = fileName.replace(File.separator,"");  //key 为上传的文件名
 
@@ -143,7 +153,7 @@ public class NeteaseServiceImpl implements NeteaseService {
         CompleteMultipartUploadRequest completeRequest =  new CompleteMultipartUploadRequest(confNetease.getBucketname(),yunfileName, uploadId, partETags);
         CompleteMultipartUploadResult completeResult = nosClient.completeMultipartUpload(completeRequest);
 
-        return true;
+        return yunfileName;
     }
 
     /**
@@ -152,9 +162,9 @@ public class NeteaseServiceImpl implements NeteaseService {
      * @Description: 简单不分片上传文件
      * @return
      */
-    public  boolean uploadFile(ConfNetease confNetease, String localFilePath) {
+    public Pair<String, String> uploadFile(String localFilePath) {
 
-        initNosClient(confNetease);
+        initNosClient();
         String fileName = localFilePath.substring((localFilePath.lastIndexOf(File.separator)));
         String yunfileName = fileName.replace(File.separator,"");  //key 为上传的文件名
         try {
@@ -162,7 +172,7 @@ public class NeteaseServiceImpl implements NeteaseService {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        return true;
+        return new Pair<>("netease",yunfileName);
     }
 
     /**
@@ -171,13 +181,12 @@ public class NeteaseServiceImpl implements NeteaseService {
      * @Description: 下载文件
      * @return
      */
-    public  boolean downFile(ConfNetease confNetease, String yunFilePath,String localPathDown) {
+    public  boolean downLoadFile(String cloudFilePath,String localFilePath) {
 
-        initNosClient(confNetease);
-        String fileName = yunFilePath;
-        String localFilePath = localPathDown+File.separator+ fileName.replace("/","");  //key 为上传的文件名
-        GetObjectRequest getObjectRequest = new GetObjectRequest(confNetease.getBucketname(),yunFilePath);
-        ObjectMetadata objectMetadata = nosClient.getObject(getObjectRequest,new File(localFilePath));
+        initNosClient();
+        String savelocalFilePath = localFilePath + File.separator+ cloudFilePath.replace("/","");  //key 为上传的文件名
+        GetObjectRequest getObjectRequest = new GetObjectRequest(confNetease.getBucketname(),cloudFilePath);
+        ObjectMetadata objectMetadata = nosClient.getObject(getObjectRequest,new File(savelocalFilePath));
         return true;
     }
 
@@ -188,16 +197,18 @@ public class NeteaseServiceImpl implements NeteaseService {
      * @Description: 删除文件
      * @return
      */
-    public boolean deleteFile(ConfNetease confNetease, String yunFilePath) {
+    public boolean deleteFile(String cloudFilePath) {
 
-        initNosClient(confNetease);
-        boolean isExist = nosClient.doesObjectExist(confNetease.getBucketname(),yunFilePath);
+        initNosClient();
+        boolean isExist = nosClient.doesObjectExist(confNetease.getBucketname(),cloudFilePath);
         if(isExist)
-            nosClient.deleteObject(confNetease.getBucketname(),yunFilePath);
+            nosClient.deleteObject(confNetease.getBucketname(),cloudFilePath);
         else
-            System.out.println("yunFile is not exist!");
+            return  false;
         return true;
     }
+
+
 
 /*    public static void main(String[] args){
         NeteaseServiceImpl netease = new NeteaseServiceImpl();

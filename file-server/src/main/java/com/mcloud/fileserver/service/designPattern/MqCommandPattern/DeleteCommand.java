@@ -1,8 +1,6 @@
-package com.mcloud.fileserver.service.designPattern.CommandPattern;
+package com.mcloud.fileserver.service.designPattern.MqCommandPattern;
 
-import com.alibaba.fastjson.JSONObject;
 import com.mcloud.fileserver.service.file.fileOperate.delete.DeleteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**

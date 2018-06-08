@@ -7,7 +7,9 @@ package com.mcloud.fileserver.fileTest;
  * @Modify By:
  **/
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import com.mcloud.fileserver.util.FileUtil;
 import org.junit.Test;
@@ -22,9 +24,9 @@ public class FileTest {
         StringBuilder sb = new StringBuilder();
 
         long originFileSize = 1024 * 1024 * 10;// 10M
-        int blockFileSize = 1024 * 1024 * 2;// 2M
+//        int blockFileSize = 1024 * 1024 * 2;// 2M
 
-        // 生成一个大文件
+/*        // 生成一个大文件
         for (int i = 0; i < originFileSize; i++) {
             sb.append("A");
         }
@@ -36,18 +38,27 @@ public class FileTest {
         // 追加内容
         sb.setLength(0);
         sb.append("0123456789");
-        FileUtil.append(fileName, sb.toString());
+        FileUtil.append(fileName, sb.toString());*/
 
+        String fileName = "D:\\Test\\split\\分布式网络架构.pdf";
         FileUtil fileUtil = new FileUtil();
 
-        // 将origin.myfile拆分
-        fileUtil.splitBySize(fileName, blockFileSize);
+        File file = new File(fileName);
+        long fileSize = file.length();
+        int blockFileSize = (int)fileSize/4;
 
-        Thread.sleep(10000);// 稍等10秒，等前面的小文件全都写完
+                // 将origin.myfile拆分
+        List<String> list= fileUtil.splitBySize(fileName, blockFileSize);
+        for(String ls: list)
+            System.out.println("文件目录： " + ls);
 
+        Thread.sleep(8000);// 稍等10秒，等前面的小文件全都写完
+
+        String sourcetPath ="D:\\Test\\split\\split";
+        String destPath ="D:\\Test\\split\\merge";
         // 合并成新文件
-        fileUtil.mergePartFiles(FileUtil.currentWorkDir, ".part",
-                blockFileSize, FileUtil.currentWorkDir + "new.myfile");
+        fileUtil.mergePartFiles(sourcetPath, ".part",
+                blockFileSize, destPath + "\\分布式网络架构.pdf");
 
     }
 }

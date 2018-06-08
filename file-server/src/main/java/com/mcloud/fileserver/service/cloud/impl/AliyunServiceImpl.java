@@ -9,8 +9,11 @@ import com.aliyun.oss.model.GetObjectRequest;
 import com.aliyun.oss.model.OSSObject;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.mcloud.fileserver.repository.entity.ConfAliyun;
-import com.mcloud.fileserver.service.cloud.AliyunService;
+import com.mcloud.fileserver.service.cloud.CloudService;
+import javafx.util.Pair;
 import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,7 +33,7 @@ import java.util.Date;
  *
  */
 @Service
-public class AliyunServiceImpl implements AliyunService {
+public class AliyunServiceImpl implements CloudService {
 
 
 
@@ -40,44 +43,58 @@ public class AliyunServiceImpl implements AliyunService {
      private ConfAliyun confAliyun;
      private OSSClient ossClient;
 
-     public AliyunServiceImpl(){
+     final  static Logger logger = LoggerFactory.getLogger(AliyunServiceImpl.class);
+
+     AliyunServiceImpl(){
 
      }
 
-
-    public void initAliyun(ConfAliyun confAliyun){
+    public AliyunServiceImpl(ConfAliyun confAliyun){
          this.confAliyun = confAliyun;
+    }
+
+
+    public void initAliyun(){
+
          if(ossClient == null) {
              ossClient = new OSSClient(confAliyun.getEndpoint(), confAliyun.getAccesskey(),
                      confAliyun.getAccesskeysecret());
          }
     }
+
+
+
     /**
      * 上传本地文件      @Title: uploadFile
      */
-    public boolean uploadFile(ConfAliyun confAliyun, String localFilePath)  {
-  /*      confAliyun confAliyun = null;
-        confAliyun = new confAliyun(endpoint,accessKey,accessKeySecret,bucketName,accessUrl);
-        OSSClient ossClient = new OSSClient(confAliyun.getEndpoint(), confAliyun.getAccessKeyId(),
-                confAliyun.getAccessKeySecret());*/
-        initAliyun(confAliyun);
+    public Pair<String, String> uploadFile(String localFilePath)  {
+        initAliyun();
         String fileName = localFilePath.substring((localFilePath.lastIndexOf(File.separator)));
-        String yunfileName ="backupFile/"+ fileName.replace(File.separator,"");  //key 为上传的文件名
-        ossClient.putObject(confAliyun.getBucketname(),yunfileName,new File(localFilePath));
-        /*ossClient.shutdown();*/
-        return true;
+        String  cloudFilePath ="backupFile/"+ fileName.replace(File.separator,"");  //key 为上传的文件名
+        ossClient.putObject(confAliyun.getBucketname(),cloudFilePath,new File(localFilePath));
+        ossClient.shutdown();
+        return new Pair<>("aliyun",fileName.replace(File.separator,""));
+    }
+
+    /**
+     * 断点续传
+     * @param cloudFilePath
+     * @return
+     */
+    @Override
+    public String uploadMultiPartFile(String cloudFilePath) {
+        return null;
     }
 
 
-
     /**
-     * 上传OSS服务器文件 @Title: uploadMultipartFile
+     *  分片上传
      *  @param multipartFile spring 上传的文件
-     * remotePath @param oss服务器二级目录
+     *  cloudFilePath @param oss服务器二级目录
      *  @throws Exception 设定文件 @return String
      * 返回类型 返回oss存放路径 @throws
      */
-    public  String uploadMultipartFile(ConfAliyun confAliyun, MultipartFile multipartFile, String remotePath) throws IOException {
+    public  String uploadMultipartFile(MultipartFile multipartFile, String cloudFilePath) throws IOException {
         // 流转换 将MultipartFile转换为oss所需的InputStream
         CommonsMultipartFile cf = (CommonsMultipartFile) multipartFile;
         DiskFileItem fi = (DiskFileItem) cf.getFileItem();
@@ -90,7 +107,7 @@ public class AliyunServiceImpl implements AliyunService {
         OSSClient ossClient = new OSSClient(confAliyun.getEndpoint(), confAliyun.getAccessKeyId(),
                 confAliyun.getAccessKeySecret());*/
         // 定义二级目录
-        String remoteFilePath = remotePath.substring(0, remotePath.length()).replaceAll("\\\\", "/") + "/";
+        String remoteFilePath = cloudFilePath.substring(0, cloudFilePath.length()).replaceAll("\\\\", "/") + "/";
         // 创建上传Object的Metadata
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentLength(fileContent.available());
@@ -110,15 +127,11 @@ public class AliyunServiceImpl implements AliyunService {
 
     // 下载文件
     @SuppressWarnings("unused")
-    public  void downloadFile(ConfAliyun confAliyun, String yunfileName, String saveLocalFilePath) {
-                initAliyun(confAliyun);
-                String yunFilePath="backupFile/"+yunfileName;
+    public  boolean downLoadFile(String cloudFileName, String localFilePath) {
+                initAliyun();
+                String yunFilePath="backupFile/"+cloudFileName;
                 /*confAliyun confAliyun = null;*/
                 try {
-   /*                 confAliyun = new confAliyun("conf/accessCloud.properties");
-                    // 初始化OSSClient
-                    OSSClient ossClient = new OSSClient(confAliyun.getEndpoint(), confAliyun.getAccessKeyId(),
-                            confAliyun.getAccessKeySecret());*/
                     OSSObject object = ossClient.getObject(confAliyun.getBucketname(), yunFilePath);
                     // 获取ObjectMeta
                     ObjectMetadata meta = object.getObjectMetadata();
@@ -126,34 +139,28 @@ public class AliyunServiceImpl implements AliyunService {
                     // 获取Object的输入流
                     InputStream objectContent = object.getObjectContent();
                     String fileName =yunFilePath.substring((yunFilePath.lastIndexOf("/")));
-                    String localFilePath = saveLocalFilePath+File.separator+ fileName.replace("/","");  //key 为上传的文件名
+                    String savelocalFilePath = localFilePath+File.separator+ fileName.replace("/","");  //key 为上传的文件名
                     ObjectMetadata objectData = ossClient.getObject(new GetObjectRequest(confAliyun.getBucketname(), yunFilePath),
-                            new File(localFilePath));
+                            new File(savelocalFilePath));
                     // 关闭数据流
                     objectContent.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                return  true;
             }
 
     /**
      * 根据key删除OSS服务器上的文件 @Title: deleteFile @Description: @param @param
      * confAliyun @param 配置文件实体 @param filePath 设定文件 @return void 返回类型 @throws
      */
-    public  void deleteFile(ConfAliyun confAliyun, String fileName) {
-        initAliyun(confAliyun);
+    public  boolean deleteFile(String fileName) {
+        initAliyun();
         String yunfilePath="backupFile/"+fileName;
-/*        confAliyun confAliyun = null;
-        try {
-            confAliyun = new confAliyun("conf/accessCloud.properties");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        OSSClient ossClient = new OSSClient(confAliyun.getEndpoint(), confAliyun.getAccessKeyId(),
-                            confAliyun.getAccessKeySecret()); */
         ossClient.deleteObject(confAliyun.getBucketname(), yunfilePath);
+        return true;
     }
+
 
     /**
      * Description: 判断OSS服务文件上传时文件的contentType @Version1.0

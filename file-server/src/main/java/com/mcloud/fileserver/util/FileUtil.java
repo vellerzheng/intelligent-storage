@@ -2,17 +2,13 @@ package com.mcloud.fileserver.util;
 
 
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.io.IOUtils;
+
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 
-
-/**
- * @Author: vellerzheng
- * @Description:
- * @Date:Created in 21:07 2018/6/6
- * @Modify By:
- */
 
 public class FileUtil {
 
@@ -42,6 +38,23 @@ public class FileUtil {
     }
 
     /**
+     * 获得文件的MD5
+     * @param file 文件路径
+     */
+    public static String getMD5ByFile(File file){
+        String md5=null;
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            md5 = DigestUtils.md5Hex(IOUtils.toByteArray(fis));
+            IOUtils.closeQuietly(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return md5;
+    }
+
+
+    /**
      * 删除文件
      *
      * @param fileName
@@ -63,7 +76,7 @@ public class FileUtil {
     /***
      * 递归获取指定目录下的所有的文件（不包括文件夹）
      *
-     * @param obj
+     * @param dirPath
      * @return
      */
     public static ArrayList<File> getAllFiles(String dirPath) {
@@ -224,8 +237,13 @@ public class FileUtil {
                 count * 3, 1, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<Runnable>(count * 2));
 
+        String sourceFilePath = file.getParent() + "/split";
+        File splitFileDir = new File(sourceFilePath);
+        if(!splitFileDir.exists())
+            splitFileDir.mkdirs();
+
         for (int i = 0; i < count; i++) {
-            String partFileName = file.getName() + "."
+            String partFileName = sourceFilePath +"/" + getMD5ByFile(file) + "."
                     + leftPad((i + 1) + "", countLen, '0') + ".part";
             threadPool.execute(new SplitRunnable(byteSize, i * byteSize,
                     partFileName, file));

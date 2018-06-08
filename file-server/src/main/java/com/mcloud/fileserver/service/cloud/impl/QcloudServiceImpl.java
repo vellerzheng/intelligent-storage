@@ -2,11 +2,14 @@ package com.mcloud.fileserver.service.cloud.impl;
 
 
 import com.mcloud.fileserver.repository.entity.ConfQcloud;
-import com.mcloud.fileserver.service.cloud.QcloudService;
+import com.mcloud.fileserver.service.cloud.CloudService;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
 import com.qcloud.cos.request.*;
 import com.qcloud.cos.sign.Credentials;
+import javafx.util.Pair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -15,26 +18,35 @@ import java.io.File;
  * Created by vellerzheng on 2017/9/18.
  */
 @Service
-public class QcloudServiceImpl implements QcloudService {
+public class QcloudServiceImpl implements CloudService {
 
 
     private ConfQcloud confQcloud;
 
     private COSClient cosClient;
+
+    final  static Logger logger = LoggerFactory.getLogger(QcloudServiceImpl.class);
+
+    QcloudServiceImpl(){
+
+    }
+
+    public QcloudServiceImpl(ConfQcloud confQcloud){
+        this.confQcloud =confQcloud;
+    }
     /**
      *
      * @Title: getCOSClient
      * @Description: 生成客户端对象
      * @return
      */
-    public  void initCOSClient(ConfQcloud confQcloud) {
+    public  void initCOSClient() {
 
         // 初始化秘钥信息
  /*       long appId = 1254362959;
         String secretId = "AKIDjLlz2sfh4VyN2ZzgSHoFVaTAf2PBlDdt";
         String secretKey = "DF5jGl5B8ze7VwEMJ5f7QZVKyQfintul";*/
 
-        this.confQcloud = confQcloud;
         if(cosClient  == null) {
             // 初始化秘钥信息
             Credentials cred = new Credentials(Long.parseLong(confQcloud.getAppid()), confQcloud.getSecretid(), confQcloud.getSecretkey());
@@ -58,14 +70,14 @@ public class QcloudServiceImpl implements QcloudService {
      * @Title: uploadFile
      * @Description:上传文件
      */
-    public  String uploadFile(ConfQcloud confQcloud, String localFilePath) {
-        initCOSClient(confQcloud);
+    public Pair<String, String> uploadFile(String localFilePath) {
+        initCOSClient();
         String fileName = localFilePath.substring((localFilePath.lastIndexOf(File.separator)));
         String yunfilePath = "/backupFile/"+ fileName.replace(File.separator,"");  //key 为上传的文件名
         UploadFileRequest uploadFileRequest = new UploadFileRequest(confQcloud.getBucketname(),yunfilePath, localFilePath);
         String uploadFileRet = cosClient.uploadFile(uploadFileRequest);
 
-        return uploadFileRet;
+        return new Pair<>("qcloud", fileName.replace(File.separator,""));
     }
 
     /**
@@ -74,21 +86,21 @@ public class QcloudServiceImpl implements QcloudService {
      * @Description: 下载文件
      * @return
      */
-    public  String downFile(ConfQcloud confQcloud, String yunfileName,String localPathDown) {
-        initCOSClient(confQcloud);
-        String cosFilePath="/backupFile/"+yunfileName;
+    public  boolean downLoadFile(String cloudFileName,String localFilePath) {
+        initCOSClient();
+        String cosFilePath="/backupFile/"+ cloudFileName;
         String fileName =cosFilePath.substring((cosFilePath.lastIndexOf("/")));
-        String localFilePath = localPathDown+ File.separator+ fileName.replace("/","");  //key 为上传的文件名
-        GetFileLocalRequest getFileLocalRequest = new GetFileLocalRequest(confQcloud.getBucketname(), cosFilePath, localFilePath);
+        String savelocalFilePath = localFilePath + File.separator+ fileName.replace("/","");  //key 为上传的文件名
+        GetFileLocalRequest getFileLocalRequest = new GetFileLocalRequest(confQcloud.getBucketname(), cosFilePath, savelocalFilePath);
         getFileLocalRequest.setUseCDN(false);
         getFileLocalRequest.setReferer("*.myweb.cn");
         String getFileResult = cosClient.getFileLocal(getFileLocalRequest);
-        return getFileResult;
+        return true;
     }
 
     public  String moveFile(ConfQcloud confQcloud, String cosFilePath, String dstCosFilePath) {
 
-        initCOSClient(confQcloud);
+        initCOSClient();
         MoveFileRequest moveRequest = new MoveFileRequest(confQcloud.getBucketname(), cosFilePath, dstCosFilePath);
         String moveFileResult = cosClient.moveFile(moveRequest);
         return moveFileResult;
@@ -102,7 +114,7 @@ public class QcloudServiceImpl implements QcloudService {
      */
     public  String getFileProp(ConfQcloud confQcloud, String yunFilePath) {
 
-        initCOSClient(confQcloud);
+        initCOSClient();
         StatFileRequest statFileRequest = new StatFileRequest(confQcloud.getBucketname(),yunFilePath);
         String statFileRet = cosClient.statFile(statFileRequest);
 
@@ -115,13 +127,18 @@ public class QcloudServiceImpl implements QcloudService {
      * @Description: 删除文件
      * @return
      */
-    public String deleteFile(ConfQcloud confQcloud, String fileName) {
-        initCOSClient(confQcloud);
-        String yunFilePath="/backupFile/"+fileName;
+    public boolean deleteFile(String cloudFilePath) {
+        initCOSClient();
+        String yunFilePath="/backupFile/"+ cloudFilePath;
         DelFileRequest delFileRequest = new DelFileRequest(confQcloud.getBucketname(),yunFilePath);
         String delFileRet = cosClient.delFile(delFileRequest);
 
-        return delFileRet;
+        return true;
+    }
+
+    @Override
+    public String uploadMultiPartFile(String localFilePath) {
+        return null;
     }
 
 

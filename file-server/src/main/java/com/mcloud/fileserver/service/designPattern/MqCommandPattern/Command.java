@@ -1,4 +1,4 @@
-package com.mcloud.fileserver.service.designPattern.CommandPattern;
+package com.mcloud.fileserver.service.designPattern.MqCommandPattern;
 
 /**
  * @Author: vellerzheng

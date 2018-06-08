@@ -2,9 +2,11 @@ package com.mcloud.fileserver.service.cloud.impl;
 
 
 import com.mcloud.fileserver.repository.entity.ConfUpyun;
-import com.mcloud.fileserver.service.cloud.UpyunService;
+import com.mcloud.fileserver.service.cloud.CloudService;
+import javafx.util.Pair;
 import main.java.com.UpYun;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -15,7 +17,7 @@ import java.util.Map;
  * Created by vellerzheng on 2017/8/25.
  */
 @Service
-public class UpyunServiceImpl implements UpyunService {
+public class UpyunServiceImpl implements CloudService {
 /*    private String bucketName ="youpaiyunfile";
     private String userName = "guyun";
     private String password ="qwe123456";*/
@@ -25,29 +27,35 @@ public class UpyunServiceImpl implements UpyunService {
 
     private UpYun upYun;
 
+    final static Logger logger = LoggerFactory.getLogger(UpyunServiceImpl.class);
 
-    private void initUpyunClient(ConfUpyun confUpyun){
+    UpyunServiceImpl(){
+
+    }
+
+    public UpyunServiceImpl(ConfUpyun confUpyun){
+        this.confUpyun = confUpyun;
+    }
+
+    private void initUpyunClient(){
         // 可选属性1，是否开启 debug 模式，默认不开启
-        if(confUpyun == null)
-            this.confUpyun =confUpyun;
         if(upYun == null ) {
             upYun = new UpYun(confUpyun.getBucketname(), confUpyun.getUsername(), confUpyun.getPassword());
             upYun.setDebug(false);
             // 可选属性2，超时时间，默认 30s
             upYun.setTimeout(30);
         }
-
+        createYunFilePath();
     }
 
-    public  void createYunFilePath(ConfUpyun confUpyun){
-        initUpyunClient(confUpyun);
+    public  void createYunFilePath(){
         // 创建目录
         boolean result = upYun.mkDir("/up/tt");
     }
 
     // 文件上传
-    public boolean uploadFile(ConfUpyun confUpyun, String localFilePath){
-        initUpyunClient(confUpyun);
+    public Pair<String,String> uploadFile(String localFilePath){
+        initUpyunClient();
         String fileName = localFilePath.substring((localFilePath.lastIndexOf(File.separator)));
         //key 为上传的文件名
         String yunfilePath = "/up/tt/"+ fileName.replace(File.separator,"");
@@ -60,27 +68,31 @@ public class UpyunServiceImpl implements UpyunService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return result;
+        return new Pair<>("upyun",fileName.replace(File.separator,""));
     }
 
-    public boolean deleteYunFile(ConfUpyun confUpyun, String fileName){
-        initUpyunClient(confUpyun);
-        String yunFileName = "/up/tt/"+fileName;
+    @Override
+    public String uploadMultiPartFile(String localFilePath) {
+        return null;
+    }
+
+    public boolean deleteFile(String cloudFilePath){
+        initUpyunClient();
+        String yunFileName = "/up/tt/"+ cloudFilePath;
         // 删除目录
-        boolean result = upYun.rmDir(yunFileName);
-        return result;
+        return upYun.rmDir(yunFileName);
     }
 
-    public boolean downloadFile(ConfUpyun confUpyun, String fileName,String saveFilePath){
-        initUpyunClient(confUpyun);
-        String yunFileName = "/up/tt/"+fileName;
-        File file= new File(saveFilePath);
-        boolean result=upYun.readFile(yunFileName,file);
-        return result;
+    @Override
+    public boolean downLoadFile(String cloudFilePath, String localFilePath){
+        initUpyunClient();
+        String yunFileName = "/up/tt/"+cloudFilePath;
+        File file= new File(cloudFilePath);
+        return upYun.readFile(yunFileName,file);
     }
 
     public void getFileInformation(ConfUpyun confUpyun, String fileName){
-        initUpyunClient(confUpyun);
+        initUpyunClient();
         String yunFilePath = "/up/tt/"+fileName;
         Map<String,String> result = upYun.getFileInfo(yunFilePath);
         for (Map.Entry<String, String> entry : result.entrySet()) {
@@ -89,7 +101,7 @@ public class UpyunServiceImpl implements UpyunService {
     }
 
     public void getSpaceCapacity(ConfUpyun confUpyun){
-        initUpyunClient(confUpyun);
+        initUpyunClient();
         long usage = upYun.getBucketUsage();
         System.out.println("BucketUsage:"+usage);
     }

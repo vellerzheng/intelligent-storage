@@ -1,7 +1,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://**.**.**.**:8762/eureka/
+      defaultZone: http://118.31.60.54:8762/eureka/
 
 
 
@@ -10,7 +10,7 @@ spring:
   application:
     name: file-server
   rabbitmq:
-    addresses: **.**.**.**
+    addresses: 118.31.60.54
     port: 5672
     username: admin
     password: 123456

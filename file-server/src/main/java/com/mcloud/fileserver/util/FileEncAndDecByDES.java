@@ -1,14 +1,12 @@
 package com.mcloud.fileserver.util;
 
-import javax.crypto.Cipher;
-import javax.crypto.CipherInputStream;
-import javax.crypto.CipherOutputStream;
-import javax.crypto.KeyGenerator;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import jdk.internal.util.xml.impl.Input;
+
+import javax.crypto.*;
+import java.io.*;
+import java.security.InvalidKeyException;
 import java.security.Key;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 public class FileEncAndDecByDES {
@@ -40,23 +38,53 @@ public class FileEncAndDecByDES {
      * 文件file进行加密并保存目标文件destFile中
      *
      * @param file   要加密的文件 如c:/test/srcFile.txt
-     * @param destFile 加密后存放的文件名 如c:/加密后文件.txt
+     *   加密后存放的文件名 如c:/加密后文件.txt
      */
-    public void encrypt(String file, String destFile) throws Exception {
-        Cipher cipher = Cipher.getInstance("DES");
+    public File encrypt(String file)  {
+        String fileName = file.substring(file.lastIndexOf(File.separator)+1, file.length());
+        File encryptedFile = new File(fileName);
+        try {
+                Cipher cipher = Cipher.getInstance("DES");
         // cipher.init(Cipher.ENCRYPT_MODE, getKey());
-        cipher.init(Cipher.ENCRYPT_MODE, this.key);
-        InputStream is = new FileInputStream(file);
-        OutputStream out = new FileOutputStream(destFile);
-        CipherInputStream cis = new CipherInputStream(is, cipher);
-        byte[] buffer = new byte[1024];
-        int r;
-        while ((r = cis.read(buffer)) > 0) {
-            out.write(buffer, 0, r);
+                cipher.init(Cipher.ENCRYPT_MODE, this.key);
+                InputStream  is = new FileInputStream(file);
+                OutputStream out = new FileOutputStream(encryptedFile);
+                CipherInputStream cis = new CipherInputStream(is, cipher);
+                byte[] buffer = new byte[1024];
+                int r;
+                while ((r = cis.read(buffer)) > 0) {
+                    out.write(buffer, 0, r);
+                    }
+                cis.close();
+                is.close();
+                out.close();
+            } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException e) {
+            e.printStackTrace();
         }
-        cis.close();
-        is.close();
-        out.close();
+        return encryptedFile;
+    }
+
+    public File encrypt(File file, String md5FileName)  {
+        File encryptedFile = new File(md5FileName);
+        try {
+            Cipher cipher = Cipher.getInstance("DES");
+            // cipher.init(Cipher.ENCRYPT_MODE, getKey());
+            cipher.init(Cipher.ENCRYPT_MODE, this.key);
+            InputStream  is = new FileInputStream(file);
+            OutputStream out = new FileOutputStream(encryptedFile);
+            CipherInputStream cis = new CipherInputStream(is, cipher);
+            byte[] buffer = new byte[1024];
+            int r;
+            while ((r = cis.read(buffer)) > 0) {
+                out.write(buffer, 0, r);
+            }
+            cis.close();
+            is.close();
+            out.close();
+        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException e) {
+            e.printStackTrace();
+        }
+        return encryptedFile;
     }
     /**
      * 文件采用DES算法解密文件
@@ -65,21 +93,34 @@ public class FileEncAndDecByDES {
      *         * @param destFile
      *         解密后存放的文件名 如c:/ test/解密后文件.txt
      */
-    public void decrypt(String file, String dest) throws Exception {
-        Cipher cipher = Cipher.getInstance("DES");
-        cipher.init(Cipher.DECRYPT_MODE, this.key);
-        InputStream is = new FileInputStream(file);
-        OutputStream out = new FileOutputStream(dest);
-        CipherOutputStream cos = new CipherOutputStream(out, cipher);
-        byte[] buffer = new byte[1024];
-        int r;
-        while ((r = is.read(buffer)) >= 0) {
-            System.out.println();
-            cos.write(buffer, 0, r);
+    public void decrypt(File file, String dest) {
+        try{
+            Cipher cipher = Cipher.getInstance("DES");
+            cipher.init(Cipher.DECRYPT_MODE, this.key);
+            InputStream is = new FileInputStream(file);
+            OutputStream out = new FileOutputStream(dest);
+            CipherOutputStream cos = new CipherOutputStream(out, cipher);
+            byte[] buffer = new byte[1024];
+            int r;
+            while ((r = is.read(buffer)) >= 0) {
+                System.out.println();
+                cos.write(buffer, 0, r);
+            }
+            cos.close();
+            out.close();
+            is.close();
+        }catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException e){
+
         }
-        cos.close();
-        out.close();
-        is.close();
     }
 
+    public static void main(String[] args){
+        FileEncAndDecByDES  fs = new FileEncAndDecByDES("kraft");
+        String src = "D:\\Test\\split\\分布式网络架构.pdf";
+        File resFile = fs.encrypt(src);
+
+        String desPath = "D:\\Test\\split\\merge\\分布式网络架构.pdf";
+        fs.decrypt(resFile,desPath);
+        System.out.println("finished!");
+    }
 }

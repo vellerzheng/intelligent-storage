@@ -18,12 +18,12 @@ public class FileManage {
     private static Logger logger = LoggerFactory.getLogger(FileManage.class);
     /**
      * 获得文件的MD5
-     * @param filePath 文件路径
+     * @param file 文件路径
      */
-    public static String getMD5ByFile(String filePath){
+    public static String getMD5ByFile(File file){
         String md5=null;
         try {
-            FileInputStream fis = new FileInputStream(filePath);
+            FileInputStream fis = new FileInputStream(file);
             md5 = DigestUtils.md5Hex(IOUtils.toByteArray(fis));
             IOUtils.closeQuietly(fis);
         } catch (IOException e) {
