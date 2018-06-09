@@ -6,7 +6,7 @@ import com.mcloud.fileserver.repository.entity.*;
 import com.mcloud.fileserver.service.cloud.CloudService;
 import com.mcloud.fileserver.service.designPattern.cloudAbstractFactory.*;
 import com.mcloud.fileserver.service.file.fileOperate.upload.UploadService;
-import com.mcloud.fileserver.service.provider.CloudInfoService;
+import com.mcloud.fileserver.service.file.CloudFilePathService;
 import com.mcloud.fileserver.util.FileEncAndDecByDES;
 import com.mcloud.fileserver.util.FileManage;
 import com.mcloud.fileserver.util.PartitionFile;
@@ -37,7 +37,7 @@ public class UploadServiceImpl implements UploadService {
     MulThreadEncryAndUpload mulThEncUp;
 
     @Autowired
-    CloudInfoService cloudInfoService;
+    CloudFilePathService cloudInfoService;
 
     UploadServiceImpl(){
 
@@ -64,6 +64,7 @@ public class UploadServiceImpl implements UploadService {
 
         File file = new File(filePath);
         long fileSize = file.length();
+        String sourceFileHash = FileManage.getMD5ByFile(file);
 
         if(fileSize <= 1024*1024*4) {
 
@@ -81,9 +82,12 @@ public class UploadServiceImpl implements UploadService {
             mulThEncUp = new MulThreadEncryAndUpload(map,usrName+id);
           //  mulThEncUp.EncryAndUpload();
             JSONObject json =  mulThEncUp.EncryAndUpload();
+            json.put("fileId",jsonObject.getInteger("fileId"));
+            json.put("fileHash",sourceFileHash);
             RestTemplate template = new RestTemplate();
-            String url = "http://localhost:8765/cloudPath";
-            String result = template.postForObject(url,json,String.class);
+            String url = "http://localhost:8765/v1/cloudPath";
+            FileHash fileHash = JSON.parseObject(json.toJSONString(), FileHash.class);
+            String result = template.postForObject(url,fileHash,String.class);
             System.out.println(result);
       //     cloudInfoService.provideCloudPath(jsonObject);
         }

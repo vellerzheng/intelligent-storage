@@ -47,8 +47,9 @@ public class RabitMqConsumer {
 
         //返回执行结果（成功，失败）和ID
         JSONObject json = new JSONObject();
-        json.put("id",jsonObject.get("id"));
+        json.put("userId",jsonObject.get("userId"));
         json.put("username",jsonObject.get("userName"));
+        json.put("fileId",jsonObject.get("fileId"));
         json.put("status",1);
         return json;
 

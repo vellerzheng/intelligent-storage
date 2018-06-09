@@ -1,12 +1,9 @@
 package com.mcloud.fileserver.service.file.fileOperate.upload.impl;
 
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mcloud.fileserver.service.cloud.CloudService;
-import com.mcloud.fileserver.service.provider.CloudInfoService;
 import javafx.util.Pair;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

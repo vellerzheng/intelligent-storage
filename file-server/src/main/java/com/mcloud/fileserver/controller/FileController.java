@@ -2,7 +2,7 @@ package com.mcloud.fileserver.controller;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.mcloud.fileserver.service.provider.CloudInfoService;
+import com.mcloud.fileserver.service.file.CloudFilePathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class FileController {
 
     @Autowired
-    CloudInfoService cloudInfoService;
+    CloudFilePathService cloudFilePathService;
     /**
      *
      * @param userId  用户id
@@ -38,12 +38,12 @@ public class FileController {
 
     }
 
-    @RequestMapping(value = "/cloudPath")
-    public String providerCloudPath(Object object){
+    @RequestMapping(value = "/v1/cloudPath")
+    public String updateCloudPath(Object object){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("aliyun","ldjfaksdf");
         jsonObject.put("netesase","==================");
-        return cloudInfoService.provideCloudPath(jsonObject);
+        return cloudFilePathService.updateCloudPathToLocal(jsonObject);
 
     }
 }
