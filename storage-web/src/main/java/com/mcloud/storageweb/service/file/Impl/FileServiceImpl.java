@@ -3,13 +3,12 @@ package com.mcloud.storageweb.service.file.Impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mcloud.storageweb.repository.entity.*;
+import com.mcloud.storageweb.repository.mapper.FileEntityMapper;
 import com.mcloud.storageweb.service.cloudConf.*;
 import com.mcloud.storageweb.service.file.FileService;
 import com.mcloud.storageweb.service.rabbitmq.RabitMqProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
 
 /**
  * @Author: vellerzheng
@@ -19,6 +18,9 @@ import java.util.*;
  */
 @Service
 public class FileServiceImpl implements FileService {
+
+    @Autowired
+    FileEntityMapper fileEntityMapper;
 
     @Autowired
     ConfAliyunService confAliyunService;
@@ -35,15 +37,46 @@ public class FileServiceImpl implements FileService {
     RabitMqProvider rabitMqProvider;
 
     @Override
-    public boolean tranferEventToFileServer(User user, String filePath) {
+    public int deleteByPrimaryKey(Integer id) {
+        return fileEntityMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insert(FileEntity record) {
+        return fileEntityMapper.insert(record);
+    }
+
+    @Override
+    public int insertSelective(FileEntity record) {
+        return fileEntityMapper.insertSelective(record);
+    }
+
+    @Override
+    public FileEntity selectByPrimaryKey(Integer id) {
+        return fileEntityMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(FileEntity record) {
+        return fileEntityMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(FileEntity record) {
+        return fileEntityMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public boolean tranferEventToFileServer(User user, Integer fileId, String filePath) {
         if(user == null || filePath == null)
             return false;
 
         int count = 0;
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("command","upload");
-        jsonObject.put("id", user.getId());
+        jsonObject.put("userId", user.getId());
         jsonObject.put("userName", user.getUsername());
+        jsonObject.put("fileId",fileId);
         jsonObject.put("filePath", filePath);
 
         ConfAliyun  confAliyun = confAliyunService.selectByUserIdAndStatus(user.getId());

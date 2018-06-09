@@ -47,7 +47,7 @@ public class UserController {
         User user2 = (User)redisUtil.get(usr.getUsername());
         redisUtil.remove(usr.getUsername());
 
-        fileService.tranferEventToFileServer(usr,filePath);
+        fileService.tranferEventToFileServer(usr,209, filePath);
 
         return usr;
     }

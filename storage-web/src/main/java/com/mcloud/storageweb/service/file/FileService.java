@@ -1,5 +1,6 @@
 package com.mcloud.storageweb.service.file;
 
+import com.mcloud.storageweb.repository.entity.FileEntity;
 import com.mcloud.storageweb.repository.entity.User;
 
 /**
@@ -9,5 +10,18 @@ import com.mcloud.storageweb.repository.entity.User;
  * @Modify By:
  */
 public interface FileService {
-    boolean tranferEventToFileServer(User user, String filePath);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(FileEntity record);
+
+    int insertSelective(FileEntity record);
+
+    FileEntity selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(FileEntity record);
+
+    int updateByPrimaryKey(FileEntity record);
+
+    boolean tranferEventToFileServer(User user,Integer fileId, String filePath);
 }
