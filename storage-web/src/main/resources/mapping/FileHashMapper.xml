@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mcloud.storageweb.repository.mapper.FileHashMapper" >
+  <resultMap id="BaseResultMap" type="com.mcloud.storageweb.repository.entity.FileHash" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="file_id" property="fileId" jdbcType="INTEGER" />
+    <result column="file_hash" property="fileHash" jdbcType="VARCHAR" />
+    <result column="aliyun" property="aliyun" jdbcType="VARCHAR" />
+    <result column="netease" property="netease" jdbcType="VARCHAR" />
+    <result column="qcloud" property="qcloud" jdbcType="VARCHAR" />
+    <result column="qiniu" property="qiniu" jdbcType="VARCHAR" />
+    <result column="upyun" property="upyun" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, file_id, file_hash, aliyun, netease, qcloud, qiniu, upyun, creator, createtime, 
+    updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from files_hash
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from files_hash
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mcloud.storageweb.repository.entity.FileHash" >
+    insert into files_hash (file_id, file_hash,
+      aliyun, netease, qcloud, 
+      qiniu, upyun, creator, 
+      createtime, updatetime)
+    values (#{fileId,jdbcType=INTEGER}, #{fileHash,jdbcType=VARCHAR},
+      #{aliyun,jdbcType=VARCHAR}, #{netease,jdbcType=VARCHAR}, #{qcloud,jdbcType=VARCHAR}, 
+      #{qiniu,jdbcType=VARCHAR}, #{upyun,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.mcloud.storageweb.repository.entity.FileHash" >
+    insert into files_hash
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fileId != null" >
+        file_id,
+      </if>
+      <if test="fileHash != null" >
+        file_hash,
+      </if>
+      <if test="aliyun != null" >
+        aliyun,
+      </if>
+      <if test="netease != null" >
+        netease,
+      </if>
+      <if test="qcloud != null" >
+        qcloud,
+      </if>
+      <if test="qiniu != null" >
+        qiniu,
+      </if>
+      <if test="upyun != null" >
+        upyun,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null" >
+        #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="fileHash != null" >
+        #{fileHash,jdbcType=VARCHAR},
+      </if>
+      <if test="aliyun != null" >
+        #{aliyun,jdbcType=VARCHAR},
+      </if>
+      <if test="netease != null" >
+        #{netease,jdbcType=VARCHAR},
+      </if>
+      <if test="qcloud != null" >
+        #{qcloud,jdbcType=VARCHAR},
+      </if>
+      <if test="qiniu != null" >
+        #{qiniu,jdbcType=VARCHAR},
+      </if>
+      <if test="upyun != null" >
+        #{upyun,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mcloud.storageweb.repository.entity.FileHash" >
+    update files_hash
+    <set >
+      <if test="fileId != null" >
+        file_id = #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="fileHash != null" >
+        file_hash = #{fileHash,jdbcType=VARCHAR},
+      </if>
+      <if test="aliyun != null" >
+        aliyun = #{aliyun,jdbcType=VARCHAR},
+      </if>
+      <if test="netease != null" >
+        netease = #{netease,jdbcType=VARCHAR},
+      </if>
+      <if test="qcloud != null" >
+        qcloud = #{qcloud,jdbcType=VARCHAR},
+      </if>
+      <if test="qiniu != null" >
+        qiniu = #{qiniu,jdbcType=VARCHAR},
+      </if>
+      <if test="upyun != null" >
+        upyun = #{upyun,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mcloud.storageweb.repository.entity.FileHash" >
+    update files_hash
+    set file_id = #{fileId,jdbcType=INTEGER},
+      file_hash = #{fileHash,jdbcType=VARCHAR},
+      aliyun = #{aliyun,jdbcType=VARCHAR},
+      netease = #{netease,jdbcType=VARCHAR},
+      qcloud = #{qcloud,jdbcType=VARCHAR},
+      qiniu = #{qiniu,jdbcType=VARCHAR},
+      upyun = #{upyun,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
