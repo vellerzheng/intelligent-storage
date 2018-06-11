@@ -3,9 +3,12 @@ package com.mcloud.fileserver.service.file.fileOperate.upload.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mcloud.fileserver.service.cloud.CloudService;
+import com.mcloud.fileserver.util.FileEncAndDecByDES;
+import com.mcloud.fileserver.util.FileManage;
 import javafx.util.Pair;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +42,7 @@ public class MulThreadEncryAndUpload {
         ExecutorService es = Executors.newFixedThreadPool(4);
 
         for(Map.Entry<String, CloudService> entry : map.entrySet()){
-            futures.add(es.submit(new Task(entry.getKey(), entry.getValue())));
+            futures.add(es.submit(new Task(entry.getKey(), entry.getValue(),encryptKey)));
         }
 
         for(Future<Pair<String, String>> res : futures){
@@ -61,10 +64,12 @@ public class MulThreadEncryAndUpload {
 
         private  String filePath;
         private  CloudService cloudService;
+        private String encryptKey;
 
-        Task(String filePath,CloudService cloudService){
+        Task(String filePath,CloudService cloudService,String encryptKey){
             this.filePath = filePath;
             this.cloudService = cloudService;
+            this.encryptKey = encryptKey;
 
         }
         /**
@@ -76,9 +81,12 @@ public class MulThreadEncryAndUpload {
 
         @Override
         public Pair<String, String> call() throws Exception {
-
-
-            return  cloudService.uploadFile(filePath);
+            FileEncAndDecByDES encDes = new FileEncAndDecByDES(encryptKey);
+            String encryptPath = encDes.encrypt(new File(filePath));
+            Pair<String, String> pair = cloudService.uploadFile(encryptPath);
+            FileManage.deleteFile(filePath);
+            FileManage.deleteFile(encryptPath);
+            return  pair;
         }
     }
 

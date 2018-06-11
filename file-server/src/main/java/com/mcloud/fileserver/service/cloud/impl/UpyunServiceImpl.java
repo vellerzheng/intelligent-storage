@@ -84,11 +84,15 @@ public class UpyunServiceImpl implements CloudService {
     }
 
     @Override
-    public boolean downLoadFile(String cloudFilePath, String localFilePath){
+    public String downLoadFile(String cloudFilePath, String localFilePath){
         initUpyunClient();
         String yunFileName = "/up/tt/"+cloudFilePath;
-        File file= new File(cloudFilePath);
-        return upYun.readFile(yunFileName,file);
+        String fileName =cloudFilePath.substring((cloudFilePath.lastIndexOf("/")));
+        String savelocalFilePath = localFilePath+File.separator+ fileName.replace("/","");  //key 为上传的文件                    String fileName =yunFilePath.substring((yunFilePath.lastIndexOf("/")));
+
+        File file= new File(savelocalFilePath);
+        upYun.readFile(yunFileName,file);
+        return savelocalFilePath;
     }
 
     public void getFileInformation(ConfUpyun confUpyun, String fileName){

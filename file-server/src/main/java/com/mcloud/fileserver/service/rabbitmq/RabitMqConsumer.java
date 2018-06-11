@@ -43,7 +43,7 @@ public class RabitMqConsumer {
 
         singleThreadExecutor.execute(new ReceivedRabbitmqRunnable(jsonObject));
 
-        logger.info("消费内容：{}", jsonObject.toJSONString());
+     //   logger.info("消费内容：{}", jsonObject.toJSONString());
 
         //返回执行结果（成功，失败）和ID
         JSONObject json = new JSONObject();

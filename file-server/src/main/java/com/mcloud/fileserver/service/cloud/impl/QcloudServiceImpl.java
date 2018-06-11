@@ -86,7 +86,7 @@ public class QcloudServiceImpl implements CloudService {
      * @Description: 下载文件
      * @return
      */
-    public  boolean downLoadFile(String cloudFileName,String localFilePath) {
+    public  String downLoadFile(String cloudFileName,String localFilePath) {
         initCOSClient();
         String cosFilePath="/backupFile/"+ cloudFileName;
         String fileName =cosFilePath.substring((cosFilePath.lastIndexOf("/")));
@@ -95,7 +95,7 @@ public class QcloudServiceImpl implements CloudService {
         getFileLocalRequest.setUseCDN(false);
         getFileLocalRequest.setReferer("*.myweb.cn");
         String getFileResult = cosClient.getFileLocal(getFileLocalRequest);
-        return true;
+        return savelocalFilePath;
     }
 
     public  String moveFile(ConfQcloud confQcloud, String cosFilePath, String dstCosFilePath) {

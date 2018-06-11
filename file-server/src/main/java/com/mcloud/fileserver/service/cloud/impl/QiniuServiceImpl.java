@@ -140,7 +140,7 @@ public class QiniuServiceImpl implements CloudService {
     }
 
 
-    public void urlDownLoadSource(String finalUrl,String fileName,String saveFilePath) throws IOException {
+    public String urlDownLoadSource(String finalUrl,String cloudFilePath,String localFilePath) throws IOException {
         URL url = null;
         try {
             url = new URL(finalUrl);
@@ -166,11 +166,13 @@ public class QiniuServiceImpl implements CloudService {
         }
 
         //文件保存位置
-        File saveDir = new File(saveFilePath);
+        File saveDir = new File(localFilePath);
         if(!saveDir.exists()){
             saveDir.mkdir();
         }
-        File file = new File(saveDir+File.separator+fileName);
+        String fileName =cloudFilePath.substring((cloudFilePath.lastIndexOf("/")));
+        String savelocalFilePath = localFilePath + File.separator+ fileName.replace("/","");
+        File file = new File(savelocalFilePath);
         FileOutputStream fos = new FileOutputStream(file);
         fos.write(getData);
         if(fos!=null){
@@ -180,22 +182,24 @@ public class QiniuServiceImpl implements CloudService {
             inputStream.close();
         }
 
+        return savelocalFilePath;
         //System.out.println("info:"+url+" download success");
     }
 
     @Override
-    public boolean downLoadFile(String cloudFilePath, String localFilePath) {
+    public String downLoadFile(String cloudFilePath, String localFilePath) {
         initQiniuClient();
         String encodedFileName = null;
+        String savelocalFilePath = null;
         try {
             encodedFileName = URLEncoder.encode(cloudFilePath, "utf-8");
             String finalUrl = String.format("%s/%s",confQiniu.getDomainofbucket(), encodedFileName);
-            urlDownLoadSource(finalUrl, cloudFilePath, localFilePath);
+            savelocalFilePath = urlDownLoadSource(finalUrl, cloudFilePath, localFilePath);
         } catch (IOException e) {
             e.printStackTrace();
             logger.error(e.toString());
         }
-        return true;
+        return savelocalFilePath;
 
     }
 
@@ -245,16 +249,17 @@ public class QiniuServiceImpl implements CloudService {
     }
 
 
-/*    public static void main(String [] args) throws IOException {
-        String localFilePath="D:\\Test\\split\\Hadoop，The Definitive Guide.pdf-2.dat";
+    public static void main(String [] args) throws IOException {
+     //   String localFilePath="D:\\Test\\split\\Hadoop，The Definitive Guide.pdf-2.dat";
         QiniuServiceImpl qiniu = new QiniuServiceImpl();
       //  qiniu.randomAcessUpLoadFile(localFilePath);
       //  qiniu.uploadFile(localFilePath);
         String saveFilePath="D:\\Test\\merge";
-        String fileName = "cloudStorageService.pdf-3.dat";
-        qiniu.downLoadPrivateFile(fileName,saveFilePath);
+        String fileName = "split/encrypt/5ebe72ba6a5132cc718ccf11909e10d6.dat";
+        String sts = qiniu.downLoadFile(fileName,saveFilePath);
+        System.out.println(sts);
   //      qiniu.deleteCloudFile(fileName);
-        String yunFileName ="README.txt";
+   //     String yunFileName ="README.txt";
       //  qiniu.getYunFileInfomation(yunFileName);
-    }*/
+    }
 }

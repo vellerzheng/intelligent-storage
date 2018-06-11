@@ -1,6 +1,7 @@
-package com.mcloud.fileserver.service.file;
+package com.mcloud.fileserver.service.infoExchange;
 
-import com.mcloud.fileserver.service.file.Impl.CloudFilePathServiceImpl;
+import com.mcloud.fileserver.repository.entity.FileHash;
+import com.mcloud.fileserver.service.infoExchange.impl.CloudFilePathServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,5 +14,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(value="storage-web",fallback = CloudFilePathServiceImpl.class)
 public interface CloudFilePathService {
     @RequestMapping(value = "/v1/cloudPath")
-    String updateCloudPathToLocal(Object Object);
+    String updateCloudPathToLocal(FileHash fileHash);
 }

@@ -6,20 +6,18 @@ import com.mcloud.fileserver.repository.entity.*;
 import com.mcloud.fileserver.service.cloud.CloudService;
 import com.mcloud.fileserver.service.designPattern.cloudAbstractFactory.*;
 import com.mcloud.fileserver.service.file.fileOperate.upload.UploadService;
-import com.mcloud.fileserver.service.file.CloudFilePathService;
+import com.mcloud.fileserver.service.infoExchange.CloudFilePathService;
 import com.mcloud.fileserver.util.FileEncAndDecByDES;
 import com.mcloud.fileserver.util.FileManage;
 import com.mcloud.fileserver.util.PartitionFile;
+import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author: vellerzheng
@@ -50,48 +48,48 @@ public class UploadServiceImpl implements UploadService {
     @Override
     public void uploadFile() {
         Map<String, CloudService> map = new HashMap<>(); // k文件路径， Object 云服务操作
-        System.out.println("=========================================="+jsonObject.toJSONString());
         //重命名
         String filePath = jsonObject.getString("filePath");
-        Integer id = jsonObject.getInteger("id");
+        Integer userId = jsonObject.getInteger("userId");
         String usrName = jsonObject.getString("userName");
         Integer cloudNumber = jsonObject.getInteger("cloudNumber");
 
-
-
         List<CloudService> cloudServices = getCloudService(jsonObject);
-
 
         File file = new File(filePath);
         long fileSize = file.length();
         String sourceFileHash = FileManage.getMD5ByFile(file);
 
+        JSONObject json =new JSONObject();
         if(fileSize <= 1024*1024*4) {
 
             //小于 4M 直接加密
-            FileEncAndDecByDES td = new FileEncAndDecByDES(usrName + id);
-            String md5FileName = FileManage.getMD5ByFile(file) +
-                                file.getName().substring(file.getName().lastIndexOf("."), file.getName().length());
-            File encry = td.encrypt(file,md5FileName);
+            FileEncAndDecByDES td = new FileEncAndDecByDES(usrName + userId);
+            String md5FileName = FileManage.getMD5ByFile(file) + file.getName().substring(file.getName().lastIndexOf("."), file.getName().length());
+            String encryPath = td.encryptLimit4M(file, md5FileName);  //加密后文件路径
+            Random random = new Random();
+            CloudService cls = cloudServices.get(random.nextInt(cloudServices.size()));
+            Pair<String,String> litCloudPath = cls.uploadFile(encryPath);
+            json.put(litCloudPath.getKey(),litCloudPath.getValue());
+            FileManage.deleteFile(encryPath);
 
         }else{
             int partSize = (int) (fileSize /1024/ 1024 / (cloudNumber-1));
             List<String> fileNames = PartitionFile.split(file,partSize);
             map = matchFilePathToCloudService(fileNames, cloudServices);
             // 多线程加密上传
-            mulThEncUp = new MulThreadEncryAndUpload(map,usrName+id);
-          //  mulThEncUp.EncryAndUpload();
-            JSONObject json =  mulThEncUp.EncryAndUpload();
-            json.put("fileId",jsonObject.getInteger("fileId"));
-            json.put("fileHash",sourceFileHash);
-            RestTemplate template = new RestTemplate();
-            String url = "http://localhost:8765/v1/cloudPath";
-            FileHash fileHash = JSON.parseObject(json.toJSONString(), FileHash.class);
-            String result = template.postForObject(url,fileHash,String.class);
-            System.out.println(result);
+            mulThEncUp = new MulThreadEncryAndUpload(map,usrName+userId);
+            json =  mulThEncUp.EncryAndUpload();
+
       //     cloudInfoService.provideCloudPath(jsonObject);
         }
-
+        json.put("fileId",jsonObject.getInteger("fileId"));
+        json.put("fileHash",sourceFileHash);
+        RestTemplate template = new RestTemplate();
+        String url = "http://localhost:8765/v1/cloudPath";
+        FileHash fileHash = JSON.parseObject(json.toJSONString(), FileHash.class);
+        String result = template.postForObject(url,fileHash,String.class);
+        System.out.println(result);
 
         return ;
     }

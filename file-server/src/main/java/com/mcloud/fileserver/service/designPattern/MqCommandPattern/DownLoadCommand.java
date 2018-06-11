@@ -24,6 +24,6 @@ public class DownLoadCommand implements Command {
 
     @Override
     public void exec() {
-        downLoadService.DownLoadFile();
+        downLoadService.downLoadFile();
     }
 }

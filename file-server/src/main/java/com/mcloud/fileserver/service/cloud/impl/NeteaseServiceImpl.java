@@ -181,13 +181,14 @@ public class NeteaseServiceImpl implements CloudService {
      * @Description: 下载文件
      * @return
      */
-    public  boolean downLoadFile(String cloudFilePath,String localFilePath) {
+    public  String downLoadFile(String cloudFilePath,String localFilePath) {
 
         initNosClient();
-        String savelocalFilePath = localFilePath + File.separator+ cloudFilePath.replace("/","");  //key 为上传的文件名
+        String fileName =cloudFilePath.substring((cloudFilePath.lastIndexOf("/")));
+        String savelocalFilePath = localFilePath + File.separator+ fileName.replace("/","");  //key 为上传的文件名
         GetObjectRequest getObjectRequest = new GetObjectRequest(confNetease.getBucketname(),cloudFilePath);
         ObjectMetadata objectMetadata = nosClient.getObject(getObjectRequest,new File(savelocalFilePath));
-        return true;
+        return savelocalFilePath;
     }
 
 

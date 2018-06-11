@@ -10,5 +10,5 @@ import com.alibaba.fastjson.JSONObject;
  */
 public interface DownLoadService {
 
-    void DownLoadFile();
+    void downLoadFile();
 }

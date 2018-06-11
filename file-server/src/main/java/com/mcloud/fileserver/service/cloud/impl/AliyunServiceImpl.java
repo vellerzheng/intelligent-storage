@@ -127,10 +127,11 @@ public class AliyunServiceImpl implements CloudService {
 
     // 下载文件
     @SuppressWarnings("unused")
-    public  boolean downLoadFile(String cloudFileName, String localFilePath) {
+    public  String downLoadFile(String cloudFileName, String localFilePath) {
                 initAliyun();
                 String yunFilePath="backupFile/"+cloudFileName;
                 /*confAliyun confAliyun = null;*/
+                String savelocalFilePath = null;
                 try {
                     OSSObject object = ossClient.getObject(confAliyun.getBucketname(), yunFilePath);
                     // 获取ObjectMeta
@@ -139,7 +140,7 @@ public class AliyunServiceImpl implements CloudService {
                     // 获取Object的输入流
                     InputStream objectContent = object.getObjectContent();
                     String fileName =yunFilePath.substring((yunFilePath.lastIndexOf("/")));
-                    String savelocalFilePath = localFilePath+File.separator+ fileName.replace("/","");  //key 为上传的文件名
+                    savelocalFilePath = localFilePath+File.separator+ fileName.replace("/","");  //key 为上传的文件名
                     ObjectMetadata objectData = ossClient.getObject(new GetObjectRequest(confAliyun.getBucketname(), yunFilePath),
                             new File(savelocalFilePath));
                     // 关闭数据流
@@ -147,7 +148,7 @@ public class AliyunServiceImpl implements CloudService {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                return  true;
+                return  savelocalFilePath;
             }
 
     /**
