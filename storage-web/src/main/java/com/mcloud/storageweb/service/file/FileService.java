@@ -23,5 +23,5 @@ public interface FileService {
 
     int updateByPrimaryKey(FileEntity record);
 
-    boolean tranferEventToFileServer(User user,Integer fileId, String filePath);
+
 }

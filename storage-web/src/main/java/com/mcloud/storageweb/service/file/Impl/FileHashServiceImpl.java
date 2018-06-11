@@ -39,6 +39,11 @@ public class FileHashServiceImpl implements FileHashService {
     }
 
     @Override
+    public FileHash selectByFileId(Integer fileId) {
+        return fileHashMapper.selectByFileId(fileId);
+    }
+
+    @Override
     public int updateByPrimaryKeySelective(FileHash record) {
         return fileHashMapper.updateByPrimaryKeySelective(record);
     }

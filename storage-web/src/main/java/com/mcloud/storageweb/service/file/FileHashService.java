@@ -18,6 +18,8 @@ public interface FileHashService {
 
     FileHash selectByPrimaryKey(Integer id);
 
+    FileHash selectByFileId(Integer fileId);
+
     int updateByPrimaryKeySelective(FileHash record);
 
     int updateByPrimaryKey(FileHash record);

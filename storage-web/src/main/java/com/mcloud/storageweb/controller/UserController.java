@@ -3,6 +3,7 @@ package com.mcloud.storageweb.controller;
 
 import com.mcloud.storageweb.repository.entity.User;
 import com.mcloud.storageweb.service.User.UserService;
+import com.mcloud.storageweb.service.file.FileOperateService;
 import com.mcloud.storageweb.service.file.FileService;
 import com.mcloud.storageweb.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +23,14 @@ public class UserController {
     private UserService userService;
     @Autowired
     RedisUtil redisUtil;
-    @Autowired
-    FileService fileService;
+
 /*    @Autowired
     private MqttService mqttService;*/
 
     @RequestMapping(value = "/user", produces = {"application/json;charset=UTF-8"})
     public User addUser(User user){
 
-        String filePath ="D:\\Test\\split\\分布式网络架构.pdf";
+
      /*   try {
             mqttService.publish("Hello","1234567889----------------------------------------------");
         } catch (MqttException | UnsupportedEncodingException | InterruptedException e) {
@@ -46,8 +46,6 @@ public class UserController {
         redisUtil.set(usr.getUsername(),(long)120039,usr);
         User user2 = (User)redisUtil.get(usr.getUsername());
         redisUtil.remove(usr.getUsername());
-
-        fileService.tranferEventToFileServer(usr,209, filePath);
 
         return usr;
     }
