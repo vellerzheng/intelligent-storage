@@ -24,6 +24,12 @@
     from files_hash
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByFileId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from files_hash
+    where file_id = #{fileId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from files_hash
     where id = #{id,jdbcType=INTEGER}

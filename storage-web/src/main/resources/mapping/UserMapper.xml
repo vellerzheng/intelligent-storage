@@ -20,17 +20,23 @@
     from users
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from users
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from users
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.mcloud.storageweb.repository.entity.User" >
-    insert into users (id, username, password, 
+    insert into users (username, password,
       email, phone, roleId, 
       createtime, updatetime)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{roleid,jdbcType=INTEGER}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+      #{createtime,jdbcType=TIMESTAMP}, now())
   </insert>
   <insert id="insertSelective" parameterType="com.mcloud.storageweb.repository.entity.User" >
     insert into users
