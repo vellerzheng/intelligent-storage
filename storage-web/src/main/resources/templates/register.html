@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css">
+
+    <title>Registration</title>
+
+
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+
+
+<body style="background-color: #f1f1f1; padding-bottom: 0">
+
+<div th:insert="~{header :: nav}"></div>
+
+<div class="container" style="margin-top: 60px">
+
+    <div class="row" style="margin-top: 100px">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-console"></span> Register</h3>
+                </div>
+                <div class="panel-body" id="registerPage">
+                    <form id="form" th:action="@{/register}" method="post"> <!-- th:action="@{/register}" method="post"  -->
+                        <div class="form-group" style="margin-top: 30px">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                                <input type="text" class="form-control" v-model="username" name="username" id="username" placeholder="账号">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                                <input type="password" class="form-control"  v-model="password" name="password" id="password" placeholder="密码">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></div>
+                                <input type="text" class="form-control" v-model="phone" name="phone" id="phone" placeholder="电话">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                                <input type="text" class="form-control" v-model ="email" name="email" id="email" placeholder="邮件">
+                            </div>
+                        </div>
+                        <br>
+                       <div id="errorMsg" class="alert alert-danger text-center" style="display:none;">
+                            <p style="text-align: center" class="text-danger">注册失败，账号已存在！</p>
+                        </div>
+                        <div  id="succMsg" class="alert alert-success text-center" style="display:none;">
+                            <p style="text-align: center" class="text-success">注册成功，可以登录了！</p>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-6 col-md-offset-3 col-xs-12 ">
+                                <button type="submit" @click="register" class="btn btn-primary btn-block">注册</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-6 col-md-offset-3" style="text-align: center">
+                                <a href="/login">返回登录页面</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script th:src="@{/js/vue.js}"></script>
+<script th:src="@{/js/vue-resource.js}"></script>
+<script src="https://cdn.bootcss.com/parsley.js/2.8.1/parsley.js"></script>
+<script type='text/javascript'>
+    Vue.http.options.emulateJSON = true;
+    var registerPage = new Vue({
+        el: '#registerPage',
+        data: {
+            'username' : '',
+            'password' : '',
+            'phone' : '',
+            'email' : ''
+        },
+        methods: {
+            register: function(event){
+                var ok = $('#form').parsley().isValid({force: true});
+                if(!ok){
+                    return;
+                }
+                var datas={
+                    username : this.username,
+                    passWord : this.password,
+                    phone : this.phone,
+                    email : this.email
+                };
+                this.$http.post('/register',datas).then(function(reponse){
+                    if(reponse.data.rspCode=="000000"){
+                        alert(result.resultMsg+" 点击确定，5秒后跳转页面！");
+                        $("#succMsg").html(reponse.data.rspMsg);
+                        $("#succMsg").show();
+                        window.open('/', '_self');
+                        // 5秒后跳转，单位毫秒
+                      //  setTimeout(redirectUrl("/welcome"),5000);
+                    }else {
+                        $("#errorMsg").html(reponse.data.rspMsg);
+                        $("#errorMsg").show();
+                    }
+
+                }, function(response){
+                    alert('注册失败，用户已经存在，请重试');
+                    setTimeout(redirectUrl("/register"),5000);
+                    console.log('error');
+                })
+            }
+        }
+    })
+</script>
+</html>
