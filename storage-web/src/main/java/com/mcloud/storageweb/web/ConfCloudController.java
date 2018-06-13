@@ -1,4 +1,4 @@
-package com.mcloud.storageweb.controller;
+package com.mcloud.storageweb.web;
 
 import com.mcloud.storageweb.repository.entity.*;
 import com.mcloud.storageweb.service.cloudConf.*;
