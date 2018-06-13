@@ -58,12 +58,18 @@
                             </div>
                         </div>
                         <br>
-                       <div id="errorMsg" class="alert alert-danger text-center" style="display:none;">
+                        <div th:if="${param.error}">
+                            <p style="text-align: center" class="text-danger">注册失败，账号已存在！</p>
+                        </div>
+                        <div th:if="${param.success}">
+                            <p style="text-align: center" class="text-success">注册成功，可以登录了！</p>
+                        </div>
+<!--                       <div id="errorMsg" class="alert alert-danger text-center" style="display:none;">
                             <p style="text-align: center" class="text-danger">注册失败，账号已存在！</p>
                         </div>
                         <div  id="succMsg" class="alert alert-success text-center" style="display:none;">
                             <p style="text-align: center" class="text-success">注册成功，可以登录了！</p>
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <div class="input-group col-md-6 col-md-offset-3 col-xs-12 ">
                                 <button type="submit" @click="register" class="btn btn-primary btn-block">注册</button>
