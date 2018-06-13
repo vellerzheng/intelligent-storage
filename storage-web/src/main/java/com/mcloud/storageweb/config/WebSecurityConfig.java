@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/welcome")
+                .defaultSuccessUrl("/")
                 .and()
                 .sessionManagement()
                 .maximumSessions(1)
