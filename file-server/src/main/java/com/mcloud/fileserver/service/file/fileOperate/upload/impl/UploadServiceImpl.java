@@ -2,11 +2,14 @@ package com.mcloud.fileserver.service.file.fileOperate.upload.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.mcloud.fileserver.controller.FileController;
 import com.mcloud.fileserver.repository.entity.*;
+import com.mcloud.fileserver.repository.entity.common.MessageEntity;
 import com.mcloud.fileserver.service.cloud.CloudService;
 import com.mcloud.fileserver.service.designPattern.cloudAbstractFactory.*;
 import com.mcloud.fileserver.service.file.fileOperate.upload.UploadService;
 import com.mcloud.fileserver.service.infoExchange.CloudFilePathService;
+import com.mcloud.fileserver.service.rabbitmq.RabbitMqProvider;
 import com.mcloud.fileserver.util.FileEncAndDecByDES;
 import com.mcloud.fileserver.util.FileManage;
 import com.mcloud.fileserver.util.PartitionFile;
@@ -36,6 +39,10 @@ public class UploadServiceImpl implements UploadService {
 
     @Autowired
     CloudFilePathService cloudInfoService;
+
+
+    @Autowired
+    RabbitMqProvider rabbitMqProvider;
 
     UploadServiceImpl(){
 
@@ -86,10 +93,12 @@ public class UploadServiceImpl implements UploadService {
         json.put("fileId",jsonObject.getInteger("fileId"));
         json.put("fileHash",sourceFileHash);
         RestTemplate template = new RestTemplate();
-        String url = "http://localhost:8765/v1/cloudPath";
+        String url = "http://localhost:8765/api/v1/cloudPath";
         FileHash fileHash = JSON.parseObject(json.toJSONString(), FileHash.class);
         String result = template.postForObject(url,fileHash,String.class);
-        System.out.println(result);
+
+     //    rabbitMqProvider.sendMessage(messageEntity);
+
 
         return ;
     }

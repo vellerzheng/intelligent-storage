@@ -23,7 +23,7 @@ import java.util.concurrent.Executors;
  * @Modify By:
  */
 @Component
-@RabbitListener(queues = RabbitMqConfig.QUEUE_NAME)
+@RabbitListener(queues = RabbitMqConfig.QUEUE_NAME,containerFactory="rabbitListenerContainerFactory")
 public class RabitMqConsumer {
 
     /**
@@ -32,11 +32,7 @@ public class RabitMqConsumer {
     static Logger logger = LoggerFactory.getLogger(RabitMqConsumer.class);
 
     final static  ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
-    @RabbitHandler
-    public void handler(@Payload MessageEntity messageEntity) {
-        logger.info("消费内容：{}", JSON.toJSONString(messageEntity));
-        System.out.println("消费内容：" + JSON.toJSONString(messageEntity));
-    }
+
 
     @RabbitHandler
     public JSONObject handler1(@Payload JSONObject jsonObject){

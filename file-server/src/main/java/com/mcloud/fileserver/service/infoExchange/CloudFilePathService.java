@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @FeignClient(value="storage-web",fallback = CloudFilePathServiceImpl.class)
 public interface CloudFilePathService {
-    @RequestMapping(value = "/v1/cloudPath")
+    @RequestMapping(value = "/api/v1/cloudPath")
     String updateCloudPathToLocal(FileHash fileHash);
 }

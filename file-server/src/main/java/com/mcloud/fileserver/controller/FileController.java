@@ -39,7 +39,7 @@ public class FileController {
 
     }
 
-    @RequestMapping(value = "/v1/cloudPath")
+    @RequestMapping(value = "/api/v1/cloudPath")
     public String updateCloudPath(FileHash fileHash){
         return cloudFilePathService.updateCloudPathToLocal(fileHash);
     }
