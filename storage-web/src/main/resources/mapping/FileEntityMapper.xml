@@ -24,19 +24,25 @@
     from files
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectListByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from files
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from files
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mcloud.storageweb.repository.entity.FileEntity" >
-    insert into files (id, description, file_name, 
+  <insert id="insert" parameterType="com.mcloud.storageweb.repository.entity.FileEntity" useGeneratedKeys="true" keyProperty="id" >
+    insert into files (description, file_name,
       size, file_path, user_id, 
       status, version, createtime, 
       updatetime, pub_date)
-    values (#{id,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, 
+    values (#{description,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR},
       #{size,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{status,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{updatetime,jdbcType=TIMESTAMP}, #{pubDate,jdbcType=TIMESTAMP})
+      now(), #{pubDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.mcloud.storageweb.repository.entity.FileEntity" >
     insert into files
@@ -139,7 +145,7 @@
         createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="updatetime != null" >
-        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+        updatetime = now(),
       </if>
       <if test="pubDate != null" >
         pub_date = #{pubDate,jdbcType=TIMESTAMP},
@@ -157,7 +163,7 @@
       status = #{status,jdbcType=INTEGER},
       version = #{version,jdbcType=INTEGER},
       createtime = #{createtime,jdbcType=TIMESTAMP},
-      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updatetime = now(),
       pub_date = #{pubDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
