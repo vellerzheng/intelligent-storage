@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(value = "/api/v1", description = "文件交互操作", tags ={ "文件操作"} )
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/api/v1")
 public class ApiController {
     @Autowired
     FileHashService fileHashService;
