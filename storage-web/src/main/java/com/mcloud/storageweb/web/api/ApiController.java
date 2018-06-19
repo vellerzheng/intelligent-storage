@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date:Created in 17:09 2018/6/8
  * @Modify By:
  */
-@Api(value = "/v1", description = "文件交互操作", tags ={ "文件操作"} )
+@Api(value = "/api/v1", description = "文件交互操作", tags ={ "文件操作"} )
 @RestController
 @RequestMapping("/v1")
 public class ApiController {

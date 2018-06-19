@@ -1,4 +1,4 @@
-package com.mcloud.storageweb.web;
+package com.mcloud.storageweb.web.api;
 
 import com.mcloud.storageweb.repository.entity.FileHash;
 import com.mcloud.storageweb.repository.entity.User;
@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @Modify By:
  */
 @RestController
-public class FileController {
+@RequestMapping(value = "/api/v1")
+public class FileTestController {
     @Autowired
     FileOperateService fileOperateService;
     @Autowired
@@ -29,7 +30,7 @@ public class FileController {
 
     @RequestMapping(value = "/uploadFile")
     public String uploadFile(){
-        String filePath ="D:\\Test\\split\\云智能运维自动化部署关键技术研究_李志刚.pdf";
+        String filePath ="D:\\Test\\split\\分布式网络架构.pdf";
         User usr = userService.selectByPrimaryKey(3);
         fileOperateService.uploadFile(usr,208, filePath);
 

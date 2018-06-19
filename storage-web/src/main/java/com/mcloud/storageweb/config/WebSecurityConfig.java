@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/logout",
                         "/api/**",
                         "/static/**",
+                        "/filemanager/**",
                         "/**/flyway",
                         "/**/auditevents",
                         "/**/jolokia").permitAll() //放开"/api/**"：为了给被监控端免登录注册并解决Log与Logger冲突

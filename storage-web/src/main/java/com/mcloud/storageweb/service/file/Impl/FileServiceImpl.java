@@ -7,6 +7,8 @@ import com.mcloud.storageweb.service.file.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: vellerzheng
  * @Description:
@@ -39,6 +41,11 @@ public class FileServiceImpl implements FileService {
     @Override
     public FileEntity selectByPrimaryKey(Integer id) {
         return fileEntityMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<FileEntity> selectListByUserId(Integer userId) {
+        return fileEntityMapper.selectListByUserId(userId);
     }
 
     @Override

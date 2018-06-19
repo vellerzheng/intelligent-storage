@@ -3,6 +3,8 @@ package com.mcloud.storageweb.service.file;
 import com.mcloud.storageweb.repository.entity.FileEntity;
 import com.mcloud.storageweb.repository.entity.User;
 
+import java.util.List;
+
 /**
  * @Author: vellerzheng
  * @Description:
@@ -18,6 +20,8 @@ public interface FileService {
     int insertSelective(FileEntity record);
 
     FileEntity selectByPrimaryKey(Integer id);
+
+    List<FileEntity> selectListByUserId(Integer userId);
 
     int updateByPrimaryKeySelective(FileEntity record);
 

@@ -1,8 +1,11 @@
 package com.mcloud.storageweb.repository.entity;
 
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@ToString
 public class FileHash implements Serializable {
     private Integer id;
 

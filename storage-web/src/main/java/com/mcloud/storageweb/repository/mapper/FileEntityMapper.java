@@ -3,6 +3,8 @@ package com.mcloud.storageweb.repository.mapper;
 import com.mcloud.storageweb.repository.entity.FileEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface FileEntityMapper {
     int deleteByPrimaryKey(Integer id);
@@ -12,6 +14,8 @@ public interface FileEntityMapper {
     int insertSelective(FileEntity record);
 
     FileEntity selectByPrimaryKey(Integer id);
+
+    List<FileEntity> selectListByUserId(Integer userId);
 
     int updateByPrimaryKeySelective(FileEntity record);
 
