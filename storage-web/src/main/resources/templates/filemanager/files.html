@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <<title>Cloud Secure Storage</title>
+    <title>Cloud Secure Storage</title>
     <!-- 引入bootstrap -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <!-- 引入JQuery  bootstrap.js-->
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -19,46 +16,47 @@
 </head>
 <body>
 <!-- 顶栏 -->
-<div th:insert="~{header :: nav}"></div>
+<div th:insert="~{fragments/header :: header}"></div>
+
 
 <div class="container">
     <h1> 我的文件</h1>
     <hr/>
 
-    <h3>所有文件 <a href="/filemanager/uploadfile/${loginUser.username}" type="button" class="btn btn-primary btn-sm">添加文件</a></h3>
+    <h3>所有文件 <a th:href="@{/filemanager/uploadfile/(username=${username})}" type="button" class="btn btn-primary btn-sm">添加文件</a></h3>
 
     <!-- 如果用户列表为空 -->
-    <th:if test="${empty fileList}">
+   <div th:style="${fileList != null}?'display:none;':'padding:0px 0px 0px 20px;'">
         <div class="alert alert-warning" role="alert">
-            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>files表为空，请<a href="/clouds/filemanager/uploadfile/${loginId}" type="button" class="btn btn-primary btn-sm">添加</a>
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>files表为空，请<a th:href="@{/clouds/filemanager/uploadfile/(username=${username})}" type="button" class="btn btn-primary btn-sm">添加</a>
         </div>
-    </th:if>
+    </div>
 
     <!-- 如果用户列表非空 -->
-    <th:if test="${!empty fileList}">
+    <div th:unless="${fileList == null}">
         <table class="table table-bordered table-striped">
             <tr>
                 <th>ID</th>
                 <th>文件名</th>
-              <%--  <th>描述</th>--%>
+              <!--  <th>描述</th> -->
                 <th>文件大小</th>
                 <th>上传日期</th>
                 <th>状态</th>
                 <th>操作</th>
             </tr>
 
-            <th:forEach items="${fileList}" var="file">
-                <tr>
-                    <td>${file.id}</td>
-                    <td>${file.fileName}</td>
-                 <%--   <td>${file.description}</td>--%>
-                    <td>${file.size}</td>
-                    <td><th:formatDate value="${file.createtime }" pattern="yyyy-MM-dd"/></td>
-                   <%-- <td>${file.status}</td>--%>
+            <tr th:each = "file : ${fileList}" >
+
+                    <td th:text="${file.id}"></td>
+                    <td th:text="${file.fileName}"></td>
+                 <!--   <td th:text="${file.id}">${file.description}</td> -->
+                    <td th:text="${file.size}"></td>
+                    <td th:text="${#dates.format(file.createtime,'yyyy-MM-dd HH:mm:ss')}"></td>
+                  <!--  <td th:text="${file.id}">${file.status}</td>-->
                     <td>
-                        <th:if test="${file.status eq -1}"><p>上传失败</p></th:if>
-                        <th:if test="${file.status eq 1}"><p>上传成功</p></th:if>
-                        <th:if test="${file.status eq 2}"><p>正在上传</p></th:if>
+                        <a th:if ="${file.status == -1}"><p>上传失败</p></a>
+                        <a th:if ="${file.status == 1}"><p>上传成功</p></a>
+                        <a th:if ="${file.status == 2}"><p>正在上传</p></a>
                     </td>
                     <td>
                         <a href="/filemanager/files/show/${file.id}" type="button" class="btn btn-sm btn-success">详情</a>
@@ -66,10 +64,9 @@
                         <a href="/filemanager/files/delete/${loginUser.username}/${file.id}" type="button" class="btn btn-sm btn-danger">删除</a>
                         <a href="/filemanager/files/download/${file.id}/${file.fileName}" type="button" class="btn btns-sm btn-info">下载</a>
                     </td>
-                </tr>
-            </th:forEach>
+            </tr>
         </table>
-    </th:if>
+    </div>
 
     <div>
     <!-- 翻页部分 -->
@@ -77,14 +74,16 @@
             <table width="100%">
                 <tr>
                     <td style="float:right;color:#047072">
-                        <a href="#" onclick="controlPage(1,'${pager.getSizePerPage()}');" style="color:#037170;text-decoration: none;">首页</a>&nbsp;
-                        <a href="#" onclick="controlPage('${pager.getBeforPageNo()}','${pager.getSizePerPage()}');" style="color:#037170;text-decoration: none;">上一页</a>&nbsp;
-                        <a href="#" onclick="controlPage('${pager.getNextPageNo()}','${pager.getSizePerPage()}');" style="color:#037170;text-decoration: none;">下一页</a>&nbsp;
-                        <a href="#" onclick="controlPage('${pager.getLastPageNo()}','${pager.getSizePerPage()}');" style="color:#037170;text-decoration: none;">末页</a>&nbsp;
-                        第<input id="nowPageNo" name="nowPageNo" type="text" onchange="controlPageNo(this,'${pager.getNowPageNo()}','${pager.getSizePerPage()}');" value="${pager.getNowPageNo()}" size="1"/>页&nbsp;
-                        每页<input id="sizePerPage" name="sizePerPage" type="text" onchange="controlPageSize(this,'${pager.getNowPageNo()}','${pager.getSizePerPage()}');" value="${pager.getSizePerPage()}" size="1"/>条数&nbsp;
-                        总${pager.getLastPageNo()}页&nbsp;
-                        总${pager.getTotalCount()}条
+                        <a th:href="@{/filemanager/files/(pageNum=${page.firstPage})}"  style="color:#037170;text-decoration: none;">首页</a>&nbsp;
+                        <a th:href="@{/filemanager/files/(pageNum=${page.prePage})}" style="color:#037170;text-decoration: none;">上一页</a>&nbsp;
+                        <a th:href="@{/filemanager/files/(pageNum=${page.nextPage})}" style="color:#037170;text-decoration: none;">下一页</a>&nbsp;
+                        <a th:href="@{/filemanager/files/(pageNum=${page.lastPage})}"  style="color:#037170;text-decoration: none;">末页</a>&nbsp;
+                        <div>
+                        第<input id="nowPageNo" name="nowPageNo" type="text"  size="1" th:value="${page.pageNum}" />页&nbsp;
+                        每页<input id="sizePerPage" name="sizePerPage" type="text" size="1" th:value="${page.pageSize}"/>条数&nbsp;
+                        总<input id="totalPages" name="totalPages" type="text" size="1" th:value="${page.pages}" > 页&nbsp;
+                        总<input id="totalNum" name="totalNUm" type="text" size="1" th:value="${page.total}">条
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -92,7 +91,7 @@
     </div>
 </div>
 
-
+<!--<div th:replace="fragments/footer :: footer">footer</div>-->
 </body>
 
 
@@ -106,7 +105,7 @@
         pageVarChange();
 
         //form提交
-        $("#pageForm").attr("action","/clouds/filemanager/files/${loginUser.username}");
+        $("#pageForm").attr("action","/filemanager/files/");
         $("#actType").val("list");
         $("#pageForm").submit();
     }
