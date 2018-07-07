@@ -2,7 +2,6 @@ package com.mcloud.fileserver.service.file.fileOperate.upload.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.mcloud.fileserver.controller.FileController;
 import com.mcloud.fileserver.repository.entity.*;
 import com.mcloud.fileserver.repository.entity.common.MessageEntity;
 import com.mcloud.fileserver.service.cloud.CloudService;
@@ -10,12 +9,13 @@ import com.mcloud.fileserver.service.designPattern.cloudAbstractFactory.*;
 import com.mcloud.fileserver.service.file.fileOperate.upload.UploadService;
 import com.mcloud.fileserver.service.infoExchange.CloudFilePathService;
 import com.mcloud.fileserver.service.rabbitmq.RabbitMqProvider;
+import com.mcloud.fileserver.service.rabbitmq.RabbitService;
 import com.mcloud.fileserver.util.FileEncAndDecByDES;
 import com.mcloud.fileserver.util.FileManage;
 import com.mcloud.fileserver.util.PartitionFile;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -29,10 +29,11 @@ import java.util.*;
  * @Modify By:
  */
 
-@Component
+@Service
 public class UploadServiceImpl implements UploadService {
 
     private JSONObject jsonObject;
+
 
     @Autowired
     MulThreadEncryAndUpload mulThEncUp;
@@ -40,9 +41,8 @@ public class UploadServiceImpl implements UploadService {
     @Autowired
     CloudFilePathService cloudInfoService;
 
-
     @Autowired
-    RabbitMqProvider rabbitMqProvider;
+    private RabbitService rabbitService;
 
     UploadServiceImpl(){
 
@@ -50,7 +50,9 @@ public class UploadServiceImpl implements UploadService {
 
     public UploadServiceImpl(JSONObject jsonObject){
         this.jsonObject = jsonObject;
+        rabbitService = new RabbitMqProvider();
     }
+
 
     @Override
     public void uploadFile() {
@@ -88,7 +90,7 @@ public class UploadServiceImpl implements UploadService {
             mulThEncUp = new MulThreadEncryAndUpload(map,usrName+userId);
             json =  mulThEncUp.EncryAndUpload();
 
-      //     cloudInfoService.provideCloudPath(jsonObject);
+
         }
         json.put("fileId",jsonObject.getInteger("fileId"));
         json.put("fileHash",sourceFileHash);
@@ -96,11 +98,11 @@ public class UploadServiceImpl implements UploadService {
         String url = "http://localhost:8765/api/v1/cloudPath";
         FileHash fileHash = JSON.parseObject(json.toJSONString(), FileHash.class);
         String result = template.postForObject(url,fileHash,String.class);
+         MessageEntity messageEntity = new MessageEntity();
+         messageEntity.setContent("20180627——--------------");
 
-     //    rabbitMqProvider.sendMessage(messageEntity);
+ //        rabbitService.sendMessage(messageEntity);
 
-
-        return ;
     }
 
 
@@ -174,5 +176,6 @@ public class UploadServiceImpl implements UploadService {
 
         return cloudSer;
     }
+
 
 }

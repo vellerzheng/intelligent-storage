@@ -35,6 +35,7 @@ public class ReceivedRabbitmqRunnable implements Runnable {
     @Autowired
     DeleteService deleteService;
 
+
     @Override
     public void run() {
 

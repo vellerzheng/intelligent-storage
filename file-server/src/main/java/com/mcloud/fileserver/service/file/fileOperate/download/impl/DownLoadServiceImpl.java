@@ -11,6 +11,7 @@ import com.mcloud.fileserver.util.PartitionFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,11 +54,20 @@ public class DownLoadServiceImpl implements DownLoadService {
         Map<String,CloudService> downAndDecry =MatchCloudFilePathToCloudService(fileHash,jsonObject);
         mulDownDecry = new MulThreadDownloadAndDecry(downAndDecry, userName+userId, localFilePath);
         List<String> resDecryPaths = mulDownDecry.downloadAnddecrypt();
-        PartitionFile.merge(resDecryPaths,localFilePath+"/"+realFileName);
+        String downloadFilePath = PartitionFile.merge(resDecryPaths,localFilePath+"/"+realFileName);
         for(String filePath : resDecryPaths){
             FileManage.deleteFile(filePath);
         }
-        System.out.println("--test--");
+
+        FileEntity fileEntity = new FileEntity();
+        fileEntity.setUserId(userId);
+        fileEntity.setId(fileHash.getFileId());
+        fileEntity.setFilePath(downloadFilePath);
+
+        String url = "http://localhost:8765/api/v1/downloadResult";
+        RestTemplate template = new RestTemplate();
+        String result = template.postForObject(url,fileEntity,String.class);
+        System.out.println("--download finished--");
     }
 
 
