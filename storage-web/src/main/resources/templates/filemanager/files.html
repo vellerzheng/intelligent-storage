@@ -25,6 +25,7 @@
 
     <h3>所有文件 <a th:href="@{/filemanager/uploadfile/(username=${username})}" type="button" class="btn btn-primary btn-sm">添加文件</a></h3>
 
+
     <!-- 如果用户列表为空 -->
    <div th:style="${fileList != null}?'display:none;':'padding:0px 0px 0px 20px;'">
         <div class="alert alert-warning" role="alert">
@@ -45,9 +46,10 @@
                 <th>操作</th>
             </tr>
 
-            <tr th:each = "file : ${fileList}" >
+            <tr id = "file" th:each = "file : ${fileList}" >
+                    <input type="hidden" id ='fileId' th:name="fileId" th:value="${file.id}">
+                    <td  th:text="${file.id}"></td>
 
-                    <td th:text="${file.id}"></td>
                     <td th:text="${file.fileName}"></td>
                  <!--   <td th:text="${file.id}">${file.description}</td> -->
                     <td th:text="${file.size}"></td>
@@ -58,11 +60,11 @@
                         <a th:if ="${file.status == 1}"><p>上传成功</p></a>
                         <a th:if ="${file.status == 2}"><p>正在上传</p></a>
                     </td>
-                    <td>
-                        <a href="/filemanager/files/show/${file.id}" type="button" class="btn btn-sm btn-success">详情</a>
-                        <a href="/filemanager/files/update/${loginUser.username}/${file.id}" type="button" class="btn btn-sm btn-warning">修改</a>
-                        <a href="/filemanager/files/delete/${loginUser.username}/${file.id}" type="button" class="btn btn-sm btn-danger">删除</a>
-                        <a href="/filemanager/files/download/${file.id}/${file.fileName}" type="button" class="btn btns-sm btn-info">下载</a>
+                    <td> <!--th:href="@{/filemanager/files/delete/(fileId= ${file.id}, username=${username})}"-->
+                        <button href="/filemanager/files/show/${file.id}" type="button" class="btn btn-sm btn-success">详情</button>
+                        <button href="/filemanager/files/update/${loginUser.username}/${file.id}" type="button" class="btn btn-sm btn-warning">修改</button>
+                        <button  onclick="deleteFile(getURLParameter('username'));"  type="button" class="btn btn-sm btn-danger">删除</button>
+                        <button href="/filemanager/files/download/${file.id}/${file.fileName}" type="button" class="btn btns-sm btn-info">下载</button>
                     </td>
             </tr>
         </table>
@@ -74,13 +76,13 @@
             <table width="100%">
                 <tr>
                     <td style="float:right;color:#047072">
-                        <a th:href="@{/filemanager/files/(pageNum=${page.firstPage})}"  style="color:#037170;text-decoration: none;">首页</a>&nbsp;
-                        <a th:href="@{/filemanager/files/(pageNum=${page.prePage})}" style="color:#037170;text-decoration: none;">上一页</a>&nbsp;
-                        <a th:href="@{/filemanager/files/(pageNum=${page.nextPage})}" style="color:#037170;text-decoration: none;">下一页</a>&nbsp;
-                        <a th:href="@{/filemanager/files/(pageNum=${page.lastPage})}"  style="color:#037170;text-decoration: none;">末页</a>&nbsp;
+                        <a th:href="@{/filemanager/files/(username=${username},pageNum=${page.firstPage})}"  style="color:#037170;text-decoration: none;">首页</a>&nbsp;
+                        <a th:href="@{/filemanager/files/(username=${username},pageNum=${page.prePage})}" style="color:#037170;text-decoration: none;">上一页</a>&nbsp;
+                        <a th:href="@{/filemanager/files/(username=${username},pageNum=${page.nextPage})}" style="color:#037170;text-decoration: none;">下一页</a>&nbsp;
+                        <a th:href="@{/filemanager/files/(username=${username},pageNum=${page.lastPage})}"  style="color:#037170;text-decoration: none;">末页</a>&nbsp;
                         <div>
-                        第<input id="nowPageNo" name="nowPageNo" type="text"  size="1" th:value="${page.pageNum}" />页&nbsp;
-                        每页<input id="sizePerPage" name="sizePerPage" type="text" size="1" th:value="${page.pageSize}"/>条数&nbsp;
+                        第<input id="nowPageNum" name="nowPageNum" type="text" onchange="controlPageNum(this,'${page.pageNum}','${page.pageSize}');" size="1" th:value="${page.pageNum}" />页&nbsp;
+                        每页<input id="sizePerPage" name="sizePerPage" type="text" onchange="controlPageSize(this,'${page.pageNum}','${page.pageSize}');" size="1" th:value="${page.pageSize}"/>条数&nbsp;
                         总<input id="totalPages" name="totalPages" type="text" size="1" th:value="${page.pages}" > 页&nbsp;
                         总<input id="totalNum" name="totalNUm" type="text" size="1" th:value="${page.total}">条
                         </div>
@@ -95,25 +97,73 @@
 </body>
 
 
-<script>
+<script type="text/javascript" th:inline="javascript">
+
+
+    function deleteFile(username){
+
+        var fileId = $('#fileId').val();
+        $.ajax({
+            url : "/filemanager/files/delete/",
+            type: 'POST',
+            data: {"username":username,"fileId":fileId},
+            dataType: 'json',
+            success : function(result) {
+                if(result.resultCode=="2000") {
+                    alert(result.resultMsg + "删除，点击确定，5秒后跳转页面！");
+                    // 5秒后跳转，单位毫秒
+                    location.href= "/filemanager/files/?username=" + username;
+                }
+                // 如果是同步（即async:false）的,sumbit的提交会阻塞，需要return true 才跳转页面
+              //  return true;
+
+            },
+            complete: function () {
+
+            },
+            error : function(data) {
+                alert("失败了！");
+                location.href= "/filemanager/files/?username=" + username;
+            }
+        });
+    }
+
+
+    function getURLParameter(name) { return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null; }
 
     //翻页方法
     function controlPage(varNowPageNo,varSizePerPage){
         //设置一下   跳转到第几页
-        $("#nowPageNo").val(varNowPageNo);
+        var nowPageNum = $("#nowPageNum").val(varNowPageNo);
+        var pageSize = $("#sizePerPage").val(varSizePerPage);
+        var fileId = $("#fileId").val();
+        var username = $("#username").val();
         //调用页面的自定义翻页部分的变量方法
         pageVarChange();
 
         //form提交
-        $("#pageForm").attr("action","/filemanager/files/");
-        $("#actType").val("list");
-        $("#pageForm").submit();
+        $.ajax({
+            url : "/filemanager/files/",
+            type: 'POST',
+            data: {"username":username,"pageNum":nowPageNum, "pageSize":pageSize},
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success : function(result) {
+                redirectUrl("/filemanager/files/?username="+username);
+            },
+            error : function(data) {
+                alert("失败了！");
+                setTimeout(redirectUrl("/filemanager/upladfile?username="+username),5000);
+            }
+        });
     }
 
 
     //第几页的输入修正
     //判断是否为正整数isPositiveNum
-    function controlPageNo(e,varBefore,varSizePerPage){
+    function controlPageNum(e,varBefore,varSizePerPage){
         if( e == null || e.value.trim()=="" || isPositiveNum(e.value.trim()) ){
             e.value = varBefore;
             return false;
