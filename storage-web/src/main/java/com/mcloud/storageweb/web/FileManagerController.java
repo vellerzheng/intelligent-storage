@@ -114,22 +114,28 @@ public class FileManagerController {
         return InfoJson.getSucc("上传成功");
     }
 
-    @RequestMapping(value = "/downloadFile")
-    @ResponseBody
-    public  String downloadFile(){
 
-        String filePath ="D:\\Test\\merge";
-        User usr = userService.selectByPrimaryKey(3);
-        fileOperateService.downLoadFile(usr,208, filePath);
-
-        return "downLoadFile Ok";
+    @GetMapping(value = "/downloadfile/")
+    public String getDownloadResult(@RequestParam("username") String username, ModelMap modelMap){
+        User user= userService.selectByUserName(username);
+        modelMap.addAttribute("username",user.getUsername());
+        modelMap.addAttribute("loginUser",user);
+        return "filemanager/downloadfile";
     }
 
-    @RequestMapping(value = "/files/delete/")
+    @RequestMapping(value = "/downloadfile/download")
+    @ResponseBody
+    public  InfoJson downloadFile(@RequestParam("username")String username,@RequestParam("fileId") Integer fileId){
+        User usr = userService.selectByUserName(username);
+        FileEntity fileEntity = fileService.selectByPrimaryKey(fileId);
+        fileOperateService.downLoadFile(usr,fileEntity.getId(), fileEntity.getFilePath());
+        return InfoJson.getSucc("下载任务已经提交！");
+    }
+
+    @RequestMapping(value = "/deleteFile/")
     @ResponseBody
     public InfoJson deleteFile(@RequestParam("username")String username,@RequestParam("fileId") Integer fileId){
 
-        String filePath ="D:\\Test\\merge";
         User usr = userService.selectByUserName(username);
         FileEntity fileEntity = fileService.selectByPrimaryKey(fileId);
         fileOperateService.deleteFile(usr,fileEntity.getId(),fileEntity.getFilePath());
