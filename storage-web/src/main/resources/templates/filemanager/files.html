@@ -63,8 +63,8 @@
                     <td> <!--th:href="@{/filemanager/files/delete/(fileId= ${file.id}, username=${username})}"-->
                         <button href="/filemanager/files/show/${file.id}" type="button" class="btn btn-sm btn-success">详情</button>
                         <button href="/filemanager/files/update/${loginUser.username}/${file.id}" type="button" class="btn btn-sm btn-warning">修改</button>
-                        <button  onclick="deleteFile(getURLParameter('username'));"  type="button" class="btn btn-sm btn-danger">删除</button>
-                        <button href="/filemanager/files/download/${file.id}/${file.fileName}" type="button" class="btn btns-sm btn-info">下载</button>
+                        <button onclick="deleteFile(getURLParameter('username'));"  type="button" class="btn btn-sm btn-danger">删除</button>
+                        <button onclick="downloadFile(getURLParameter('username'));" type="button" class="btn btns-sm btn-info">下载</button>
                     </td>
             </tr>
         </table>
@@ -98,6 +98,35 @@
 
 
 <script type="text/javascript" th:inline="javascript">
+
+
+    function downloadFile(username){
+
+        var fileId = $('#fileId').val();
+        $.ajax({
+            url : "/filemanager/downloadfile/download",
+            type: 'POST',
+            data: {"username":username,"fileId":fileId},
+            dataType: 'json',
+            success : function(result) {
+                if(result.resultCode=="2000") {
+                    alert(result.resultMsg + "提交下载请求，点击确定，5秒后跳转页面！");
+                    // 5秒后跳转，单位毫秒
+                    location.href= "/filemanager/downloadfile/?username=" + username;
+                }
+                // 如果是同步（即async:false）的,sumbit的提交会阻塞，需要return true 才跳转页面
+                //  return true;
+
+            },
+            complete: function () {
+
+            },
+            error : function(data) {
+                alert("失败了！");
+                location.href= "/filemanager/files/?username=" + username;
+            }
+        });
+    }
 
 
     function deleteFile(username){
