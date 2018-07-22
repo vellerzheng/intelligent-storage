@@ -104,7 +104,7 @@
 
         var fileId = $('#fileId').val();
         $.ajax({
-            url : "/filemanager/files/delete/",
+            url : "/filemanager/deleteFile/",
             type: 'POST',
             data: {"username":username,"fileId":fileId},
             dataType: 'json',
