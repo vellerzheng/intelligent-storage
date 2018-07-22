@@ -48,7 +48,7 @@ public class FileManagerController {
     @RequestMapping(value = "/files/")
     public String fileList(@RequestParam("username") String username, ModelMap modelMap,
                                  @RequestParam(name = "pageNum", defaultValue="1") Integer pageNum,
-                                 @RequestParam(name="pageSize", defaultValue="5") Integer pageSize){
+                                 @RequestParam(name= "pageSize", defaultValue="5") Integer pageSize){
 
 
         User loginUser =userService.selectByUserName(username);
@@ -115,6 +115,7 @@ public class FileManagerController {
     }
 
     @RequestMapping(value = "/downloadFile")
+    @ResponseBody
     public  String downloadFile(){
 
         String filePath ="D:\\Test\\merge";
@@ -124,12 +125,14 @@ public class FileManagerController {
         return "downLoadFile Ok";
     }
 
-    @RequestMapping(value = "/deleteFile")
-    public String deleteFile(){
+    @RequestMapping(value = "/files/delete/")
+    @ResponseBody
+    public InfoJson deleteFile(@RequestParam("username")String username,@RequestParam("fileId") Integer fileId){
 
         String filePath ="D:\\Test\\merge";
-        User usr = userService.selectByPrimaryKey(3);
-        fileOperateService.deleteFile(usr,208,filePath);
-        return "delete File ok!";
+        User usr = userService.selectByUserName(username);
+        FileEntity fileEntity = fileService.selectByPrimaryKey(fileId);
+        fileOperateService.deleteFile(usr,fileEntity.getId(),fileEntity.getFilePath());
+        return InfoJson.getSucc("删除完成！");
     }
 }
