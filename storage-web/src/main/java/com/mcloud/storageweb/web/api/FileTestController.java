@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Modify By:
  */
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/test")
 public class FileTestController {
     @Autowired
     FileOperateService fileOperateService;
@@ -31,8 +31,8 @@ public class FileTestController {
     @RequestMapping(value = "/uploadFile")
     public String uploadFile(){
         String filePath ="D:\\Test\\split\\分布式网络架构.pdf";
-        User usr = userService.selectByPrimaryKey(3);
-        fileOperateService.uploadFile(usr,208, filePath);
+        User usr = userService.selectByPrimaryKey(23);
+        fileOperateService.uploadFile(usr,210, filePath);
 
         return  "uploadFile ok";
     }
@@ -41,8 +41,8 @@ public class FileTestController {
     public  String downloadFile(){
 
         String filePath ="D:\\Test\\merge";
-        User usr = userService.selectByPrimaryKey(3);
-        fileOperateService.downLoadFile(usr,208, filePath);
+        User usr = userService.selectByPrimaryKey(23);
+        fileOperateService.downLoadFile(usr,210, filePath);
 
         return "downLoadFile Ok";
     }
@@ -51,7 +51,7 @@ public class FileTestController {
     public String deleteFile(){
 
         String filePath ="D:\\Test\\merge";
-        User usr = userService.selectByPrimaryKey(3);
+        User usr = userService.selectByPrimaryKey(23);
         fileOperateService.deleteFile(usr,208,filePath);
         return "delete File ok!";
     }
