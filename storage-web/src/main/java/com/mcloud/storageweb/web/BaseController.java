@@ -5,7 +5,7 @@ package com.mcloud.storageweb.web;
 import com.mcloud.storageweb.common.Const;
 import com.mcloud.storageweb.repository.entity.User;
 import com.mcloud.storageweb.util.Des3EncryptionUtil;
-import com.mcloud.storageweb.util.MD5Util;
+import com.mcloud.storageweb.util.MD5Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,7 +64,7 @@ public class BaseController {
 
     protected String getPwd(String password){
         try {
-            String pwd = MD5Util.encrypt(password+Const.PASSWORD_KEY);
+            String pwd = MD5Utils.stringMD5(password+Const.PASSWORD_KEY);
             return pwd;
         } catch (Exception e) {
             logger.error("密码加密异常：",e);

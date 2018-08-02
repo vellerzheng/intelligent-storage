@@ -5,11 +5,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mcloud.storageweb.common.constant.FileConst;
-import com.mcloud.storageweb.repository.entity.FileEntity;
-import com.mcloud.storageweb.repository.entity.User;
+import com.mcloud.storageweb.repository.entity.*;
+import com.mcloud.storageweb.repository.entity.common.ConfCloud;
 import com.mcloud.storageweb.service.User.UserService;
+import com.mcloud.storageweb.service.file.FileHashService;
 import com.mcloud.storageweb.service.file.FileOperateService;
 import com.mcloud.storageweb.service.file.FileService;
+import com.mcloud.storageweb.service.file.SchedualFileService;
 import com.mcloud.storageweb.util.CustomDateConverter;
 import com.mcloud.storageweb.util.CustomFileUtils;
 import com.mcloud.storageweb.util.InfoJson;
@@ -41,9 +43,12 @@ public class FileManagerController {
     UserService userService;
     @Autowired
     FileService fileService;
-
+    @Autowired
+    FileHashService fileHashService;
     @Autowired
     FileOperateService fileOperateService;
+    @Autowired
+    SchedualFileService schedualFileService;
 
     @RequestMapping(value = "/files/")
     public String fileList(@RequestParam("username") String username, ModelMap modelMap,
@@ -81,12 +86,15 @@ public class FileManagerController {
         try {
             for (MultipartFile file : fileList) {
                 String fileName = file.getOriginalFilename();
-                String saveName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
+                String saveName = "";
+                if(fileName!= null && fileName.contains(".")) {
+                     saveName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
+                }
                 String httpUrl = "http://118.31.60.54:8501/file/upload";
                 File temFile = new File(saveName);
                 FileUtils.copyInputStreamToFile(file.getInputStream(),temFile);
                 String jsonInfo = CustomFileUtils.upload(httpUrl,username,temFile);
-
+                temFile.delete();
 
                 FileEntity fileEntity = new FileEntity();
                 fileEntity.setUserId(user.getId());
@@ -126,9 +134,15 @@ public class FileManagerController {
     @RequestMapping(value = "/downloadfile/download")
     @ResponseBody
     public  InfoJson downloadFile(@RequestParam("username")String username,@RequestParam("fileId") Integer fileId){
-        User usr = userService.selectByUserName(username);
+        User user = userService.selectByUserName(username);
         FileEntity fileEntity = fileService.selectByPrimaryKey(fileId);
-        fileOperateService.downLoadFile(usr,fileEntity.getId(), fileEntity.getFilePath());
+
+
+        ConfCloud confCloud = fileOperateService.prepareCloudConfig(user.getId(),fileId);
+
+        InfoJson infoJson = schedualFileService.downLoadFile(confCloud,user.getId(),user.getUsername(),fileEntity.getFileName(),fileEntity.getFilePath());
+
+        //     fileOperateService.downLoadFile(usr,fileEntity.getId(), fileEntity.getFilePath());
         return InfoJson.getSucc("下载任务已经提交！");
     }
 

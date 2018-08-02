@@ -16,7 +16,7 @@ public class InfoJson implements Serializable {
      * 5003：请求超时返回
      * 2004：查询的数据不存在
      */
-    private Integer resultCode = 2000;
+    public Integer resultCode = 2000;
 
     /**
      * 2000：成功状态码

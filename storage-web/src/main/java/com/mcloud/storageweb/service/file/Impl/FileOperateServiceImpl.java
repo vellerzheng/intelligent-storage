@@ -4,6 +4,7 @@ package com.mcloud.storageweb.service.file.Impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mcloud.storageweb.repository.entity.*;
+import com.mcloud.storageweb.repository.entity.common.ConfCloud;
 import com.mcloud.storageweb.service.cloudConf.*;
 import com.mcloud.storageweb.service.file.FileHashService;
 import com.mcloud.storageweb.service.file.FileOperateService;
@@ -82,13 +83,34 @@ public class FileOperateServiceImpl  implements FileOperateService {
         if(fileEntity != null)
             jsonObject.put("fileName", fileEntity.getFileName());
         Object obj = rabitMqProvider.sendAndReceive(jsonObject);
-        int resultdel = fileHashService.deleteByPrimaryKey(fileHash.getId());
+        fileService.deleteByPrimaryKey(fileId);
+        if(fileHash != null) {
+            int resultdel = fileHashService.deleteByPrimaryKey(fileHash.getId());
+        }
 
      //   FileManage.deleteFile(filePath);
         System.out.println("--------download Receive back ------:" + obj.toString());
         return true;
     }
 
+    public ConfCloud prepareCloudConfig(Integer userId,Integer fileId){
+
+        ConfAliyun confAliyun = confAliyunService.selectByUserIdAndStatus(userId);
+        ConfNetease confNetease = confNeteaseService.selectByUserIdAndStatus(userId);
+        ConfQcloud confQcloud = confQcloudService.selectByUserIdAndStatus(userId);
+        ConfQiniu confQiniu = confQiniuService.selectByUserIdAndStatus(userId);
+        ConfUpyun confUpyun = confUpyunService.selectByUserIdAndStatus(userId);
+        FileHash fileHash = fileHashService.selectByFileId(fileId);
+
+        ConfCloud confCloud = new ConfCloud();
+        confCloud.setConfAliyun(confAliyun);
+        confCloud.setConfNetease(confNetease);
+        confCloud.setConfQcloud(confQcloud);
+        confCloud.setConfQiniu(confQiniu);
+        confCloud.setConfUpyun(confUpyun);
+        confCloud.setFileHash(fileHash);
+        return  confCloud;
+    }
 
     private JSONObject prepareCloudInfomation(User user, String command, String filePath){
         int count = 0;
