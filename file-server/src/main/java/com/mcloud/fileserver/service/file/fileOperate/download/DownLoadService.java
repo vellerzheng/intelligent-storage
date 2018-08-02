@@ -1,6 +1,10 @@
 package com.mcloud.fileserver.service.file.fileOperate.download;
 
-import com.alibaba.fastjson.JSONObject;
+
+import com.mcloud.fileserver.repository.entity.ConfCloud;
+import com.mcloud.fileserver.repository.entity.FileEntity;
+import com.mcloud.fileserver.repository.entity.FileHash;
+import com.mcloud.fileserver.repository.entity.User;
 
 /**
  * @Author: vellerzheng
@@ -11,4 +15,5 @@ import com.alibaba.fastjson.JSONObject;
 public interface DownLoadService {
 
     void downLoadFile();
+    FileEntity downLoadFile(ConfCloud confCloud, Integer userId, String userName,  String realFileName, String localFilePath);
 }

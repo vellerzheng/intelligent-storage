@@ -1,6 +1,7 @@
 package com.mcloud.fileserver.util;
 
-import jdk.internal.util.xml.impl.Input;
+
+import org.springframework.stereotype.Component;
 
 import javax.crypto.*;
 import java.io.*;
@@ -9,8 +10,11 @@ import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+@Component
 public class FileEncAndDecByDES {
     private Key key;
+
+    FileEncAndDecByDES(){ }
 
     public FileEncAndDecByDES(String str) {
         getKey(str);//生成密匙
