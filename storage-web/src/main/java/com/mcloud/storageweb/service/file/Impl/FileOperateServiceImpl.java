@@ -96,10 +96,25 @@ public class FileOperateServiceImpl  implements FileOperateService {
     public ConfCloud prepareCloudConfig(Integer userId,Integer fileId){
 
         ConfAliyun confAliyun = confAliyunService.selectByUserIdAndStatus(userId);
+        if(confAliyun == null){
+            confAliyun = confAliyunService.selectByUserIdAndStatus(1);
+        }
         ConfNetease confNetease = confNeteaseService.selectByUserIdAndStatus(userId);
+        if(confNetease == null){
+            confNetease = confNeteaseService.selectByUserIdAndStatus(1);
+        }
         ConfQcloud confQcloud = confQcloudService.selectByUserIdAndStatus(userId);
+        if(confQcloud == null){
+            confQcloud = confQcloudService.selectByUserIdAndStatus(1);
+        }
         ConfQiniu confQiniu = confQiniuService.selectByUserIdAndStatus(userId);
+        if(confQiniu == null){
+            confQiniu = confQiniuService.selectByUserIdAndStatus(1);
+        }
         ConfUpyun confUpyun = confUpyunService.selectByUserIdAndStatus(userId);
+        if(confUpyun == null){
+            confUpyun = confUpyunService.selectByUserIdAndStatus(1);
+        }
         FileHash fileHash = fileHashService.selectByFileId(fileId);
 
         ConfCloud confCloud = new ConfCloud();
@@ -121,10 +136,25 @@ public class FileOperateServiceImpl  implements FileOperateService {
         jsonObject.put("filePath", filePath);
 
         ConfAliyun confAliyun = confAliyunService.selectByUserIdAndStatus(user.getId());
+        if(confAliyun == null){
+            confAliyun = confAliyunService.selectByUserIdAndStatus(1);
+        }
         ConfNetease confNetease = confNeteaseService.selectByUserIdAndStatus(user.getId());
+        if(confNetease == null){
+            confNetease = confNeteaseService.selectByUserIdAndStatus(1);
+        }
         ConfQcloud confQcloud = confQcloudService.selectByUserIdAndStatus(user.getId());
+        if(confQcloud == null){
+            confQcloud = confQcloudService.selectByUserIdAndStatus(1);
+        }
         ConfQiniu confQiniu = confQiniuService.selectByUserIdAndStatus(user.getId());
+        if(confQiniu == null){
+            confQiniu = confQiniuService.selectByUserIdAndStatus(1);
+        }
         ConfUpyun confUpyun = confUpyunService.selectByUserIdAndStatus(user.getId());
+        if(confUpyun == null){
+            confUpyun = confUpyunService.selectByUserIdAndStatus(1);
+        }
 
         if(confAliyun != null) {
             jsonObject.put("aliyun",  JSON.toJSONString(confAliyun));
