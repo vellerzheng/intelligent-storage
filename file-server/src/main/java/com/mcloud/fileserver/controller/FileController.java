@@ -66,7 +66,7 @@ public class FileController {
     }
 
     @RequestMapping(value = "/cloudPath")
-    public String updateCloudPath(FileHash fileHash){
-        return cloudFilePathService.updateCloudPathToLocal(fileHash);
+    public String updateCloudPath(@RequestBody FileHash fileHash){
+        return cloudFilePathService.insertCloudPath(fileHash);
     }
 }

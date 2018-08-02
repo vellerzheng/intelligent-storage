@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  */
 
-@FeignClient(value="db-provider",fallback = SchedualServiceHihystric.class)
+@FeignClient(value="web-provider",fallback = SchedualServiceHihystric.class)
 public interface SchedualServiceHello {
     @RequestMapping(value = "/hello")
     String sayHelloFromClientOne(@RequestParam("name") String name);

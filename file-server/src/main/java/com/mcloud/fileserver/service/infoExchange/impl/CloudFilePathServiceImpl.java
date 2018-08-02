@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CloudFilePathServiceImpl implements CloudFilePathService {
     @Override
-    public String updateCloudPathToLocal(FileHash fileHash) {
+    public String insertCloudPath(FileHash fileHash) {
         return "断路器断路了";
     }
 }
