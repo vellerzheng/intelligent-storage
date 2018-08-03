@@ -10,8 +10,8 @@
     <!-- 引入bootstrap -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- 引入JQuery  bootstrap.js-->
-    <script src="/js/jquery-3.2.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
     <!-- [endif]-->
 </head>
 <body>
@@ -57,8 +57,10 @@
                   <!--  <td th:text="${file.id}">${file.status}</td>-->
                     <td>
                         <a th:if ="${file.status == -1}"><p>上传失败</p></a>
-                        <a th:if ="${file.status == 1}"><p>上传成功</p></a>
+                        <a th:if ="${file.status == 1}"><p>上传成功,等待处理</p></a>
                         <a th:if ="${file.status == 2}"><p>正在上传</p></a>
+                        <a th:if ="${file.status == 3}"><p>云服务处理中</p></a>
+                        <a th:if ="${file.status == 4}"><p>处理完成</p></a>
                     </td>
                     <td> <!--th:href="@{/filemanager/files/delete/(fileId= ${file.id}, username=${username})}"-->
                         <button href="/filemanager/files/show/${file.id}" type="button" class="btn btn-sm btn-success">详情</button>
