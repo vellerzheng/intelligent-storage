@@ -53,7 +53,7 @@ public class ApiController {
         fileHash.setCreatetime(CustomDateConverter.currentTime());
         fileHashService.insert(fileHash);
         System.out.println("云文件与文件路径： " + JSON.toJSONString(fileHash));
-    //    FileEntity fileEntity = fileService.selectByPrimaryKey(fileHash.getId());
+    //   FileEntity fileEntity = fileService.selectByPrimaryKey(fileHash.getId());
         return "received";
     }
 
