@@ -111,8 +111,9 @@
             success : function(result) {
                 if(result.resultCode=="2000") {
                     alert(result.resultMsg + "提交下载请求，点击确定，5秒后跳转页面！");
+                    var downloadUrl = result.data.toString();
                     // 5秒后跳转，单位毫秒
-                    location.href= "/filemanager/downloadfile/?username=" + username;
+                    location.href= "/filemanager/downloadfile/?username=" + username + "&downloadUrl=" + downloadUrl;
                 }
                 // 如果是同步（即async:false）的,sumbit的提交会阻塞，需要return true 才跳转页面
                 //  return true;

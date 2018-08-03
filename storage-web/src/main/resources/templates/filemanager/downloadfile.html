@@ -41,10 +41,23 @@
                                     <input type ="hidden"  class="form-control"  id="username" name="username" th:value="${username}" />
                                 </a>
                             </div>
+                            <div>
+                                <input type ="hidden"  class="form-control"  id="downloadUrl" name="downloadUrl" th:value="${downloadUrl}" />
+                            </div>
+                            <div>
+                                <!-- 如果用户列表非空 -->
+                                <label>如果下载未开始，请点击链接下载:</label>
+                                <br/>
+                                <a th:if ="${downloadUrl !='' }">
+                                    <a th:href="${downloadUrl}" th:download="${fileName}"> downLoad Linked List. </a>
+                                </a>
+
+                               <!-- <a href="#" onClick="downLoad()">点击下载</a>-->
+                            </div>
                         </form>
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <button type="submit"  onclick="doUpload();" class="btn btn-primary my-btn dark">下载链接</button>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -62,29 +75,9 @@
 <script th:src="@{/js/AJAX.js}"></script>
 <script src="https://cdn.bootcss.com/parsley.js/2.8.1/parsley.js"></script>
 <script type='text/javascript'>
-    function doUpload(){
-        var formData = new FormData($("#uploadForm")[0]);
-        $.ajax({
-            url : "/filemanager/downloadfile/",
-            type: 'POST',
-            data: formData,
-            async: false,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success : function(result) {
-                if(result.resultCode == "2000"){
-                    alert(result.resultMsg+" 点击确定，5秒后跳转页面！");
-                    // 5秒后跳转，单位毫秒
-                    setTimeout(redirectUrl("/filemanager/files?username=" + username),5000);
-                }
-            },
-            error : function(data) {
-                alert("失败了！");
-                location.href= "/filemanager/files/?username=" + username;
-                return 0;
-            }
-        });
+    function download(){
+        var downloadUrl = $('#downloadUrl').val();
+        href=downloadUrl;
     }
 </script>
 </html>
