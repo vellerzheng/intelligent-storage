@@ -90,12 +90,12 @@ public class FileManagerController {
         try {
             for (MultipartFile file : fileList) {
                 String fileName = file.getOriginalFilename();
-                String saveName = "";
+/*                String saveName = "";
                 if(fileName!= null && fileName.contains(".")) {
                      saveName = UUID.randomUUID().toString() + fileName.substring(fileName.lastIndexOf("."));
-                }
+                }*/
                 String httpUrl = "http://118.31.60.54:8501/file/upload";
-                File temFile = new File(saveName);
+                File temFile = new File(fileName);
                 FileUtils.copyInputStreamToFile(file.getInputStream(),temFile);
                 String jsonInfo = CustomFileUtils.upload(httpUrl,username,temFile);
                 temFile.delete();
@@ -147,7 +147,8 @@ public class FileManagerController {
 
 
         ConfCloud confCloud = fileOperateService.prepareCloudConfig(user.getId(),fileId);
-        String absoluteFilePath = absolutePath + '/' + fileEntity.getFilePath();
+        String parentPath = fileEntity.getFilePath().substring(0,fileEntity.getFilePath().lastIndexOf('/'));
+        String absoluteFilePath = absolutePath + '/' + parentPath;
         InfoJson infoJson = schedualFileService.downLoadFile(confCloud,user.getId(),user.getUsername(),fileEntity.getFileName(),absoluteFilePath);
         ////     fileOperateService.downLoadFile(usr,fileEntity.getId(), fileEntity.getFilePath());
 
