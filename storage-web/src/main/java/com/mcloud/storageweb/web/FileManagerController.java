@@ -17,6 +17,7 @@ import com.mcloud.storageweb.util.CustomFileUtils;
 import com.mcloud.storageweb.util.InfoJson;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -49,6 +50,9 @@ public class FileManagerController {
     FileOperateService fileOperateService;
     @Autowired
     SchedualFileService schedualFileService;
+
+    @Value("${filePath.absolute}")
+    private String absolutePath;
 
     @RequestMapping(value = "/files/")
     public String fileList(@RequestParam("username") String username, ModelMap modelMap,
@@ -111,7 +115,8 @@ public class FileManagerController {
                 if(jsonObject.getInteger("status")==1)
                 fileEntity.setStatus(1);
                 fileService.updateByPrimaryKeySelective(fileEntity);
-                fileOperateService.uploadFile(user,fileEntity.getId(),fileEntity.getFilePath());
+                String absoluteFilePath = absolutePath + '/' + fileEntity.getFilePath();
+                fileOperateService.uploadFile(user,fileEntity.getId(),absoluteFilePath);
 
             }
         } catch (IllegalStateException e) {
@@ -142,8 +147,8 @@ public class FileManagerController {
 
 
         ConfCloud confCloud = fileOperateService.prepareCloudConfig(user.getId(),fileId);
-
-        InfoJson infoJson = schedualFileService.downLoadFile(confCloud,user.getId(),user.getUsername(),fileEntity.getFileName(),fileEntity.getFilePath());
+        String absoluteFilePath = absolutePath + '/' + fileEntity.getFilePath();
+        InfoJson infoJson = schedualFileService.downLoadFile(confCloud,user.getId(),user.getUsername(),fileEntity.getFileName(),absoluteFilePath);
         ////     fileOperateService.downLoadFile(usr,fileEntity.getId(), fileEntity.getFilePath());
 
         //2018/8/3/babaya/3767/9e5b7fea-b27c-40dc-8510-fdb56a194aa4.pdf

@@ -51,6 +51,9 @@ public class FileOperateServiceImpl  implements FileOperateService {
         JSONObject jsonObject = prepareCloudInfomation(user,"upload",filePath);
         jsonObject.put("fileId",fileId);
         Object obj = rabitMqProvider.sendAndReceive(jsonObject);
+        FileEntity fileEntity = fileService.selectByPrimaryKey(fileId);
+        fileEntity.setStatus(3);  //云服务处理中
+        fileService.updateByPrimaryKeySelective(fileEntity);
         System.out.println("--------Receive back ------：" + obj);
         return true;
     }
