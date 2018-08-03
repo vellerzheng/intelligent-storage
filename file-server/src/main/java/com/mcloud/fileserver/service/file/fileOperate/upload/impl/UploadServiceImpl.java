@@ -97,7 +97,7 @@ public class UploadServiceImpl implements UploadService {
         json.put("fileId",jsonObject.getInteger("fileId"));
         json.put("fileHash",sourceFileHash);
         RestTemplate template = new RestTemplate();
-        String url = "http://0.0.0.0:8765/api/v1/cloudPath";
+        String url = "http://localhost:8764/api/v1/cloudPath";
         FileHash fileHash = JSON.parseObject(json.toJSONString(), FileHash.class);
         String result = template.postForObject(url,fileHash,String.class);
     //     cloudFilePathService.insertCloudPath(fileHash);
