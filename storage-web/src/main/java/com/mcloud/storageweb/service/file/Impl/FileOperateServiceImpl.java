@@ -74,7 +74,7 @@ public class FileOperateServiceImpl  implements FileOperateService {
 
     @Override
     public boolean deleteFile(User user, Integer fileId, String filePath) {
-        if(user == null || filePath == null)
+        if(user == null || fileId == null)
             return false;
         JSONObject jsonObject = prepareCloudInfomation(user,"delete",filePath);
         FileHash fileHash = fileHashService.selectByFileId(fileId);

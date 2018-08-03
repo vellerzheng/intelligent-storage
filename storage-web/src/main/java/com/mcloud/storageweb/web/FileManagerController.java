@@ -124,10 +124,13 @@ public class FileManagerController {
 
 
     @GetMapping(value = "/downloadfile/")
-    public String getDownloadResult(@RequestParam("username") String username, ModelMap modelMap){
+    public String getDownloadResult(@RequestParam("username") String username,@RequestParam("downloadUrl")String downloadUrl, ModelMap modelMap){
         User user= userService.selectByUserName(username);
+        String fileName = downloadUrl.substring(downloadUrl.lastIndexOf('/')+1);
         modelMap.addAttribute("username",user.getUsername());
         modelMap.addAttribute("loginUser",user);
+        modelMap.addAttribute("downloadUrl",downloadUrl);
+        modelMap.addAttribute("fileName",fileName);
         return "filemanager/downloadfile";
     }
 
@@ -141,9 +144,16 @@ public class FileManagerController {
         ConfCloud confCloud = fileOperateService.prepareCloudConfig(user.getId(),fileId);
 
         InfoJson infoJson = schedualFileService.downLoadFile(confCloud,user.getId(),user.getUsername(),fileEntity.getFileName(),fileEntity.getFilePath());
+        ////     fileOperateService.downLoadFile(usr,fileEntity.getId(), fileEntity.getFilePath());
 
-        //     fileOperateService.downLoadFile(usr,fileEntity.getId(), fileEntity.getFilePath());
-        return InfoJson.getSucc("下载任务已经提交！");
+        //2018/8/3/babaya/3767/9e5b7fea-b27c-40dc-8510-fdb56a194aa4.pdf
+        String downLoadFilePath = "";
+    ////    if(infoJson.getResultCode() == 2000){
+            FileEntity fileEntityBack = (FileEntity)infoJson.getData();
+            downLoadFilePath = fileEntityBack.getFilePath();
+    ////    }
+            String downLoadUrl = "http://118.31.60.54:8500/" + downLoadFilePath;
+        return InfoJson.getSucc(downLoadUrl);
     }
 
     @RequestMapping(value = "/deleteFile/")
