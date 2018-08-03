@@ -1,5 +1,5 @@
 
-docker build -t vellerzheng/storage-web .
 
+docker build -t vellerzheng/file-server .
 
-docker run --restart=always --name=storage-web --link file-server:8764  -v /opt/data/fileShareDir/:/opt/data/fileShareDir/ -p 8765:8765 -t vellerzheng/storage-web
+docker run --restart=always --name=file-server --link storage-web:8765 -v /opt/data/fileShareDir/:/opt/data/fileShareDir/ -p 8764:8764 -t vellerzheng/file-server
