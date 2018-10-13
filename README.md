@@ -30,7 +30,10 @@
     2.注册
    ![注册界面](doc/register.png)
     
-    3.文件管理
+    3.配置云服务
+   ![云配置](doc/cloudConfig.png)
+    
+    4.文件管理
    ![文件管理](doc/fileManage.png)
     
 ## reference
