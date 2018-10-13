@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录 | SpringForAll - Spring Security</title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
 </head>
 
 <body style="background-color: #f1f1f1; padding-bottom: 0">
@@ -69,8 +69,9 @@
 
 </body>
 
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script th:src="@{/js/jquery-3.3.1.js}"></script>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
 <script th:src="@{/js/vue.js}"></script>
 <script th:src="@{/js/vue-resource.js}"></script>
 <script src="https://cdn.bootcss.com/parsley.js/2.8.1/parsley.js"></script>
