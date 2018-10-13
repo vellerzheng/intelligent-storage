@@ -14,13 +14,24 @@
     
     论文提交后给出。
 
-### 技术方案：
+## 技术方案：
 
     spring boot & cloud 
     mybatis
     mysql
     redis
     rabbitmq
+    
+### 功能模块
+
+    1.登陆
+   ![登陆界面](doc/login.png)
+   
+    2.注册
+   ![注册界面](doc/register.png)
+    
+    3.文件管理
+   ![文件管理](doc/fileManage.png)
     
 ## reference
  https://blog.csdn.net/qq_27384769/article/details/79096724
