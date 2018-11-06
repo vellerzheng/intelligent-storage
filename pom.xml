@@ -16,7 +16,7 @@
 		<module>db-provider</module>
 		<module>file-localbk</module>
 		<module>file-server</module>
-		<module>storage-web</module>
+
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
