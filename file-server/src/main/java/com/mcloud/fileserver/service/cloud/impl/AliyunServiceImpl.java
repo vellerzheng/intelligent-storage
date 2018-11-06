@@ -11,8 +11,10 @@ import com.aliyun.oss.model.ObjectMetadata;
 import com.mcloud.fileserver.repository.entity.ConfAliyun;
 import com.mcloud.fileserver.service.cloud.CloudService;
 
-import javafx.util.Pair;
+
 import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -73,7 +75,7 @@ public class AliyunServiceImpl implements CloudService {
         String  cloudFilePath ="backupFile/"+ fileName.replace(File.separator,"");  //key 为上传的文件名
         ossClient.putObject(confAliyun.getBucketname(),cloudFilePath,new File(localFilePath));
         ossClient.shutdown();
-        return new Pair<>("aliyun",fileName.replace(File.separator,""));
+        return new ImmutablePair<>("aliyun",fileName.replace(File.separator,""));
     }
 
     /**

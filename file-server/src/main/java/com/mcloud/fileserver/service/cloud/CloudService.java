@@ -1,6 +1,7 @@
 package com.mcloud.fileserver.service.cloud;
 
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

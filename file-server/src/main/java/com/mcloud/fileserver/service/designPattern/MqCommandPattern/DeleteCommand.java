@@ -16,7 +16,7 @@ public class DeleteCommand implements Command {
 
     private DeleteService deleteService;
 
-
+    public DeleteCommand(){}
 
     public DeleteCommand(DeleteService deleteService){
         this.deleteService = deleteService;

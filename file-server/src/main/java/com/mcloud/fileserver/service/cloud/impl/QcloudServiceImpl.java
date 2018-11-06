@@ -7,7 +7,9 @@ import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
 import com.qcloud.cos.request.*;
 import com.qcloud.cos.sign.Credentials;
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -77,7 +79,7 @@ public class QcloudServiceImpl implements CloudService {
         UploadFileRequest uploadFileRequest = new UploadFileRequest(confQcloud.getBucketname(),yunfilePath, localFilePath);
         String uploadFileRet = cosClient.uploadFile(uploadFileRequest);
 
-        return new Pair<>("qcloud", fileName.replace(File.separator,""));
+        return new ImmutablePair<>("qcloud", fileName.replace(File.separator,""));
     }
 
     /**

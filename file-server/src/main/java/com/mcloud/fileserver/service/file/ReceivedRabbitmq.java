@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 
@@ -22,14 +23,14 @@ import org.springframework.stereotype.Component;
  * @Modify By:
  */
 @Component
-public class ReceivedRabbitmqRunnable implements Runnable {
+public class ReceivedRabbitmq  {
     private JSONObject jsonObject;
 
     private final static Logger logger = LoggerFactory.getLogger(ReceivedRabbitmqRunnable.class);
 
-    public ReceivedRabbitmqRunnable(){}
+    public ReceivedRabbitmq(){}
 
-    public  ReceivedRabbitmqRunnable(JSONObject jsonObject){
+    public  ReceivedRabbitmq(JSONObject jsonObject){
         this.jsonObject = jsonObject;
     }
 
@@ -52,8 +53,8 @@ public class ReceivedRabbitmqRunnable implements Runnable {
     Command cmdDel;
 
 
-    @Override
-    public void run() {
+    @Async
+    public void execCommand() {
 
         if(jsonObject.get("command").toString().equals("upload")){
             uploadService = new UploadServiceImpl(jsonObject);
@@ -78,3 +79,4 @@ public class ReceivedRabbitmqRunnable implements Runnable {
 
     }
 }
+

@@ -5,7 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.mcloud.fileserver.service.cloud.CloudService;
 import com.mcloud.fileserver.util.FileEncAndDecByDES;
 import com.mcloud.fileserver.util.FileManage;
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Component;
 
 import java.io.File;

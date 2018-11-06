@@ -3,8 +3,9 @@ package com.mcloud.fileserver.service.cloud.impl;
 
 import com.mcloud.fileserver.repository.entity.ConfUpyun;
 import com.mcloud.fileserver.service.cloud.CloudService;
-import javafx.util.Pair;
 import main.java.com.UpYun;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -68,7 +69,7 @@ public class UpyunServiceImpl implements CloudService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new Pair<>("upyun",fileName.replace(File.separator,""));
+        return new ImmutablePair<>("upyun",fileName.replace(File.separator,""));
     }
 
     @Override

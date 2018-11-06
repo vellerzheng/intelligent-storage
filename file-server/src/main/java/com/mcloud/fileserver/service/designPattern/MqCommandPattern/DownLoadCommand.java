@@ -16,6 +16,7 @@ public class DownLoadCommand implements Command {
 
     private DownLoadService downLoadService;
 
+    public DownLoadCommand(){}
 
     public DownLoadCommand(DownLoadService downLoadService){
         this.downLoadService = downLoadService;

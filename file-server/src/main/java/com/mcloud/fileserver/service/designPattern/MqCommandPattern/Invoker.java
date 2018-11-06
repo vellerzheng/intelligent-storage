@@ -1,5 +1,8 @@
 package com.mcloud.fileserver.service.designPattern.MqCommandPattern;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  * @Author: vellerzheng
  * @Description:
@@ -7,8 +10,12 @@ package com.mcloud.fileserver.service.designPattern.MqCommandPattern;
  * @Modify By:
  */
 
+@Component
 public class Invoker {
+
     private Command command;
+
+    public Invoker(){}
 
     public Invoker(Command command){
         this.command = command;

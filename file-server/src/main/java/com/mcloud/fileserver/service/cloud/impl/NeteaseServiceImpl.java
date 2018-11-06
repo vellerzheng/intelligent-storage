@@ -10,7 +10,9 @@ import com.netease.cloud.auth.BasicCredentials;
 import com.netease.cloud.auth.Credentials;
 import com.netease.cloud.services.nos.NosClient;
 import com.netease.cloud.services.nos.model.*;
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -172,7 +174,7 @@ public class NeteaseServiceImpl implements CloudService {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        return new Pair<>("netease",yunfileName);
+        return new ImmutablePair<>("netease",yunfileName);
     }
 
     /**

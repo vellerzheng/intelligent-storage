@@ -13,7 +13,9 @@ import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.storage.model.FileInfo;
 import com.qiniu.storage.persistent.FileRecorder;
 import com.qiniu.util.Auth;
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -85,7 +87,7 @@ public class QiniuServiceImpl implements CloudService {
                 }*/
                 logger.error(ex.toString());
             }
-            return new Pair<>("qiniu", key);
+            return new ImmutablePair<>("qiniu", key);
         }
 
         /*断点续传文件方式*/

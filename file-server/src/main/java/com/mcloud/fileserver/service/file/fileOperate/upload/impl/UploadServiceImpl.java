@@ -6,6 +6,8 @@ import com.mcloud.fileserver.repository.entity.*;
 import com.mcloud.fileserver.repository.entity.common.MessageEntity;
 import com.mcloud.fileserver.service.cloud.CloudService;
 import com.mcloud.fileserver.service.designPattern.cloudAbstractFactory.*;
+import com.mcloud.fileserver.service.file.common.FileHashService;
+import com.mcloud.fileserver.service.file.common.FileHashServiceImpl;
 import com.mcloud.fileserver.service.file.fileOperate.upload.UploadService;
 import com.mcloud.fileserver.service.infoExchange.CloudFilePathService;
 import com.mcloud.fileserver.service.rabbitmq.RabbitMqProvider;
@@ -13,7 +15,8 @@ import com.mcloud.fileserver.service.rabbitmq.RabbitService;
 import com.mcloud.fileserver.util.FileEncAndDecByDES;
 import com.mcloud.fileserver.util.FileManage;
 import com.mcloud.fileserver.util.PartitionFile;
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -43,6 +46,8 @@ public class UploadServiceImpl implements UploadService {
 
     @Autowired
     CloudFilePathService cloudFilePathService;
+    @Autowired
+    FileHashService fileHashService;
     @Autowired
     private RabbitService rabbitService;
 
@@ -99,7 +104,9 @@ public class UploadServiceImpl implements UploadService {
         RestTemplate template = new RestTemplate();
         String url = "http://localhost:8764/api/v1/cloudPath";
         FileHash fileHash = JSON.parseObject(json.toJSONString(), FileHash.class);
-        String result = template.postForObject(url,fileHash,String.class);
+        fileHashService.insert(fileHash);
+
+    //    String result = template.postForObject(url,fileHash,String.class);
     //     cloudFilePathService.insertCloudPath(fileHash);
          MessageEntity messageEntity = new MessageEntity();
          messageEntity.setContent("20180627——--------------");
