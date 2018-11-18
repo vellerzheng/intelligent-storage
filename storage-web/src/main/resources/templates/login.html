@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>登录 | SpringForAll - Spring Security</title>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+
 </head>
 
 <body style="background-color: #f1f1f1; padding-bottom: 0">
@@ -20,7 +22,7 @@
                     <h3 class="panel-title"><span class="glyphicon glyphicon-console"></span> Login</h3>
                 </div>
                 <div class="panel-body" id="loginPage">
-                    <form id="form" th:action="@{/login}" method="post" > <!-- th:action="@{/login}" -->
+                    <!--<form id="form"  >-->           <!-- th:action="@{/login}" -->
                         <div class="form-group" style="margin-top: 30px">
                             <div class="input-group col-md-6 col-md-offset-3">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
@@ -30,11 +32,21 @@
                         <div class="form-group ">
                             <div class="input-group col-md-6 col-md-offset-3">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                                <input type="password" class="form-control" v-model="password" name="password" id="password"
-                                       placeholder="密码">
+                                <input type="password" class="form-control" v-model="password" name="password" id="password" placeholder="密码">
                             </div>
                         </div>
-                        <br>
+                        <div class="form-group "> 
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                <input type="text" class="form-control" v-model="code" name="code" maxlength="4"
+                                       id="code" placeholder="验证码">
+                            </div>
+                            <div class="input-group col-md-6 col-md-offset-4">
+                                <img id="imgObj" alt="验证码" src="/img/validateCode" onclick="changeImg()"/>
+                                <img id="resultTipId" src="#" style="display: none"/>
+                                <a href="#" onclick="changeImg()">换一张</a>
+                            </div>
+                        </div>
                         <br>
                         <div th:if="${param.error}">
                             <p style="text-align: center" class="text-danger">登录失败，账号或密码错误!</p>
@@ -42,7 +54,6 @@
                         <div th:if="${result}">
                             <p style="text-align: center" class="text-success" th:text="${result}"></p>
                         </div>
-
 <!--                        <div id="errorMsg" class="alert alert-danger text-center" style="display:none;">
                             <p style="text-align: center" class="text-danger">登录失败，账号或密码错误!</p>
                         </div>
@@ -51,7 +62,8 @@
                         </div>-->
                         <div class="form-group">
                             <div class="input-group col-md-6 col-md-offset-3 col-xs-12 ">
-                                <button type="submit" v-on:click="login" class="btn btn-primary btn-block">登录</button>
+                                <button type="submit" onclick="userLogin()" class="btn btn-primary btn-block">登录</button>
+                              <!--  <input type ="button" name="submit"  class="btn btn-sm btn-success" onclick="userLogin();" value="submit" />-->
                             </div>
                         </div>
                         <div class="form-group">
@@ -59,7 +71,7 @@
                                 <a href="/register">创建账号</a> | 忘记密码?
                             </div>
                         </div>
-                    </form>
+                   <!-- </form>-->
                 </div>
             </div>
         </div>
@@ -76,39 +88,131 @@
 <script th:src="@{/js/vue-resource.js}"></script>
 <!--<script src="https://cdn.bootcss.com/parsley.js/2.8.1/parsley.js"></script>-->
 <script type='text/javascript'>
-    Vue.http.options.emulateJSON = true;
-    var loginPage = new Vue({
-        el: '#loginPage',
-        data: {
-            'username': '',
-            'password': ''
-        },
-        methods: {
-            login: function(event){
-                var ok = $('#form').parsley().isValid({force: true});
-                if(!ok){
-                    return;
-                }
-                var datas={
-                    userName: this.username,
-                    passWord: this.password
-                };
-                this.$http.post('/login',datas).then(function(response){
-                    if(response.data.rspCode == '000000'){
-                        alert("登陆成功");
-                        $("#succMsg").html(reponse.data.rspMsg);
-                        $("#succMsg").show();
-                        window.open(response.data.data, '_self');
-                    }else{
-                        $("#errorMsg").html(response.data.rspMsg);
-                        $("#errorMsg").show();
-                    }
-                }, function(response){
-                    console.log('error');
-                })
+
+    function userLogin(){
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        var username = $("#username").val();
+        var password = $("#password").val();
+/*        var code = $("#code").val();
+        if(code == null){
+            alert("验证码不能为空！");
+        }*/
+        //用data: {..,..} 配合application/x-www-form-urlencoded 也可以提交
+        $.ajax({
+            url:"/loginUser",
+            type:"post",
+            data:   JSON.stringify({
+                "username":username,
+                "password" : password
+            }),
+            dataType : "text",
+            contentType : "application/json",
+            success:function(result){
+                var obj = JSON.parse(result);
+                console.log("返回结果："+ obj.status+"  +  " +obj.msg);
+                window.location="http://localhost:8765";
+            },
+            error:function(e){
+                console.log('wrong');
+                console.log(e);
             }
+        });
+        document.getElementById("username").reset();
+        document.getElementById("password").reset();
+        //get();//此处为上传文件的进度条
+    }
+
+
+    document.getElementById("code").onkeyup=function(){
+        var value=this.value;
+        value=trim(value.toUpperCase());
+        this.value=value;
+        if(value.length === 4){
+            //创建ajax对象
+            var ajax=createAjax();
+            //设置method和url
+            var method="POST";
+            var url="/verificateCodeServlet" +"?timestamp=" + (new Date()).getTime();
+            //准备ajax
+            ajax.open(method,url);
+            //设置post传递请求头，固定写法
+            ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            //发送
+            var content="verificationCode="+value;
+            ajax.send(content);
+            //------------等待服务器端响应处理-----------------
+            ajax.onreadystatechange=function(){
+                if (ajax.readyState ===4 && ajax.status ===200){
+                    var result = ajax.responseText;
+                    var url = "/images/ava/tick.ico" +"?time=" +(new Date()).getTime();
+                    $("#resultTipId").attr('src', url); //设置tip属性
+                    //修改css，显示tip
+                    $("#resultTipId").css('display','inline');
+                     return false;
+                }else{
+                    $("#resultTipId").attr('src',"/images/ava/cross.ico" +"?time=" +(new Date()).getTime());
+                    $("#resultTipId").css('display','inline');
+                    return false;
+                }
+            }
+        }else{
+            $("#resultTipId").css('display','none');
         }
-    })
+    }
+
+    function createAjax(){
+        var xmlhttp;
+        if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else{// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xmlhttp;
+    }
+
+
+    function trim(str){
+        //首先判断类型，是String类型才可以操作否则直接返回
+        var type= typeof(str);
+        if(type==='string'){
+            str=str.replace(/^\s+/,"");//替换字符串开头的所有" "-->""
+            str=str.replace(/\s+$/,"");//替换字符串结尾的所有" "-->""
+        }
+        return str;
+    }
+
+
+
+    function changeImg() {
+        var imgSrc = $("#imgObj");
+        var src = imgSrc.attr("src");
+        imgSrc.attr("src", changeUrl(src));
+        $("#resultTipId").css('display','none');
+    }
+    //为了使每次生成图片不一致，即不让浏览器读缓存，所以需要加上时间戳
+    function changeUrl(url) {
+        var timestamp = (new Date()).valueOf();
+        var index = url.indexOf("?", url);
+        if (index > 0) {
+            url = url.substring(0, url.indexOf(url, "?"));
+        }
+        if ((url.indexOf("&") >= 0)) {
+            url = url + "×tamp=" + timestamp;
+        } else {
+            url = url + "?timestamp=" + timestamp;
+        }
+        return url;
+    }
+
+    function change()
+    {
+        var img=document.getElementById("image");
+        //切换验证码的原理是点击就重新将src设置一下，但是浏览器有缓存，所以我们需要在后面添加                     一个参数来让浏览器不断发送请求，后面加的参数为时间，因为时间是不断变化的
+        img.src="/verificodeServlet?a="+ new Date().getTime();
+    }
+
 </script>
 
 </html>
