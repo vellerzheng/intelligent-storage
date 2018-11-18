@@ -32,7 +32,7 @@ public class FileTestController {
     public String uploadFile(){
         String filePath ="D:\\Test\\split\\分布式网络架构.pdf";
         User usr = userService.selectByPrimaryKey(23);
-        fileOperateService.uploadFile(usr,243, filePath);
+        fileOperateService.uploadFile(usr,263, filePath);
 
         return  "uploadFile ok";
     }
@@ -42,7 +42,7 @@ public class FileTestController {
 
         String filePath ="D:\\Test\\merge";
         User usr = userService.selectByPrimaryKey(23);
-        fileOperateService.downLoadFile(usr,210, filePath);
+        fileOperateService.downLoadFile(usr,250, filePath);
 
         return "downLoadFile Ok";
     }
