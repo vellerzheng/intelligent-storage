@@ -76,8 +76,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and() //Login Form configuration for all others
                 .formLogin()
               //这里必须要写formLogin()，不然原有的UsernamePasswordAuthenticationFilter不会出现，也就无法配置我们重新的UsernamePasswordAuthenticationFilter
-                  .loginPage("/loginUser")
-             //   .loginProcessingUrl("/login")       //自定义登录接口
+                  .loginPage("/login")
+                 .loginProcessingUrl("/loginUser")       //自定义登录接口
 /*                .usernameParameter("username")
                 .passwordParameter("password")*/
                 .defaultSuccessUrl("/")
