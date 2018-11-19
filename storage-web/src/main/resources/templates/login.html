@@ -118,11 +118,14 @@
                 var obj = JSON.parse(result);
                 console.log("返回结果："+ obj.status+"  +  " +obj.msg);
                 if(obj.status ==="error"){
-                    window.location="http://localhost:8765";
+                    window.location="/login";
                     imgVerfyFlag = false;
+                    return false;
+                }else {
+                    window.location = "/";
+                    imgVerfyFlag = false;
+                    return true;
                 }
-                window.location="http://localhost:8765";
-                imgVerfyFlag = false;
             },
             error:function(e){
                 console.log('wrong');
