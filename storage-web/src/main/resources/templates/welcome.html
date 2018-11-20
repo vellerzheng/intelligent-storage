@@ -13,8 +13,8 @@
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
     <title>Welcome</title>
 
 </head>
@@ -43,7 +43,7 @@
         </div>
 
         <td>
-            <h2> welcome <b th:text="${username}" /></h2>
+            <h2> welcome <b th:text="${username}" ></b></h2>
         </td>
 
         <!-- 如果用户列表非空 -->
@@ -60,11 +60,11 @@
                 <tr>
                     <th>配置多云服务链接初始化 </th>
                     <td>
-                        <a href="/cloudConf/aliyunConfig" type="button" class="btn btn-sm btn-success">阿里云</a>
-                        <a href="/cloudConf/neteaseConfig" type="button" class="btn btn-sm btn-success">网易云</a>
-                        <a href="/cloudConf/qcloudConfig" type="button" class="btn btn-sm btn-success">腾讯云</a>
-                        <a href="/cloudConf/qiniuConfig" type="button" class="btn btn-sm btn-success">七牛云</a>
-                        <a href="/cloudConf/upyunConfig" type="button" class="btn btn-sm btn-success">又拍云</a>
+                        <a th:href="@{/cloudConf/aliyunConfig} " th:if="${#httpServletRequest.remoteUser}" type="button" class="btn btn-sm btn-success">阿里云</a>
+                        <a th:href="@{/cloudConf/neteaseConfig}" type="button" class="btn btn-sm btn-success">网易云</a>
+                        <a th:href="@{/cloudConf/qCloudConfig}" type="button" class="btn btn-sm btn-success">腾讯云</a>
+                        <a th:href="@{/cloudConf/qiniuConfig}" type="button" class="btn btn-sm btn-success">七牛云</a>
+                        <a th:href="@{/cloudConf/upyunConfig}" type="button" class="btn btn-sm btn-success">又拍云</a>
                     </td>
                 </tr>
 

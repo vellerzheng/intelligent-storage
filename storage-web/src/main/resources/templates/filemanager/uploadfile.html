@@ -10,8 +10,11 @@
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Cloud Secure Storage</title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
-
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/jquery-3.3.1.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
 
     <title>文件上传</title>
     <script type="text/javascript">
@@ -146,11 +149,10 @@
 
 </body>
 
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script th:src="@{/js/jquery-3.3.1.js}"></script>
 <script th:src="@{/js/vue.js}"></script>
 <script th:src="@{/js/vue-resource.js}"></script>
-<script src="https://cdn.bootcss.com/parsley.js/2.8.1/parsley.js"></script>
+<script th:src="@{https://cdn.bootcss.com/parsley.js/2.8.1/parsley.js}"></script>
 <script  type="text/javascript" th:inline="javascript">
     function doUpload(){
         var formData = new FormData($("#uploadForm")[0]);

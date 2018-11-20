@@ -6,11 +6,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <script src="/js/jquery-3.2.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/jquery-3.3.1.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
 
     <title>Registration</title>
     <style type="text/css">
@@ -116,10 +116,13 @@
 <body>
 
 <!-- 顶栏 -->
-<div th:insert="~{header :: nav}"></div>
+<div th:insert="~{fragments/header :: header}"></div>
 
 <hr>
 <h2  class="wrap">多云链接初始化配置</h2>
+<div>
+    <p style="display:none; text-align: center" th:text="${username}"> </p>
+</div>
 <hr>
 
 <div id="tf-contact">
@@ -159,7 +162,7 @@
 
         <div class="section-title col-md-8 col-md-offset-5">
             <button  class="btn btn-primary btn-success"  onclick="addCloudConfig('neteaseConfig','/js/AJAX.js/neteaseConfig')" id="savebutton">确定</button>
-            <button  class="btn btn-primary  white"   onclick="hide()" class="bigbutton">取消</button>
+            <button  class="btn btn-primary  white"   onclick="hide()" >取消</button>
         </div>
 
         <br/>
@@ -178,7 +181,7 @@
 
 
 
-
+<div>
 <table align="center">
     <tr>
 
@@ -190,9 +193,9 @@
 
 </body>
 
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/AJAX.js"></script>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/jquery-3.3.1.js}"></script>
+<script th:src="@{/js/AJAX.js}"></script>
 <script>
 
 
