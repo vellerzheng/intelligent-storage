@@ -71,8 +71,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
           //      .and()
            //     .authorizeRequests()
-           //     .antMatchers("/**").hasRole("user")
-        //        .antMatchers("/**").authenticated()
+                .antMatchers("/**").hasAnyRole("ROLE_USER","ROLE_ADMIN")
+                .antMatchers("/filemanager","/cloudConf").authenticated() //用户登录后可访问
                 .and() //Login Form configuration for all others
                 .formLogin()
               //这里必须要写formLogin()，不然原有的UsernamePasswordAuthenticationFilter不会出现，也就无法配置我们重新的UsernamePasswordAuthenticationFilter
