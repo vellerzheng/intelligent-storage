@@ -51,4 +51,31 @@ public class IndexController {
         model.addAttribute("username",principal.getName());
         return "welcome";
     }
+
+    @RequestMapping(value = "/cloudConf/aliyunConfig")
+    public String aliyunConfig(@AuthenticationPrincipal Principal principal,Model model){
+        model.addAttribute("username",principal.getName());
+        return "cloudConf/aliyunConfig";
+    }
+
+    @RequestMapping(value = "/cloudConf/neteaseConfig")
+    public String neteaseConfig(@AuthenticationPrincipal Principal principal,Model model){
+        model.addAttribute("username",principal.getName());
+        return "cloudConf/neteaseConfig";
+    }
+    @RequestMapping(value = "/cloudConf/qCloudConfig")
+    public String qCloudConfig(@AuthenticationPrincipal Principal principal,Model model){
+        model.addAttribute("username",principal.getName());
+        return "cloudConf/qCloudConfig";
+    }
+    @RequestMapping(value = "/cloudConf/qiniuConfig")
+    public String qiniuConfig(@AuthenticationPrincipal Principal principal,Model model){
+        model.addAttribute("username",principal.getName());
+        return "cloudConf/qiniuConfig";
+    }
+    @RequestMapping(value = "/cloudConf/upyunConfig")
+    public String upyunConfig(@AuthenticationPrincipal Principal principal,Model model){
+        model.addAttribute("username",principal.getName());
+        return "cloudConf/upyunConfig";
+    }
 }
