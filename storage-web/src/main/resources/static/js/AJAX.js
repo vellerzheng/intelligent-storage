@@ -75,8 +75,8 @@ function  userRegisterPost() {
 function addCloudConfig(name,__curl){
     var jspAttr ='#'+name;
     var obj = $(jspAttr).serializeObject();
-
-
+    var username = $("#user-name-label").val();
+     alert(__curl)
     $.ajax({
         url:__curl,
         type:"post",
@@ -86,8 +86,8 @@ function addCloudConfig(name,__curl){
         success:function(result){
             if(result.resultCode=="2000"){
                 alert(result.resultMsg +" 点击确定，2秒后跳转页面！");
-                var f=document.referrer;
-                window.location.href=f;
+                ;
+                window.location.href="/welcome";
             }
             if(result.resultCode=="5000"){
                 alert(result.resultMsg);
@@ -100,11 +100,6 @@ function addCloudConfig(name,__curl){
             setTimeout(redirectUrl("/clouds/users/default/"+name),5000);
         }
     });
-/*    document.getElementById("aliyunConfig").reset();
-    document.getElementById("neteaseConfig").reset();
-    document.getElementById("qcloudConfig").reset();
-    document.getElementById("qiniuConfig").reset();
-    document.getElementById("upyunConfig").reset();*/
 
 
 }
